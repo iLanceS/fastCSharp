@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3CF1E883-4EA7-4674-BB29-40F1365CB313}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>fastCSharp.ui</RootNamespace>
+    <AssemblyName>fastCSharp.ui</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;TESTCASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;TESTCASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\fastCSharp.ui.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\fastCSharp.ui.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;TESTCASE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;TESTCASE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="code\cSharp\dataModel.cs" />
+    <Compile Include="code\cSharp\dataSerialize.cs" />
+    <Compile Include="code\cSharp\memoryDatabaseModel.cs" />
+    <Compile Include="code\cSharp\sqlModel.cs" />
+    <Compile Include="code\cSharp\template\dataSerialize.cs" />
+    <Compile Include="code\cSharp\template\memoryDatabaseModel.cs" />
+    <Compile Include="code\cSharp\template\sqlModel.cs" />
+    <Compile Include="code\cSharp\template\webSocket.cs" />
+    <Compile Include="code\cSharp\webPath.cs" />
+    <Compile Include="code\cSharp\webSocket.cs" />
+    <Compile Include="config\code.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reflection\memberInfo.cs" />
+    <Compile Include="reflection\type.cs" />
+    <Compile Include="code\auto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\console.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\cSharp\ajax.cs" />
+    <Compile Include="code\cSharp\asynchronousMethod.cs" />
+    <Compile Include="code\cSharp\coder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\cSharp\cSharper.cs" />
+    <Compile Include="code\cSharp\member.cs" />
+    <Compile Include="code\cSharp\memberInfo.cs" />
+    <Compile Include="code\cSharp\simpleTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\cSharp\tcpBase.cs" />
+    <Compile Include="code\cSharp\tcpCall.cs" />
+    <Compile Include="code\cSharp\tcpServer.cs" />
+    <Compile Include="code\cSharp\template\ajax.cs" />
+    <Compile Include="code\cSharp\template\pub.cs" />
+    <Compile Include="code\cSharp\template\tcpCall.cs" />
+    <Compile Include="code\cSharp\template\tcpServer.cs" />
+    <Compile Include="code\cSharp\template\webCall.cs" />
+    <Compile Include="code\cSharp\template\webView.cs" />
+    <Compile Include="code\cSharp\treeBuilder.cs" />
+    <Compile Include="code\cSharp\webCall.cs" />
+    <Compile Include="code\cSharp\webView.cs" />
+    <Compile Include="code\error.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\html.cs" />
+    <Compile Include="code\test.cs" />
+    <Compile Include="code\ui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="code\ui.designer.cs">
+      <DependentUpon>ui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="{fastCSharp}.cSharper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="fastCSharp.ui.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="code\ui.resx">
+      <DependentUpon>ui.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="code\cSharp\template\ajax.ts.txt" />
+    <Content Include="code\cSharp\template\webPath.js" />
+    <Content Include="code\cSharp\template\webPath.ts.txt" />
+    <Content Include="code\cSharp\template\webView.ts.txt" />
+    <Content Include="js\ace\ace.js" />
+    <Content Include="js\ace\load.ts" />
+    <Content Include="js\autoHeight.ts" />
+    <Content Include="js\base.page.ts" />
+    <Content Include="js\color.ts" />
+    <Content Include="js\color512_64.bmp" />
+    <Content Include="js\crawlTitle.ts" />
+    <Content Include="js\defaultInput.ts" />
+    <Content Include="js\defaultPassword.ts" />
+    <Content Include="js\emailDomain.ts" />
+    <Content Include="js\fileClicker.ts" />
+    <Content Include="js\floatCenter.ts" />
+    <Content Include="js\form.ts" />
+    <Content Include="js\htmlEditor.page.ts" />
+    <Content Include="js\inputKeyCode.ts" />
+    <Content Include="js\inputLength.ts" />
+    <Content Include="js\load.page.ts" />
+    <Content Include="js\mathJax\load.ts" />
+    <Content Include="js\highcharts\highcharts.js" />
+    <Content Include="js\mathJax\MathJax.js" />
+    <Content Include="js\mouseImage.ts" />
+    <Content Include="js\mouseMenu.ts" />
+    <Content Include="js\mouseMove.ts" />
+    <Content Include="js\mouseOver.ts" />
+    <Content Include="js\openApi.ts" />
+    <Content Include="js\overDiv.ts" />
+    <Content Include="js\overIframe.ts" />
+    <Content Include="js\poll.ts" />
+    <Content Include="js\socket.ts" />
+    <Content Include="js\textHeight.ts" />
+    <Content Include="js\timerShow.ts" />
+    <Content Include="js\verifyImage.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fastCSharp\fastCSharp.vs2010.csproj">
+      <Project>{8CD9C769-7E9E-49CE-9E85-D2919A3C1752}</Project>
+      <Name>fastCSharp.vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tool\expand\fastCSharp.expand.vs2010.csproj">
+      <Project>{03568A9A-4EEE-4D47-B2BB-538DE72BBE95}</Project>
+      <Name>fastCSharp.expand.vs2010</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="js\manyClickMenu.ts" />
+    <TypeScriptCompile Include="js\menu.ts" />
+    <Content Include="js\touchTop.ts" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>if exist "$(PROGRAMFILES)\Microsoft SDKs\TypeScript\1.8\tsc.exe" "$(PROGRAMFILES)\Microsoft SDKs\TypeScript\1.8\tsc.exe" @(TypeScriptCompile ->'"%(fullpath)"', ' ')</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

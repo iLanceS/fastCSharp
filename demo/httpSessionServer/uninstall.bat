@@ -1,0 +1,3 @@
+@echo off
+C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\installutil /u fastCSharp.demo.httpSessionServer.exe
+pause...

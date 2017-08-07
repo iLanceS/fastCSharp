@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script language="javascript" type="text/javascript" src="//127.0.0.1:8103/js/loadPage.js?v=14D4C39"></script>
+    <title>群聊</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td width="150px">
+                <!--标签 If 表示条件为true则输出, null/0/'' 都表示false-->
+                <!--前缀 # 表示绑定到当前对象下的客户端数据,对于模板段内的所有数据不再进行服务器端视图数据配置验证,而且不再需要 # 前缀-->
+                <!--If:#Users.length-->
+                <button onclick="Chat.SelectAllUser(1);">全选</button>
+                <button onclick="Chat.ChangeSelectAllUser();">反选</button>
+                <button onclick="Chat.SelectAllUser(0);">清空</button>
+                <div>
+                    <!--标签 Loop 表示 Users 为数组,循环输出数组中的每一个元素-->
+                    <!--Loop:Users-->
+                    <!--前缀 =@ 表示直接输出字符串-->
+                    <!--前缀 =@@ 表示输出HTML编码后的字符串-->
+                    <div onclick="Chat.ChangeSelectUser('=@@User');">
+                        =@@User <!--If:IsSelected-->已选择<!--If:IsSelected--><br />
+                    </div>
+                    <!--Loop:Users-->
+                </div>
+                <!--If:#Users.length-->
+                <!--标签必须配对标识结束-->
+            </td>
+            <td>
+                <!--没有 # 前缀表示绑定服务器端视图数据-->
+                <!--If:IsLogin-->
+                <div>
+                    <!--标签 include 表示嵌入另外一个模板文件 include\message.html -->
+                    <!--Loop:Messages--><div>=@@User =@Time#Time.ToSecondString<br />
+<div>=@Message</div>
+</div><!--Loop:Messages-->
+                </div>
+                <div>
+                    <span id="Color"></span>
+                    <br />
+                    <span id="JustifyLeft">左对齐</span>
+                    <span id="JustifyCenter">居中</span>
+                    <span id="JustifyRight">右对齐</span>
+                    <span id="InsertOrderedList">编号</span>
+                    <span id="InsertUnOrderedList">项目符号</span>
+                    <span id="OutDent">减少缩进量</span>
+                    <span id="InDent">增加缩进量</span>
+                    <br />
+                    <span id="SelectAll">全选</span>
+                    <span id="Undo">撤消</span>
+                    <span id="Redo">重做</span>
+                    <span id="Save">保存</span>
+                    <span id="LoadSave">加载</span>
+                    <span id="ClearAll">清除</span>
+                    <span id="Print">打印</span>
+                    <span id="RemoveFormat">取消格式</span>
+                    <br />
+                    <span id="Paragraph"></span>
+                    <span id="FontName"></span>
+                    <span id="FontSize"></span>
+                    <br />
+                    <span id="Unlink">去掉超级链接</span>
+                    <span id="Quote">插入引用</span>
+                    <span id="InsertHorizontalRule">插入水平线</span>
+                    <br />
+                    <span id="CurrentColor"></span>
+                    <span id="CurrentColorSpan"></span>
+                    <span id="FontColor">颜色</span>
+                    <span id="BgColor">背景</span>
+                    <span id="Bold">加粗</span>
+                    <span id="Italic">斜体</span>
+                    <span id="UnderLine">下划线</span>
+                    <span id="Superscript">上标</span>
+                    <span id="Subscript">下标</span>
+                    <span id="StrikeThrough">删除线</span>
+                    <!--申明式组件无需手动初始化, HtmlEditor 类型的组件在鼠标初次点击的时候初始化,任何支持点击的控件必须显示申明 onclick 以兼容苹果设备-->
+                    <div id="MessageEditor" HtmlEditor="{PasteLinkAjaxCallName:'pub.CrawlTitle',PasteImageAjaxCallName:'pub.PasteImage'}" onclick="void(0);" @style="width:500px;height:200px;"></div>
+                </div>
+                <!--If:IsLogin-->
+                <div>
+                    <!--If:#IsLogining-->正在登录<!--If:#IsLogining--> =@@#LoginUser
+                    <!--If:IsLogin-->
+                    <!--If:#Users.length--><button onclick="Chat.Send();">发送</button><!--If:#Users.length-->
+                    <button onclick="Chat.Logout();">退出</button>
+                    <!--If:IsLogin-->
+                    <!--逻辑表达式前缀 ! 表示逻辑取反-->
+                    <!--逻辑表达式分隔符 & 表示逻辑与-->
+                    <!--逻辑表达式分隔符 | 表示逻辑或-->
+                    <!--If:!#IsLogining&!IsLogin-->
+                    <input type="text" id="User" value="=@@#Query.user" />
+                    <button onclick="Chat.Login();">登录</button>
+                    <!--If:!#IsLogining&!IsLogin-->
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

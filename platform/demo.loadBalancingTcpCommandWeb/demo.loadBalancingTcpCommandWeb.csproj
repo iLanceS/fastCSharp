@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E9700F73-5547-4A69-9FBF-9B16165B8596}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>demo.loadBalancingTcpCommandWeb</RootNamespace>
+    <AssemblyName>fastCSharp.demo.loadBalancingTcpCommandWeb</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>MONO</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\demo\loadBalancingTcpCommandWeb\ajax\loadBalancing.cs">
+      <Link>ajax\loadBalancing.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\loadBalancingTcpCommandWeb\{fastCSharp.demo.loadBalancingTcpCommandWeb}.fastCSharp.cs">
+      <Link>{fastCSharp.demo.loadBalancingTcpCommandWeb}.fastCSharp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\loadBalancingTcpCommandWeb\client.cs">
+      <Link>client.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\loadBalancingTcpCommandWeb\loadBalancing.cs">
+      <Link>loadBalancing.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\loadBalancingTcpCommandWeb\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\loadBalancingTcpCommandWeb\webCall.cs">
+      <Link>webCall.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\loadBalancingTcpCommandWeb\webConfig.cs">
+      <Link>webConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\loadBalancingTcpCommandWeb\webView.cs">
+      <Link>webView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\loadBalancingTcpCommandWeb\helloServer.cs">
+      <Link>helloServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\loadBalancingTcpCommandWeb\webServer.cs">
+      <Link>webServer.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="ajax\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="webview.html" />
+    <None Include="app.config" />
+    <None Include="fastCSharp.demo.loadBalancingTcpCommandWeb.config" />
+    <None Include="hello.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fastCSharp\fastCSharp.csproj">
+      <Project>{03B96069-8E77-4EAB-9BC2-405B7B7A14F6}</Project>
+      <Name>fastCSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\demo.loadBalancingTcpCommand\demo.loadBalancingTcpCommand.csproj">
+      <Project>{59EA94C5-6A2F-4539-9041-8F967B98F90E}</Project>
+      <Name>demo.loadBalancingTcpCommand</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

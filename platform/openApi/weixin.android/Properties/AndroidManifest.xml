@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--配置样例-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="PackageName" android:versionCode="1" android:versionName="1.0.0.0">
+	<uses-permission android:name="android.permission.INTERNET" />
+  <application android:label="AppName" android:icon="@drawable/icon">
+    
+    <!---
+    对外暴露不能 android:name 写在 AndroidManifest.xml 中，要在 Activity 定义上添加自定义属性
+
+    [Android.App.IntentFilter(new string[] { "android.intent.action.VIEW" }, Categories = new string[] { "android.intent.category.DEFAULT" }, DataSchemes = new string[] { AppId })]
+    [Android.App.Activity(Name = PackageName + fastCSharp.weixin.android.activity.WXEntryActivityName, LaunchMode = Android.Content.PM.LaunchMode.SingleTop, Exported = true)]
+    =
+		<activity android:name="PackageName.wxapi.WXEntryActivity" android:exported="true" android:launchMode="singleTop">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:scheme="AppId" />
+			</intent-filter>
+		</activity>
+    
+    [Android.App.IntentFilter(new string[] { "android.intent.action.VIEW" }, Categories = new string[] { "android.intent.category.DEFAULT" }, DataSchemes = new string[] { AppId })]
+    [Android.App.Activity(Name = PackageName + fastCSharp.weixin.android.activity.WXPayEntryActivityName, LaunchMode = Android.Content.PM.LaunchMode.SingleTop, Exported = true)]
+    =
+		<activity android:name="PackageName.wxapi.WXPayEntryActivity" android:exported="true" android:launchMode="singleTop">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:scheme="AppId" />
+			</intent-filter>
+		</activity>
+    -->
+		<receiver android:name="PackageName.AppRegister">
+			<intent-filter>
+				<action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+      </intent-filter>
+		</receiver>
+    
+  </application>
+</manifest>

@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FEA3A587-BDD9-413E-A3E4-E37CCFB93CEA}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>fastCSharp</RootNamespace>
+    <AssemblyName>fastCSharp.expand.android</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;MONO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;MONO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="algorithm\group.cs" />
+    <Compile Include="algorithm\radixSort.cs" />
+    <Compile Include="algorithm\sortIndex.cs" />
+    <Compile Include="algorithm\topologySort.cs" />
+    <Compile Include="array.cs" />
+    <Compile Include="bitMap.cs" />
+    <Compile Include="chineseEncoder.cs" />
+    <Compile Include="config\search.cs" />
+    <Compile Include="countQueueCache.cs" />
+    <Compile Include="data\dataReader.cs" />
+    <Compile Include="data\dataSet.cs" />
+    <Compile Include="data\dataSource.cs" />
+    <Compile Include="data\dataTable.cs" />
+    <Compile Include="data\dataWriter.cs" />
+    <Compile Include="data\primaryKey.cs" />
+    <Compile Include="diagnostics\consoleLog.cs" />
+    <Compile Include="diagnostics\process.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dictionary.cs" />
+    <Compile Include="drawing\color.cs" />
+    <Compile Include="dynamicDomain.cs" />
+    <Compile Include="emit\equals.cs" />
+    <Compile Include="emit\form.cs" />
+    <Compile Include="emit\formGetter.cs" />
+    <Compile Include="emit\mock.cs" />
+    <Compile Include="emit\pub.cs" />
+    <Compile Include="emit\random.cs" />
+    <Compile Include="emit\urlQuery.cs" />
+    <Compile Include="emit\urlQueryGetter.cs" />
+    <Compile Include="enumParser.cs" />
+    <Compile Include="iEnumerable.cs" />
+    <Compile Include="io\fileDistributionServer.cs" />
+    <Compile Include="io\jsonFile.cs" />
+    <Compile Include="list.cs" />
+    <Compile Include="memoryDatabase\cache\dictionary.cs" />
+    <Compile Include="memoryDatabase\cache\identityArray.cs" />
+    <Compile Include="memoryDatabase\cache\index\member.cs" />
+    <Compile Include="memoryDatabase\cache\index\memberDictionary.cs" />
+    <Compile Include="memoryDatabase\cache\searchTree.cs" />
+    <Compile Include="memoryGraph.cs" />
+    <Compile Include="memoryTrieGraph.cs" />
+    <Compile Include="multicastDelegate.cs" />
+    <Compile Include="net\email.cs" />
+    <Compile Include="net\htmlTitleClient.cs" />
+    <Compile Include="net\httpClient.cs" />
+    <Compile Include="net\packet\arp.cs" />
+    <Compile Include="net\packet\ethernet.cs" />
+    <Compile Include="net\packet\ethernetSessionP2P.cs" />
+    <Compile Include="net\packet\frame.cs" />
+    <Compile Include="net\packet\icmp.cs" />
+    <Compile Include="net\packet\icmp6.cs" />
+    <Compile Include="net\packet\igmp.cs" />
+    <Compile Include="net\packet\ip.cs" />
+    <Compile Include="net\packet\ip6.cs" />
+    <Compile Include="net\packet\linuxSLL.cs" />
+    <Compile Include="net\packet\tcp.cs" />
+    <Compile Include="net\packet\udp.cs" />
+    <Compile Include="net\ping.cs" />
+    <Compile Include="net\rawSocketListener.cs" />
+    <Compile Include="net\socketAsyncEventArgsProxy.cs" />
+    <Compile Include="net\tcp\deployServer.cs" />
+    <Compile Include="net\webClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="number.cs" />
+    <Compile Include="openApi\51nod\api.cs" />
+    <Compile Include="openApi\51nod\callback.cs" />
+    <Compile Include="openApi\51nod\config.cs" />
+    <Compile Include="openApi\51nod\judge.cs" />
+    <Compile Include="openApi\51nod\judgeResult.cs" />
+    <Compile Include="openApi\51nod\problem.cs" />
+    <Compile Include="openApi\51nod\returnCode.cs" />
+    <Compile Include="openApi\51nod\returnValue.cs" />
+    <Compile Include="openApi\encodingRequest.cs" />
+    <Compile Include="openApi\IValue.cs" />
+    <Compile Include="openApi\microblog.cs" />
+    <Compile Include="openApi\qq\api.cs" />
+    <Compile Include="openApi\qq\apiForm.cs" />
+    <Compile Include="openApi\qq\apiFormat.cs" />
+    <Compile Include="openApi\qq\appId.cs" />
+    <Compile Include="openApi\qq\blog.cs" />
+    <Compile Include="openApi\qq\blogReturn.cs" />
+    <Compile Include="openApi\qq\comment.cs" />
+    <Compile Include="openApi\qq\commentQuery.cs" />
+    <Compile Include="openApi\qq\config.cs" />
+    <Compile Include="openApi\qq\errorCode.cs" />
+    <Compile Include="openApi\qq\feeds.cs" />
+    <Compile Include="openApi\qq\isValue.cs" />
+    <Compile Include="openApi\qq\microblog.cs" />
+    <Compile Include="openApi\qq\microblogReturn.cs" />
+    <Compile Include="openApi\qq\openId.cs" />
+    <Compile Include="openApi\qq\simpleUserInfo.cs" />
+    <Compile Include="openApi\qq\token.cs" />
+    <Compile Include="openApi\qq\tokenOpenId.cs" />
+    <Compile Include="openApi\qq\userInfo.cs" />
+    <Compile Include="openApi\qq\userInfoBase.cs" />
+    <Compile Include="openApi\renren\api.cs" />
+    <Compile Include="openApi\renren\apiForm.cs" />
+    <Compile Include="openApi\renren\avatar.cs" />
+    <Compile Include="openApi\renren\config.cs" />
+    <Compile Include="openApi\renren\refreshToken.cs" />
+    <Compile Include="openApi\renren\share.cs" />
+    <Compile Include="openApi\renren\shareQuery.cs" />
+    <Compile Include="openApi\renren\token.cs" />
+    <Compile Include="openApi\renren\tokenUser.cs" />
+    <Compile Include="openApi\request.cs" />
+    <Compile Include="openApi\state.cs" />
+    <Compile Include="openApi\weibo\api.cs" />
+    <Compile Include="openApi\weibo\apiForm.cs" />
+    <Compile Include="openApi\weibo\config.cs" />
+    <Compile Include="openApi\weibo\geo.cs" />
+    <Compile Include="openApi\weibo\microblog.cs" />
+    <Compile Include="openApi\weibo\status.cs" />
+    <Compile Include="openApi\weibo\token.cs" />
+    <Compile Include="openApi\weibo\tokenRequest.cs" />
+    <Compile Include="openApi\weibo\tokenUid.cs" />
+    <Compile Include="openApi\weibo\user.cs" />
+    <Compile Include="openApi\weibo\visible.cs" />
+    <Compile Include="openApi\weixin\account.cs" />
+    <Compile Include="openApi\weixin\accountList.cs" />
+    <Compile Include="openApi\weixin\api.cs" />
+    <Compile Include="openApi\weixin\appPrePayId.cs" />
+    <Compile Include="openApi\weixin\appPrePayIdQuery.cs" />
+    <Compile Include="openApi\weixin\article.cs" />
+    <Compile Include="openApi\weixin\articleSummary.cs" />
+    <Compile Include="openApi\weixin\articleTotal.cs" />
+    <Compile Include="openApi\weixin\articleUrl.cs" />
+    <Compile Include="openApi\weixin\autoReply.cs" />
+    <Compile Include="openApi\weixin\billTotal.cs" />
+    <Compile Include="openApi\weixin\bulkMessage.cs" />
+    <Compile Include="openApi\weixin\config.cs" />
+    <Compile Include="openApi\weixin\counts.cs" />
+    <Compile Include="openApi\weixin\customRecord.cs" />
+    <Compile Include="openApi\weixin\customSession.cs" />
+    <Compile Include="openApi\weixin\customSessionTime.cs" />
+    <Compile Include="openApi\weixin\customTime.cs" />
+    <Compile Include="openApi\weixin\errorCode.cs" />
+    <Compile Include="openApi\weixin\group.cs" />
+    <Compile Include="openApi\weixin\groupCount.cs" />
+    <Compile Include="openApi\weixin\industry.cs" />
+    <Compile Include="openApi\weixin\interfaceSummary.cs" />
+    <Compile Include="openApi\weixin\isValue.cs" />
+    <Compile Include="openApi\weixin\language.cs" />
+    <Compile Include="openApi\weixin\media.cs" />
+    <Compile Include="openApi\weixin\mediaCount.cs" />
+    <Compile Include="openApi\weixin\mediaList.cs" />
+    <Compile Include="openApi\weixin\mediaQuery.cs" />
+    <Compile Include="openApi\weixin\mediaUrl.cs" />
+    <Compile Include="openApi\weixin\menu.cs" />
+    <Compile Include="openApi\weixin\message.cs" />
+    <Compile Include="openApi\weixin\messageCount.cs" />
+    <Compile Include="openApi\weixin\messageDistributed.cs" />
+    <Compile Include="openApi\weixin\messageId.cs" />
+    <Compile Include="openApi\weixin\news.cs" />
+    <Compile Include="openApi\weixin\newsList.cs" />
+    <Compile Include="openApi\weixin\onlineAccount.cs" />
+    <Compile Include="openApi\weixin\openIdList.cs" />
+    <Compile Include="openApi\weixin\openIdMessage.cs" />
+    <Compile Include="openApi\weixin\orderQuery.cs" />
+    <Compile Include="openApi\weixin\orderResult.cs" />
+    <Compile Include="openApi\weixin\payNotify.cs" />
+    <Compile Include="openApi\weixin\prePayId.cs" />
+    <Compile Include="openApi\weixin\prePayIdQuery.cs" />
+    <Compile Include="openApi\weixin\previewMessage.cs" />
+    <Compile Include="openApi\weixin\qrCode.cs" />
+    <Compile Include="openApi\weixin\qrCodePayQuery.cs" />
+    <Compile Include="openApi\weixin\qrCodePayResult.cs" />
+    <Compile Include="openApi\weixin\refundResult.cs" />
+    <Compile Include="openApi\weixin\resultCode.cs" />
+    <Compile Include="openApi\weixin\returnCode.cs" />
+    <Compile Include="openApi\weixin\returnSign.cs" />
+    <Compile Include="openApi\weixin\sendVideo.cs" />
+    <Compile Include="openApi\weixin\shakeAroundAccount.cs" />
+    <Compile Include="openApi\weixin\shakeAroundAccountStatus.cs" />
+    <Compile Include="openApi\weixin\sign.cs" />
+    <Compile Include="openApi\weixin\signQuery.cs" />
+    <Compile Include="openApi\weixin\template.cs" />
+    <Compile Include="openApi\weixin\token.cs" />
+    <Compile Include="openApi\weixin\tradeType.cs" />
+    <Compile Include="openApi\weixin\uploadVideo.cs" />
+    <Compile Include="openApi\weixin\user.cs" />
+    <Compile Include="openApi\weixin\userCumulate.cs" />
+    <Compile Include="openApi\weixin\userLanguage.cs" />
+    <Compile Include="openApi\weixin\userRead.cs" />
+    <Compile Include="openApi\weixin\userShare.cs" />
+    <Compile Include="openApi\weixin\userSummary.cs" />
+    <Compile Include="openApi\weixin\videoUrl.cs" />
+    <Compile Include="openApi\weixin\waitCustomSession.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="searchTree.cs" />
+    <Compile Include="search\searcher.cs" />
+    <Compile Include="search\simplified.cs" />
+    <Compile Include="search\trieGraph.cs" />
+    <Compile Include="search\word.cs" />
+    <Compile Include="simpleMapping32.cs" />
+    <Compile Include="sql\batchImport.cs" />
+    <Compile Include="sql\cache\copy.cs" />
+    <Compile Include="sql\cache\ICustom.cs" />
+    <Compile Include="sql\cache\part\counterCache.cs" />
+    <Compile Include="sql\cache\part\events\counter.cs" />
+    <Compile Include="sql\cache\part\events\identityCounter.cs" />
+    <Compile Include="sql\cache\part\events\memberCounter.cs" />
+    <Compile Include="sql\cache\part\events\memberIdentityCounter.cs" />
+    <Compile Include="sql\cache\part\events\memberPrimaryKeyCounter.cs" />
+    <Compile Include="sql\cache\part\events\primaryKeyCounter.cs" />
+    <Compile Include="sql\cache\part\memberQueue.cs" />
+    <Compile Include="sql\cache\part\memberQueueCustom.cs" />
+    <Compile Include="sql\cache\part\memberQueueList.cs" />
+    <Compile Include="sql\cache\part\queue.cs" />
+    <Compile Include="sql\cache\part\queueDictionary.cs" />
+    <Compile Include="sql\cache\part\queueExpression.cs" />
+    <Compile Include="sql\cache\part\queueExpressionCustom.cs" />
+    <Compile Include="sql\cache\part\queueList.cs" />
+    <Compile Include="sql\cache\sqlTool.cs" />
+    <Compile Include="sql\cache\version.cs" />
+    <Compile Include="sql\cache\whole\arrayList.cs" />
+    <Compile Include="sql\cache\whole\arraySearchTree.cs" />
+    <Compile Include="sql\cache\whole\arraySearchTreeWhere.cs" />
+    <Compile Include="sql\cache\whole\client\identityMemberCache.cs" />
+    <Compile Include="sql\cache\whole\dictionary.cs" />
+    <Compile Include="sql\cache\whole\dictionaryDictionary.cs" />
+    <Compile Include="sql\cache\whole\dictionaryDictionaryWhere.cs" />
+    <Compile Include="sql\cache\whole\dictionaryList.cs" />
+    <Compile Include="sql\cache\whole\dictionaryListOrderLady.cs" />
+    <Compile Include="sql\cache\whole\dictionaryListOrderLadyWhere.cs" />
+    <Compile Include="sql\cache\whole\dictionaryListWhere.cs" />
+    <Compile Include="sql\cache\whole\dictionarySearchTree.cs" />
+    <Compile Include="sql\cache\whole\dictionarySearchTreeWhere.cs" />
+    <Compile Include="sql\cache\whole\dictionaryWhere.cs" />
+    <Compile Include="sql\cache\whole\events\cache.cs" />
+    <Compile Include="sql\cache\whole\events\counterMember.cs" />
+    <Compile Include="sql\cache\whole\events\identityArray.cs" />
+    <Compile Include="sql\cache\whole\events\identityArrayWhere.cs" />
+    <Compile Include="sql\cache\whole\events\identityCache.cs" />
+    <Compile Include="sql\cache\whole\events\identityDictionaryWhere.cs" />
+    <Compile Include="sql\cache\whole\events\identityMemberMap.cs" />
+    <Compile Include="sql\cache\whole\events\identityTree.cs" />
+    <Compile Include="sql\cache\whole\events\key.cs" />
+    <Compile Include="sql\cache\whole\events\memberKey.cs" />
+    <Compile Include="sql\cache\whole\events\primaryKey.cs" />
+    <Compile Include="sql\cache\whole\ladyOrderArray.cs" />
+    <Compile Include="sql\cache\whole\member.cs" />
+    <Compile Include="sql\cache\whole\memberArrayLadyOrderArray.cs" />
+    <Compile Include="sql\cache\whole\memberArrayList.cs" />
+    <Compile Include="sql\cache\whole\memberCache.cs" />
+    <Compile Include="sql\cache\whole\memberCacheCounter.cs" />
+    <Compile Include="sql\cache\whole\memberCacheCounterLock.cs" />
+    <Compile Include="sql\cache\whole\memberCacheLock.cs" />
+    <Compile Include="sql\cache\whole\memberDictionary.cs" />
+    <Compile Include="sql\cache\whole\memberDictionaryList.cs" />
+    <Compile Include="sql\cache\whole\memberDictionaryListWhere.cs" />
+    <Compile Include="sql\cache\whole\memberDictionaryWhere.cs" />
+    <Compile Include="sql\cache\whole\memberLadyOrderArray.cs" />
+    <Compile Include="sql\cache\whole\memberLadyOrderArrayWhere.cs" />
+    <Compile Include="sql\cache\whole\memberList.cs" />
+    <Compile Include="sql\cache\whole\memberListWhere.cs" />
+    <Compile Include="sql\cache\whole\memberOrderList.cs" />
+    <Compile Include="sql\cache\whole\searchTree.cs" />
+    <Compile Include="sql\cache\whole\searchTreeWhere.cs" />
+    <Compile Include="sql\cache\whole\timeOutOrderLady.cs" />
+    <Compile Include="sql\cache\whole\timeOutOrderLadyWhere.cs" />
+    <Compile Include="sql\cache\whole\timer.cs" />
+    <Compile Include="sql\cache\whole\timerWhere.cs" />
+    <Compile Include="sql\identityArray.cs" />
+    <Compile Include="sql\logCache.cs" />
+    <Compile Include="sql\logStream.cs" />
+    <Compile Include="sql\memberExpression.cs" />
+    <Compile Include="sql\member\intDate.cs" />
+    <Compile Include="sql\nowTime.cs" />
+    <Compile Include="sql\prepaidTransaction.cs" />
+    <Compile Include="sql\randomKey.cs" />
+    <Compile Include="sql\tableLoadChecker.cs" />
+    <Compile Include="staticHashSet.cs" />
+    <Compile Include="string.cs" />
+    <Compile Include="subArray.cs" />
+    <Compile Include="template\array.cs" />
+    <Compile Include="template\group.cs" />
+    <Compile Include="template\iCollection.cs" />
+    <Compile Include="template\iEnumerable.cs" />
+    <Compile Include="template\quickSort.cs" />
+    <Compile Include="template\quickSortExtension.cs" />
+    <Compile Include="template\rangeSort.cs" />
+    <Compile Include="template\sortIndex.cs" />
+    <Compile Include="template\topSort.cs" />
+    <Compile Include="threading\asynchronous.cs" />
+    <Compile Include="threading\callbackPool.cs" />
+    <Compile Include="threading\lockCheck.cs" />
+    <Compile Include="threading\spinLock.cs" />
+    <Compile Include="threading\waitCount.cs" />
+    <Compile Include="timeoutDictionary.cs" />
+    <Compile Include="trieGraph.cs" />
+    <Compile Include="unmanagedStreamProxy.cs" />
+    <Compile Include="web\cookie.cs" />
+    <Compile Include="web\formatHtml.cs" />
+    <Compile Include="web\htmlNode.cs" />
+    <Compile Include="web\httpUtility.cs" />
+    <Compile Include="web\poll.cs" />
+    <Compile Include="{fastCSharp.expand}.fastCSharp.cs" />
+    <Compile Include="{fastCSharp.expand}.remember.fastCSharp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\fastCSharp\fastCSharp.android.csproj">
+      <Project>{73f852cb-f1d4-4403-b175-ef3c93b12479}</Project>
+      <Name>fastCSharp.android</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

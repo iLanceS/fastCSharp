@@ -1,0 +1,24 @@
+<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+  <remove-node path="/api/package[@name='com.sina.weibo.sdk.register.mobile']/class[@name='Country']" />
+  <remove-node path="/api/package[@name='com.sina.weibo.sdk.register.mobile']/class[@name='CountryList']" />
+  <remove-node path="/api/package[@name='com.sina.weibo.sdk.api.share']/class[@name='VersionCheckHandler']" />
+  <remove-node path="/api/package[@name='com.sina.weibo.sdk.component']/class[@name='BrowserRequestParamBase']/field[@name='mLaucher']" />
+
+  <add-node path="/api/package[@name='com.sina.weibo.sdk.component']">
+    <interface abstract="true" deprecated="not deprecated" final="false" name="IBrowserRequestCallBack" static="false" visibility="public">
+    </interface>
+  </add-node>
+
+  <attr path="/api/package[@name='com.sina.weibo.sdk.component']/class[@name='AuthRequestParam']/method[@name='onCreateRequestParamBundle' and count(parameter)=1 and parameter[1][@type='android.os.Bundle']]" name="visibility">protected</attr>
+  <attr path="/api/package[@name='com.sina.weibo.sdk.component']/class[@name='GameRequestParam']/method[@name='onCreateRequestParamBundle' and count(parameter)=1 and parameter[1][@type='android.os.Bundle']]" name="visibility">protected</attr>
+  <attr path="/api/package[@name='com.sina.weibo.sdk.component']/class[@name='ShareRequestParam']/method[@name='onCreateRequestParamBundle' and count(parameter)=1 and parameter[1][@type='android.os.Bundle']]" name="visibility">protected</attr>
+  <attr path="/api/package[@name='com.sina.weibo.sdk.component']/class[@name='WidgetRequestParam']/method[@name='onCreateRequestParamBundle' and count(parameter)=1 and parameter[1][@type='android.os.Bundle']]" name="visibility">protected</attr>
+
+</metadata>

@@ -1,0 +1,1080 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--include:include\header[Page,首页]-->
+<body>
+    <!--If:#IsDocument--><center><b>正确查看文档的方式应该是：首先使用 Release 模式成功编译 fastCSharp.ui 项目，然后成功编译 fastCSharp.document 项目，最后调试或者运行 fastCSharp.document 项目。</b></center><!--If:#IsDocument-->
+    <!--include:include\includes-->
+    <!--include:include\mark-->
+    <div><h1><!--include:include\hideButton[ReadMe,]--> <span id="ReadMe">fastCSharp 简介</span> <a href="javascript:Mark.To('Start');">↓</a></h1></div>
+    <!--If:!#IsHideReadMe-->
+    <div>
+        <p>fastCSharp 是一个的基于自动化编码的整体开发框架。</p>
+        <p><b>1.</b> fast 指的是运行效率高与开发速度快，鱼与熊掌兼可得。</p>
+        <p><b>2.</b> 至于 C# 我想大概就是 C++++ 了 ^-^，个人认为 + 的是元数据以及相关的抽象模式。</p>
+        <p><b>3.</b> 该框架提供整套基础解决方案，“大”到 <a href="javascript:Mark.To('TCP');">TCP 服务</a>、<a href="javascript:Mark.To('WEBView.HttpServer');">HTTP 服务器</a>、<a href="javascript:Mark.To('WEBView');">WEB 视图（前后端一体 WEB 视图框架）</a>、<a href="javascript:Mark.To('ORM');">ORM 缓存</a>、内存数据库引擎，小到 二进制序列化、JSON 序列化、XML 序列化、链式编程 API、分词搜索、HTML 解析器、局域网监听、GIF 文件处理、WEB 标题抓取、中文编码识别、UDP 穿透示例、第三方平台 OpenAPI 示例。</p>
+        <p><b>4.</b> 这些常用的功能模块作为基础零件，就像 .NET Framework 一样无处不在，耦合于自动化，“随意”组合。</p>
+        <p><b>5.</b> 该框架采用自动化编码方案，无缝结合静态代码生成技术与运行时代码生成技术 Emit，实现了可编译的静态代码模版解析，代码生成无需界面操作。</p>
+        <p>考虑到项目的跨系统能力，fastCSharp 2.0 以后决定采用 .NET Framework 4.0 默认作为基础框架，IDE 最低支持版本为 VS2010。</p>
+        <p>跨平台方面已经通过 Unbuntu + MONO 测试，支持 VS2015 Xamarin.Forms 的 <a href="javascript:Mark.To('Android');">Android APP</a> 开发。</p>
+        <p>因为我个人习惯使用 Release 模式编译项目，<b>如果您在 Debug 编译模式遇到编译错误问题，请切换到 Release 编译模式重试</b>，并将这个问题反馈给我。</p>
+        <p>由于<a href="https://fastcsharp.codeplex.com/" target="_blank">codeplex</a>经常性出现卡顿甚至暂停服务问题，代码同步已经转移到某私有 TFS 服务器上，以后项目包定期上传到<a href="http://jq.qq.com/?_wv=1027&k=2HbDxVX" target="_blank"> QQ群275679001</a>(旧群 4777880 暂时无法加人)文件中，另外也可以点击<a href="https://www.51nod.com/upload/fastCSharp.zip" target="_blank">fastCSharp.zip</a>下载源代码压缩包。</p>
+        <p>欢迎关注<a href="http://www.51nod.com/topic/#!=fastCSharp" target="_blank">fastCSharp 话题</a>及其相关问题，有<b id="ReadMe.Question">问题或建议</b>可以在 <a href="http://wpa.qq.com/msgrd?v=3&uin=472179624&site=qq&menu=yes" target="_blank">QQ</a> 上联系我，或者给我发邮件 <a href="mailto:sbwwkmyd@163.com">sbwwkmyd@163.com</a>/<a href="mailto:sbwwkmyd@gmail.com">sbwwkmyd@gmail.com</a>。</p>
+    </div>
+    <!--If:!#IsHideReadMe-->
+
+    <div><h1><!--include:include\hideButton[Start,]--> <span id="Start">开始</span> <a href="javascript:Mark.To('ReadMe');">↑</a><a href="javascript:Mark.To('Config');">↓</a></h1></div>
+    <!--If:!#IsHideStart-->
+    <div>
+        <!--Value:Environment-->
+        <p><b>1.</b> <!--If:FastCSharpPath-->=@@FastCSharpPath <!--If:FastCSharpPath--><!--Not:FastCSharpPath-->根目录（没有找到 fastCSharp 解决方案文件）<!--Not:FastCSharpPath-->中存在两个解决方案文件：</p>
+        <p>=@@FastCSharpPath$fastCSharp.vs2010.sln 用于 VS2010，采用 .NET Framework 4.0 作为默认基础框架。</p>
+        <p>=@@FastCSharpPath$fastCSharp.sln 用于 VS2015，采用 .NET Framework 4.5 作为默认基础框架。</p>
+        <p>
+            <b>2.</b> 如果您需要<span id="Start.CodeCommand">静态代码生成</span>功能（包括 <a href="javascript:Mark.To('TCP');">TCP 服务</a> / <a href="javascript:Mark.To('WEBView');">WEB 视图</a> / <a href="javascript:Mark.To('ORM');">ORM 缓存</a>），你首先需要使用 Release 模式成功编译项目 fastCSharp.ui<!--If:VS2010-->.vs2010<!--If:VS2010-->， 然后将下面的命令行添加到你的相关工程项目的生成事件中，用于在项目编译成功后生成相关代码。
+            <br />解决方案资源管理器 -> 选择目标项目+右键 -> 生成事件 -> 后期生成事件命令行，对于需要生成注释代码的项目需要将下拉菜单 运行后期生成事件 选择到 生成更新项目输出时。
+        </p>
+        <div name="ace" mode="text">
+            <pre>if exist "=@@FastCSharpPath$ui\bin\Release\fastCSharp.ui.exe" "=@@FastCSharpPath$ui\bin\Release\fastCSharp.ui.exe" $(ProjectName) $(ProjectDir) $(TargetPath) $(TargetName)</pre>
+        </div>
+        <p>
+            你需要保证 fastCSharp.ui<!--If:VS2010-->.vs2010<!--If:VS2010--> 项目与工程项目的 CPU 平台的兼容性，否则会造成 fastCSharp.ui.exe 无法正常访问工程项目的 dll，建议所有项目平台配置为 Any CPU。如果你的工程项目存在平台多样化的问题，你可能需要根据实际需求编译不同版本的 fastCSharp.ui.exe 到不同的文件夹中以备使用。
+            <br />你需要将项目 fastCSharp<!--If:VS2010-->.vs2010<!--If:VS2010--> 引用到工程项目中，或者将它编译成 dll 程序集文件直接引用到工程项目中。
+            <br />正常情况下，在工程项目成功编译后，在后期生成事件命令行中对于 =@@FastCSharpPath$ui\bin\Release\fastCSharp.ui.exe 的调用会在工程项目文件夹下生成一个代码文件 <b>{项目名称}.fastCSharp.cs</b>，将这个 cs 文件添加到项目中就可以使用了。
+            <br />对于<a href="javascript:Mark.To('TCP');">TCP 服务</a>生成的静态代码，可能会同时生成一个附加文件 <b>{项目名称}.remember.fastCSharp.cs</b>，也需要将它添加到项目中，这个文件现在的作用在于记录 TCP 调用函数对应的命令编号。
+            <br />你也可以尝试给生成事件命令行最后添加一个参数 "1"，生成的代码文件将自动添加到 XML 格式的项目文件中（$(ProjectDir)\$(ProjectName).csproj），比如
+        </p>
+        <div name="ace" mode="text">
+            <pre>if exist "=@@FastCSharpPath$ui\bin\Release\fastCSharp.ui.exe" "=@@FastCSharpPath$ui\bin\Release\fastCSharp.ui.exe" $(ProjectName) $(ProjectDir) $(TargetPath) $(TargetName) "1"</pre>
+        </div>
+        <p>
+            2.1 <b>注意：</b>对于生成了相关静态代码的各种元数据（包括类型、字段、属性、函数等）不能随便修改或者删除，因为生成的代码可能对它的定义存在依赖。
+            <br />一般的正确的处理方法是，先将相关代码生成的 Attribute 申明配置删除或者注释，重新编译项目重新生成代码，没有了相关依赖以后再进行修改或者删除。
+            <br />如果某些时候你觉得前面的方法过于麻烦，你也可以直接修改或者删除代码，等到 IDE 报错的时候去注释相关的依赖代码，因为通过编译以后会自动生成新的代码。
+        </p>
+        <p>2.2 我们可能需要对某些元数据禁用代码生成功能（包括 Emit），需要给它申明 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/ignore.cs'},OnStart:CodeMenu.Show}">[fastCSharp.code.ignore]</b>，比如下面的代码将对 IgnoreAll 字段忽略所有代码生成功能。</p>
+        <div name="ace" mode="csharp">
+            <pre>[fastCSharp.code.ignore]
+public object IgnoreAll;</pre>
+        </div>
+        <p>2.3 我们可能需要对某些元数据仅仅屏蔽某种类型的代码生成功能（包括 Emit），那么需要找到该相关功能的忽略申明配置 class（一般继承自 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/ignoreMember.cs'},OnStart:CodeMenu.Show}">[fastCSharp.code.ignoreMember]</b>）并添加到该元数据，比如下面的代码对字段 IgnoreJsonSerialize 仅仅忽略 JSON 序列化操作。</p>
+        <div name="ace" mode="csharp" mousemenu="{SkinView:{File:'../../../fastCSharp/emit/jsonSerialize.cs'},OnStart:CodeMenu.Show,Type:'TopLeft'}">
+            <pre>[fastCSharp.emit.jsonSerialize.member(IsIgnoreCurrent = true)]
+public object IgnoreJsonSerialize;</pre>
+        </div>
+        <p><b>3.</b> 其他功能不需要编译 fastCSharp.ui<!--If:VS2010-->.vs2010<!--If:VS2010--> 项目（清理该项目可以减少其他项目的编译期开销），只需要将项目 fastCSharp<!--If:VS2010-->.vs2010<!--If:VS2010--> 或者 fastCSharp.expand<!--If:VS2010-->.vs2010<!--If:VS2010--> 引用到工程项目中，或者将它们编译成 dll 程序集文件直接引用到工程项目中。</p>
+        <p><b>4.</b> 解决方案中的项目分类</p>
+        <p>
+            项目名称以 demo. 开始的是一些简单的 DEMO 以供初级学习者参考。
+            <br />另外项目 test.testCase<!--If:VS2010-->.vs2010<!--If:VS2010--> 中的每一个 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/testCase.cs'},OnStart:CodeMenu.Show}">[fastCSharp.code.testCase]</b> 都是一个典型应用。
+            <br />其它项目名称以 test. 开始的是一些临时性的测试项目，对于有一定好奇心的人可以看看。
+            <br />其它项目名称以 fastCSharp. 开始的（除了上面提到的 3 个主项目）是一些我个人常用的简单的 <a href="javascript:Mark.To('TCP');">TCP 服务</a> 包装。
+        </p>
+        <!--Value:Environment-->
+    </div>
+    <!--If:!#IsHideStart-->
+
+    <div><h1><!--include:include\hideButton[Config,]--> <span id="Config">配置文件</span> <a href="javascript:Mark.To('Start');">↑</a><a href="javascript:Mark.To('TCP');">↓</a></h1></div>
+    <!--If:!#IsHideConfig-->
+    <div>
+        <p>fastCSharp 的配置分为两部分，一部分存在于 .NET 默认的 XML 形式的 config 文件中（以 appSettings 的形式映射到 <b mousemenu="{SkinView:{File:'../../../fastCSharp/config/appSetting.cs'},OnStart:CodeMenu.Show}">fastCSharp.config.appSetting</b> 的静态字段成员，key 的首字母小写），比如</p>
+        <div name="ace" mode="xml">
+            <pre>&lt;?xml version="1.0" ?&gt;
+&lt;configuration&gt;
+    &lt;appSettings&gt;
+        &lt;add key="configFile" value="..\..\MyProject.config" /&gt;
+        &lt;add key="encoding" value="UTF8" /&gt;
+    &lt;/appSettings&gt;
+&lt;/configuration&gt;</pre>
+        </div>
+        <p>另一部分以文件的形式存在于上面配置文件中指定的 configFile 目标文件中，字符编码默认为 UTF8，文件格式是 fastCSharp 自定义的以换行分割的 Key=Value 格式，Key 是一个字符串（Key 与 = 之间不能存在空格），Value 则是一个 JSON 字符串（可以跨行，但是必须以空格或者 \t 开始），比如某 xxx.config 文件内容如下</p>
+        <div name="ace" mode="javascript">
+            <pre>xxx="JSON"
+code.cSharp.tcpServer.MyServer=
+	{
+	IsServer:true,
+	Host:"127.0.0.1",
+	Port:12345,
+	VerifyString:"1"
+	}</pre>
+        </div>
+        <p>
+            对于需要映射到类型名称的 Key，需要忽略前缀 <b>fastCSharp.</b> 或者 <b>fastCSharp.config.</b>，比如上面的 code.cSharp.tcpServer 是由 <a href="javascript:Mark.To('TCP.tcpServer');">fastCSharp.code.cSharp.tcpServer</a> 忽略前缀得到的。
+            <br />按照默认优于配置的原则，fastCSharp 鼓励使用 Attribute 作为默认配置，而不是使用配置文件。
+        </p>
+    </div>
+    <!--If:!#IsHideConfig-->
+
+    <div><h1><!--include:include\hideButton[TCP,]--> <span id="TCP">TCP 服务</span> <a href="javascript:Mark.To('Config');">↑</a><a href="javascript:Mark.To('WEBView');">↓</a></h1></div>
+    <!--If:!#IsHideTCP-->
+    <div>
+        <p>我认为 TCP 通讯的本质就是调用远程函数，所以 fastCSharp 的 TCP 通讯设计是基于函数原型定义的，目标是让远程函数调用和本地函数调用一样简单，并尽可能的保留常用的本地函数特性（比如 IDE 的注释支持，同步模式中的 ref / out 类型参数的支持，异步回调的支持）。</p>
+        <p><b>1.</b> 支持 二进制 与 JSON 两种序列化模式，同时可以将 TCP 服务降级兼容 HTTP 调用。</p>
+        <p><b>2.</b> 服务端 / 客户端 Socket 接收数据支持 异步 / 同步 两种模式；发送数据都采用同步模式，且不可配置。</p>
+        <p><b>3.</b> 客户端使用单例长链接模式，Socket 层面自动实现批量任务处理，适合一般情况下的高频内部数据服务；当然这种批量处理不论时机还是数量都是应用层不可控的，如果存在极端性能需求，应该手动定义批量处理函数，并且自行组织批量数据。</p>
+        <p><b>4.</b> 支持<a href="javascript:Mark.To('TCP.Server');">单类型实例服务</a>与<a href="javascript:Mark.To('TCP.Call');">跨类型单例服务(不支持跨程序集)</a>两种模式</p>
+        <p><!--include:include\hideButton[TCPServer,NoCookie]--><b id="TCP.Server">单类型实例服务</b></p>
+        <!--If:!#IsHideTCPServer-->
+        <div>
+            <p>这种服务需要定义一个类型，这个类型中的实例方法可以配置为远程调用函数，用于整合少量的远程函数调用需求；这种服务生成的客户端也是一个单独的类型。</p>
+            <p><b>该功能需要在工程项目中配置<a href="javascript:Mark.To('Start.CodeCommand');">静态代码生成</a>。</b></p>
+            <p>1. 在项目中添加一个 partial（因为要和生成的代码共用一个类型） 的 class，然后给这个 class 添加TCP 服务申明配置 <a href="javascript:Mark.To('TCP.tcpServer');">fastCSharp.code.cSharp.tcpServer</a>（相关的配置文件映射 Key 为 code.cSharp.tcpServer.MyServer）， 比如</p>
+            <div name="ace" mode="csharp">
+                <pre>namespace MyProject
+{
+    [fastCSharp.code.cSharp.tcpServer(Host = "127.0.0.1", Port = 12345, IsIdentityCommand = true)]
+    partial class MyServer
+    {
+    }
+}</pre>
+            </div>
+            <p>2. 根据需求在这个 class 中添加受保护的实例方法（包括 private / protected / internal），然后给这个方法添加 TCP 远程函数申明配置 <a href="javascript:Mark.To('TCP.tcpMethod');">fastCSharp.code.cSharp.tcpMethod</a>， 比如</p>
+            <div name="ace" mode="csharp">
+                <pre>       [fastCSharp.code.cSharp.tcpMethod]
+        private void add(int left, int right, out int value)
+        {
+            value = left + right;
+        }</pre>
+            </div>
+            <p>为了防止调用者混淆了远程函数与本地函数在某些情况下产生误调用，默认只选择受保护的方法生成相关代码。当然你可以通过配置 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/tcpServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.tcpServer.Filter</b> = <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/memberFilters.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.memberFilters.Instance</b> 选择所有实例方法。</p>
+            <p>3. <a href="javascript:Mark.To('Start.CodeCommand');">编译目标项目</a>，将生成的 <b>{项目名称}.fastCSharp.cs</b> 文件包含到项目文件中（其中包含了服务端与客户端代理代码），一个简单的 TCP 服务就这样完成了。</p>
+            <p>下面启动一个服务端，当然在正常项目中你可能需要将 MyProject.MyServer.tcpServer 的实例保存起来防止被垃圾回收，最后可能还需要调用 Dispose() 释放端口等资源。</p>
+            <div name="ace" mode="csharp">
+                <pre>           (new MyProject.MyServer.tcpServer()).Start();</pre>
+            </div>
+            <p>下面是客户端调用，当然在正常项目中你可能需要保存 MyProject.MyServer.tcpClient 的实例重复使用，最后可能还需要调用 Dispose() 释放相关资源。</p>
+            <div name="ace" mode="csharp">
+                <pre>           int value;
+           (new MyProject.MyServer.tcpClient()).add(1, 2, out value);</pre>
+            </div>
+        </div>
+        <!--If:!#IsHideTCPServer-->
+        <p><!--include:include\hideButton[TCPCall,NoCookie]--><b id="TCP.Call">跨类型单例服务</b></p>
+        <!--If:!#IsHideTCPCall-->
+        <div>
+            <p>这种服务不需要定义一个单独的整合类型，远程调用函数（只支持 static 静态函数 / 静态属性 / 静态字段）可以分布在同一个程序集的各个 class 中，用于整合大量零碎的远程调用函数，典型的应用比如 WEB 后端的 数据服务。</p>
+            <p><b>该功能需要在工程项目中配置<a href="javascript:Mark.To('Start.CodeCommand');">静态代码生成</a>。</b></p>
+            <p>1. 根据需求给项目中需要声明远程调用函数 <a href="javascript:Mark.To('TCP.tcpMethod');">fastCSharp.code.cSharp.tcpMethod</a> 的 class（同样要求 partial 因为要和生成的代码共用一个类型）添加 TCP 服务申明配置 <a href="javascript:Mark.To('TCP.tcpCall');">fastCSharp.code.cSharp.tcpCall</a>（相关的配置文件映射 Key 为 code.cSharp.tcpServer.MyTcpCall）， 比如</p>
+            <div name="ace" mode="csharp">
+                <pre>namespace MyProject
+{
+    [fastCSharp.code.cSharp.tcpCall(Service = "MyTcpCall", IsIdentityCommand = true, Host = "127.0.0.1", Port = 12345, IsServer = true)]
+    partial class MyServer
+    {
+    }
+}</pre>
+            </div>
+            <p>
+                一个跨类型单例服务只能存在一个 class 配置 IsServer = true，并且必须指定 Service，用于这个服务名称绑定 TCP 服务配置。
+                <br />Service = "MyTcpCall" 是给 class MyServer 中的远程调用函数绑定默认服务名称（如果某个远程调用函数的申明配置 <a href="javascript:Mark.To('TCP.tcpMethod');">fastCSharp.code.cSharp.tcpMethod</a> 没有指定 Service）。
+            </p>
+            <p>2. 根据需求给 class 中受保护的静态方法（包括 private / protected / internal）添加 TCP 远程函数申明配置 <a href="javascript:Mark.To('TCP.tcpMethod');">fastCSharp.code.cSharp.tcpMethod</a>， 比如</p>
+            <div name="ace" mode="csharp">
+                <pre>       [fastCSharp.code.cSharp.tcpMethod(Service = "MyTcpCall")]
+        private static void add(int left, int right, out int value)
+        {
+            value = left + right;
+        }</pre>
+            </div>
+            <p>
+                为了防止调用者混淆了远程函数与本地函数在某些情况下产生误调用，默认只选择受保护的方法生成相关代码。当然你可以通过配置 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/tcpCall.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.tcpCall.Filter</b> = <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/memberFilters.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.memberFilters.Static</b> 选择所有静态方法。
+                <br />如果不指定 Service，则默认绑定到该 class 申明配置的 Service；一个 class 中的不同函数可以绑定到不同服务名称。
+            </p>
+            <p>3. <a href="javascript:Mark.To('Start.CodeCommand');">编译目标项目</a>，将生成的 <b>{项目名称}.fastCSharp.cs</b> 文件包含到项目文件中（其中包含了服务端与客户端代理代码），一个简单的 TCP 服务就这样完成了。</p>
+            <p>下面启动一个服务端，当然在正常项目中你可能需要将 MyProject.tcpServer.MyTcpCall 的实例保存起来防止被垃圾回收，最后可能还需要调用 Dispose() 释放端口等资源。</p>
+            <div name="ace" mode="csharp">
+                <pre>           (new MyProject.tcpServer.MyTcpCall()).Start();</pre>
+            </div>
+            <p>下面是客户端调用，客户端是透明的单例模式。</p>
+            <div name="ace" mode="csharp">
+                <pre>           int value;
+           MyProject.tcpCall.MyServer.add(1, 2, out value);</pre>
+            </div>
+        </div>
+        <!--If:!#IsHideTCPCall-->
+        <p><b>5.</b> 在应用层（函数调用），服务端支持 同步 / 异步 / 任务（Task） 3种线程控制模式，客户端支持 同步 / 异步 两种线程控制模式。</p>
+        <p>对于服务端异步函数的定义，返回值必须为 void，最后一个参数为回调委托 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/returnValue.cs'},OnStart:CodeMenu.Show}">Func&lt;fastCSharp.net.returnValue, bool&gt;</b> 或者 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/returnValue.cs'},OnStart:CodeMenu.Show}">Func&lt;fastCSharp.net.returnValue&lt;returnType&gt;, bool&gt;</b>，服务端必须保证该回调委托被执行，该委托的返回值表示回调数据是否成功添加到发送队列中（失败可能意味着该连接已经关闭），比如</p>
+        <div name="ace" mode="csharp">
+            <pre>       [fastCSharp.code.cSharp.tcpMethod]
+        private void add(int left, int right, Func&lt;fastCSharp.net.returnValue&lt;returnType&gt;, bool&gt; onReturn)
+        {
+            onReturn(left + right);
+        }</pre>
+        </div>
+        <p>服务端异步函数支持 1 问多答的 Keep 交互模式，也就是说客户端一个请求，服务器端可以任意多次回调回应，需要指定 IsKeepCallback = true，比如</p>
+        <div name="ace" mode="csharp">
+            <pre>       [fastCSharp.code.cSharp.tcpMethod(IsKeepCallback = true)]
+        private void add(int left, int right, Func&lt;fastCSharp.net.returnValue&lt;returnType&gt;, bool&gt; onReturn)
+        {
+            if(onReturn(left + right)) onReturn(left + right);
+        }</pre>
+        </div>
+        <p><b>6.</b> <!--include:include\hideButton[TCP_tcpBase,NoCookie]--><b id="TCP.tcpBase" mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/tcpBase.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.tcpBase</b></p>
+        <!--If:!#IsHideTCP_tcpBase-->
+        <div>
+            <p>前面提到的<a href="javascript:Mark.To('TCP.Server');">单类型实例服务</a>的申明配置类型 <a href="javascript:Mark.To('TCP.tcpServer');">fastCSharp.code.cSharp.tcpServer</a> 和 <a href="javascript:Mark.To('TCP.Call');">跨类型单例服务</a>的申明配置类型 <a href="javascript:Mark.To('TCP.tcpCall');">fastCSharp.code.cSharp.tcpCall</a> 都继承自这个类型，用于申明一个 TCP 服务配置。</a></p>
+            <p>string <b>Service</b> : 服务名称的唯一标识，默认匹配的配置文件 Key 的后缀（code.cSharp.tcpServer.<b>Service</b>），<a href="javascript:Mark.To('TCP.tcpRegister');">TCP 注册服务</a>中注册的当前服务名称。对于<a href="javascript:Mark.To('TCP.Call');">跨类型单例服务</a>必填，并且必须可以作为<b>合法的 C# 类型名称</b>使用。</p>
+            <p>string <b>TcpRegister</b> : 注册当前服务的 <a href="javascript:Mark.To('TCP.tcpRegister');">TCP 注册服务</a>名称。</p>
+            <p>string <b>Host</b> : 服务主机名称或者 IP 地址，无法解析时默认使用 IPAddress.Any，比如 "www.51nod.com" 或者 "127.0.0.1"。</p>
+            <p>int <b>Port</b> : 服务监听端口。</p>
+            <p>string <b>RegisterHost</b> : 客户端访问的主机名称或者 IP 地址，用于需要使用端口映射服务。</p>
+            <p>int <b>RegisterPort</b> : 客户端访问的监听端口，用于需要使用端口映射服务。</p>
+            <p>bool <b>IsFixedClientHost</b> : true 表示客户端固定访问本地配置的主机名称或者 IP 地址，也就是说忽略服务端注册的 IP 地址，用于客户端访问 IP 地址与服务主机注册 IP 地址不匹配的情况（因为一个服务端只能注册一个 IP 地址，而不同层级局域网的客户端可能需要访问不同的 IP 地址）。</p>
+            <p>bool <b>IsRegisterCheckHost</b> : 默认为 true 表示注册主机名称或者 IP 地址需要检测冲突，如果已经存在相同的注册返回错误 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/tcpRegister.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.tcpRegister,registerState.HostExists</b>（TCP 服务端口信息已存在），否则将忽略这个错误继续注册操作。</p>
+            <p>bool <b>IsSingleRegister</b> : 默认为 true 表示只允许注册一个 TCP 服务实例（单例服务，其它服务的注册将失败），但 false 并不代表支持负载均衡（仅仅是在客户端访问某个服务端失败时可以切换到其他服务端连接）。</p>
+            <p>bool <b>IsPerpleRegister</b> : IsSingleRegister = true 时有效，默认为 true 表示当存在其它注册服务时仅仅当成预备服务注册，等另一个当前服务退出时自动将这个服务切换为当前服务，用于存在初始化代价的服务（比如数据服务）实现基本无缝的快速切换。</p>
+
+            <p>
+                bool <b>IsIdentityCommand</b> : 默认为 false 使用由函数全名称与参数类型名称组合而成的一个长字符串名称标识该远程调用函数，否则表示在通讯中使用数字编号标识该远程调用函数。、
+                <br />从性能的角度推荐使用数字编号标识，同时配置 IsRememberIdentityCommand = true 可以记忆上一次生成的代码中。
+            </p>
+            <p>bool <b>IsRememberIdentityCommand</b> : 默认为 true 表示生成记忆数字编号标识与长字符串名称标识之间对应关系的代码 <b>{项目名称}.remember.fastCSharp.cs</b>，在 IsIdentityCommand = true 时有效。</p>
+            <p>bool <b>IsCompress</b> : 默认为 false 表示不压缩数据（适合内网服务），压缩数据需要消耗一定的 CPU 资源降低带宽使用。</p>
+            <p>bool <b>IsMarkData</b> : 默认为 false 表示传输原始数据，否则传输简单变换处理后的数据，作用于继承自 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/timeVerifyServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.timeVerifyServer</b> 的服务端。</p>
+            <p>string <b>VerifyString</b> : 服务默认验证字符串，<b>为了安全不要写在申明中，应该写在配置文件中</b>，<b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/timeVerifyServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.timeVerifyServer</b> 用到了该字符串。</p>
+            <p>int <b>VerifySeconds</b> : 客户端验证的默认超时为 20 秒，超时客户端将被当作攻击者被抛弃。</p>
+            <p>int <b>MinReceivePerSecond</b> : 服务端某次接收新的数据，从接收到第一份数据开始，在没有接收完成数据的情况下，每秒接收数据的最低数据量要求（单位:KB），不符合要求的客户端将被当作攻击者被抛弃。默认为 0 表示不做要求。</p>
+            <p>int <b>RecieveCommandMinutes</b> : 服务端接收新的命令数据的默认超时为 1 分钟，超时客户端将被关闭。</p>
+            <p>int <b>MaxClientCount</b> : 最大客户端数量，超出的客户端将被抛弃，默认为 int.MaxValue。</p>
+            <p>int <b>MaxClientCountPerIpAddress</b> : 每 IP 最大客户端连接数，超出的客户端将被抛弃，默认为 0 表示不限。</p>
+            <p>int <b>MaxActiveClientCountIpAddress</b> : 每 IP 最大活动客户端连接数，超出的客户端将被放到队列中等待处理，默认为 0 表示不限。</p>
+            <p>bool <b>IsIpSocketQueues</b> : 默认使用单个队列处理客户端连接，否则使用 256 个队列处理客户端连接，对于高并发连接处理应该设置为 true 降低线程间的阻塞概率。</p>
+            <p>int <b>AcceptThreadCount</b> : 服务端接收请求线程数量（一般可以根据 CPU 核心数量调整）。需要说明的是这是一个测试性参数，由于 Socket.Accept 存在严重的阻塞问题（异步模式在高并发连接环境下表现更差），多线程并不能解决高并发连接拒绝服务问题，效果可能还不如队列模式。</p>
+
+            <p>bool <b>IsSegmentation</b> : 当需要将客户端提供给第三方使用的时候，可能不希望 dll 中同时包含服务端，设置为 true 会客户端代码单独剥离出来生成一个代码文件 {项目名称}.tcpServer.服务名称.client.cs，当然你需要将服务中所有参数与返回值及其依赖的数据类型剥离出来。</p>
+            <p>string <b>ClientSegmentationCopyPath</b> : 当 IsSegmentation = true 时，对于剥离出来的客户端代码指定需要复制的目标路径，也就是你的客户端所在的项目路径。</p>
+            <p>bool <b>IsJsonSerialize</b> : 默认使用二进制序列化，适合参数数据类型稳定的服务，或者可以同步部署服务器端与客户端的内部服务。对于数据类型不稳定的互联网服务应该使用 JSON 序列化。</p>
+            <p>bool <b>IsTryJsonSerializable</b> : 使用二进制序列化访问失败时是否尝试 JSON 序列化再次访问。对于数据读取服务可以考虑设置为 true 解决服务切换时由于数据类型被修改产生的访问失败问题。对于非幂等的写服务应该采用默认值，防止在服务端产生多次写操作。</p>
+            <p>bool <b>IsHttpClient</b> : 由于 fastCSharp 只生成 C# 的客户端代理程序，为了支持其它语言的客户端对于 TCP 服务的调用，所以降级支持客户端以 HTTP 的形式调用服务器端函数。</p>
+            <p>string <b>HttpEncodingName</b> : HTTP 模式的字符串编码名称，默认为 UTF8。</p>
+
+            <p>bool <b>IsServerAsynchronousReceive</b> : 默认为 true 表示服务端 Socket 接收数据采用异步模式，客户端较少的内部服务可以考虑配置为同步模式。</p>
+            <p>int <b>ServerSendSleep</b> : 服务端批量发送数据时等待数据毫秒数，对于实时性要求不高的需求可以设置适当的值以提高数据批量处理的概率从而减少网络交互次数。</p>
+            <p>int <b>MaxServerSendCount</b> : 服务端批量发送数据最大数据量，默认为 1024。</p>
+
+            <p>bool <b>IsClientAsynchronousReceive</b> : 默认为 false 表示客户端 Socket 接收数据采用同步模式。</p>
+            <p>int <b>ClientSendSleep</b> : 客户端批量发送数据时等待数据毫秒数，对于单线程（没有并发的同步请求）的高频（> 500/s）需求应该保持默认值 0，对于实时性要求不高的需求可以设置适当的值以提高数据批量处理的概率从而减少网络交互次数。</p>
+            <p>int <b>MaxClientSendCount</b> : 服务端批量发送数据最大数据量，默认为 1024。</p>
+
+            <p>int <b>ClientCheckSeconds</b> : 客户端保持连接心跳包间隔时间默认为 50 秒，对于频率稳定可靠的服务类型可以设置为 0 禁用心跳包。</p>
+            <p>int <b>SendBufferSize</b> : 服务器端发送数据（包括客户端接收数据）缓冲区初始化字节数，默认为 4KB。</p>
+            <p>int <b>ReceiveBufferSize</b> : 服务器端接收数据（包括客户端发送数据）缓冲区初始化字节数，默认为 4KB。</p>
+
+            <p>bool <b>IsAttribute</b> : 默认为 true 表示代码生成仅选择申明了 <a href="javascript:Mark.To('TCP.tcpMethod');">fastCSharp.code.cSharp.tcpMethod</a> 的函数，否则选择所有函数。对于<a href="javascript:Mark.To('TCP.Call');">跨类型单例服务</a>有效域为当前 class。</p>
+            <p>bool <b>IsBaseTypeAttribute</b> : 指定是否搜索该成员的继承链以查找这些特性，参考 System.Reflection.MemberInfo.GetCustomAttributes(bool inherit)。对于<a href="javascript:Mark.To('TCP.Call');">跨类型单例服务</a>有效域为当前 class。</p>
+            <p>bool <b>IsInheritAttribute</b> : 成员匹配自定义属性是否可继承，默认为 true 表示允许申明 <a href="javascript:Mark.To('TCP.tcpMethod');">fastCSharp.code.cSharp.tcpMethod</a> 的派生类型并且选择继承深度最小的申明配置。对于<a href="javascript:Mark.To('TCP.Call');">跨类型单例服务</a>有效域为当前 class。</p>
+            <p>
+                System.Type <b>VerifyType</b> : 服务器端验证客户端的处理类型，用于建立连接时直接操作 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/commandServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.commandServer.socket</b> 的客户端验证，必须实现接口 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/tcpBase.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.tcpBase.ITcpVerify</b>。
+                <br /><b>一般情况下建议使用<a href="javascript:Mark.To('TCP.tcpMethod');">申明验证函数</a>的方式替代这种操作 Socket 的方式</b>。
+            </p>
+            <p>
+                System.Type <b>VerifyMethodType</b> : 客户端建立连接时建立验证的处理类型，对于<a href="javascript:Mark.To('TCP.Server');">单类型实例服务</a>需要实现接口 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/tcpBase.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.tcpBase.ITcpClientVerifyMethod&lt;clientType&gt;</b>，对于<a href="javascript:Mark.To('TCP.Call');">跨类型单例服务(不支持跨程序集)</a>需要实现接口 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/tcpBase.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.tcpBase.ITcpClientVerifyMethod</b>。
+                <br /><b>一般情况下建议使用<a href="javascript:Mark.To('TCP.tcpMethod');">申明验证函数</a>的方式替代这种操作 Socket 的方式</b>。
+            </p>
+        </div>
+        <!--If:!#IsHideTCP_tcpBase-->
+        <p><b>7.</b> <!--include:include\hideButton[TCP_tcpServer,NoCookie]--><b id="TCP.tcpServer" mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/tcpServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.tcpServer</b></p>
+        <!--If:!#IsHideTCP_tcpServer-->
+        <div>
+            <p><a href="javascript:Mark.To('TCP.Server');">单类型实例服务</a>的申明配置类型，继承自 <a href="javascript:Mark.To('TCP.tcpBase');">fastCSharp.code.cSharp.tcpBase</a>。</p>
+            <p>bool <b>IsServer</b> : 用于在配置文件中标识当前程序是否服务端，当在标识为服务端的环境中使用客户端调用时会输出警告日志，提示用户判断是否混淆了客户端与服务端。</p>
+            <p>bool <b>IsClientInterface</b> : 用于给客户端生成匹配的接口类型。</p>
+            <p>System.Type <b>ClientInterfaceType</b> : 给生成的客户端添加接口类型。</p>
+            <p>
+                bool <b>IsLoadBalancing</b> : 用于生成简单的负载均衡服务，不支持 1 问多答的 Keep 交互模式，需要自行保证写服务的幂等性，因为客户端在调用失败的时候会轮流调用不同的客户端。
+                <br />真实需求可能需要写个继承自 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/commandClient.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.commandClient&lt;clientType&gt;.router&lt;customType&gt;</b> 的路由类自己实现符合需求的路由功能。
+            </p>
+            <p>int <b>LoadBalancingTryCount</b> : 负载均衡调用错误的重复尝试次数默认为 3 次。</p>
+            <p>int <b>LoadBalancingCheckSeconds</b> : 负载均衡保持连接心跳包间隔时间默认为 2 秒。</p>
+            <p>int <b>LoadBalancingRouterRetrySeconds</b> : 负载均衡路由创建客户端失败重试间隔秒数，默认为 0 表示不重试。</p>
+            <p><b mousemenu="{SkinView:{File:'../../../fastCSharp/code/memberFilters.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.memberFilters Filter</b> : 成员选择类型，为了防止调用者混淆了远程函数与本地函数在某些情况下产生误调用，默认只选择受保护的方法生成（包括 private / protected / internal）相关代码。</p>
+        </div>
+        <!--If:!#IsHideTCP_tcpServer-->
+        <p><b>8.</b> <!--include:include\hideButton[TCP_tcpCall,NoCookie]--><b id="TCP.tcpCall" mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/tcpCall.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.tcpCall</b></p>
+        <!--If:!#IsHideTCP_tcpCall-->
+        <div>
+            <p><a href="javascript:Mark.To('TCP.Call');">跨类型单例服务</a>的申明配置类型，继承自 <a href="javascript:Mark.To('TCP.tcpBase');">fastCSharp.code.cSharp.tcpBase</a>。</p>
+            <p>bool <b>IsServer</b> : 是否TCP服务配置，一个跨类型单例服务只能存在一个 class 配置 IsServer = true，并且必须指定 Service，用于这个服务名称绑定 TCP 服务配置。</p>
+            <p>bool <b>IsAbstract</b> : 是否支持抽象类。</p>
+            <p><b mousemenu="{SkinView:{File:'../../../fastCSharp/code/memberFilters.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.memberFilters Filter</b> : 成员选择类型，为了防止调用者混淆了远程函数与本地函数在某些情况下产生误调用，默认只选择受保护的方法生成（包括 private / protected / internal）相关代码。</p>
+        </div>
+        <!--If:!#IsHideTCP_tcpCall-->
+        <p><b>9.</b> <!--include:include\hideButton[TCP_tcpMethod,NoCookie]--><b id="TCP.tcpMethod" mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/tcpMethod.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.tcpMethod</b> : TCP 调用函数的申明配置</p>
+        <!--If:!#IsHideTCP_tcpMethod-->
+        <div>
+            <p>
+                bool <b>IsVerifyMethod</b> : 申明验证方法，客户端只有通过了验证才能调用其它函数。一个 TCP 服务只能指定一个验证方法（对于<a href="javascript:Mark.To('TCP.Call');">跨类型单例服务</a>只能定义在 <a href="javascript:Mark.To('TCP.tcpCall');">fastCSharp.code.cSharp.tcpCall.IsServer</a> = true 的 class 中），且返回值类型必须为 bool。
+                <br /><b>从安全的角度考虑，实际项目中的服务都应该定义验证方法，除非你能保证该服务绝对不会被其它人建立非法连接。</b>比如参考 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/timeVerifyServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.timeVerifyServer</b>
+            </p>
+            <div name="ace" mode="csharp">
+                <pre>[fastCSharp.code.cSharp.tcpMethod(IsVerifyMethod = true, IsServerAsynchronousTask = false, InputParameterMaxLength = 1024, IsInputSerializeReferenceMember = false, IsOutputSerializeReferenceMember = false)]
+protected virtual bool verify(commandServer.socket socket, ulong randomPrefix, byte[] md5Data, ref long ticks)</pre>
+            </div>
+            <p>string <b>Service</b> : <a href="javascript:Mark.To('TCP.Call');">跨类型单例服务</a> 服务名称。如果不指定 Service，则默认绑定到该 class 申明配置的 Service；一个 class 中的不同函数可以绑定到不同服务名称。</p>
+            <p>int <b>InputParameterMaxLength</b> : 输入参数序列化后的数据最大字节数，0 表示不限。</p>
+            <p>bool <b>IsOnlyGetMember</b> : 默认为 true 表示对于 属性 / 字段 仅仅生成获取数据的代理，否则生成设置数据的代理（如果属性可写）。</p>
+            <p>
+                bool <b>IsServerSynchronousTask</b> : 为了安全，默认为 true 表示服务端同步调用丢到任务线程池中处理，需要注意的是线程调度的开销可能会比较大。
+                <br />一般只有可以快速结束的非阻塞同步函数才考虑设置为 false，直接在 Socket 接收数据的 IO 线程中处理以避免线程调度，需要知道的是这种模式下如果产生阻塞会造成 Socket 停止接收数据。
+            </p>
+            <p>bool <b>IsClientSynchronous</b> : 默认为 true 表示生成同步调用代理函数，同步模式使用的是 Monitor.Wait，会占用一个工作线程，并存在线程调度开销，优点是使用方便、安全。</p>
+            <p>bool <b>IsClientAsynchronous</b> : 默认为 false 表示不生成异步调用代理函数。</p>
+            <p>
+                bool <b>IsClientCallbackTask</b> : 为了安全，默认为 true 表示客户端异步回调丢到任务线程池中处理，需要注意的是线程调度的开销可能会比较大。
+                <br />一般只有可以快速结束的非阻塞回调处理才考虑设置为 false，直接在 Socket 接收数据的 IO 线程中处理以避免线程调度，需要知道的是这种模式下如果产生阻塞会造成 Socket 停止接收数据；更严重的是，如果你不小心在回调处理事件中又使用同步的方式调用了服务端，那么客户端死锁是必然的。
+            </p>
+            <p>bool <b>IsKeepCallback</b> : 保持异步回调，1 问多答的交互模式（客户端一个请求，服务器端可以任意多次回调回应）。</p>
+            <p>bool <b>IsClientAsynchronousReturnInputParameter</b> : 客户端异步回调的返回值是否和第一个相同类型的输入参数公用同一个对象，类似于 ref 的作用。</p>
+            <p>bool <b>IsClientSendOnly</b> : 默认为 false 表示服务端需要应答客户端请求，否则仅仅是客户端发送数据到服务端（服务端不应答）。</p>
+            <p>bool <b>IsJsonSerialize</b> : 如果服务申明中 IsJsonSerialize = true 则默认为与服务保持一致，否则默认使用二进制序列化。</p>
+            <p>bool <b>IsInputSerializeReferenceMember</b> : 默认为 true 表示输入参数二进制序列化需要检测循环引用，如果可以保证参数没有循环引用而且对象无需重用则应该设置为 false 减少 CPU 开销。</p>
+            <p>bool <b>IsOutputSerializeReferenceMember</b> : 默认为 true 表示输出参数（包括 ref / out）二进制序列化需要检测循环引用，如果可以保证参数没有循环引用而且对象无需重用则应该设置为 false 减少 CPU 开销。</p>
+            <p>bool <b>IsInputSerializeBox</b> : 输入参数是否添加包装处理申明 <b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/boxSerialize.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.boxSerialize</b>，用于只有一个输入参数的类型忽略外壳类型的处理以减少序列化开销。</p>
+            <p>bool <b>IsOutputSerializeBox</b> : 输出参数是否添加包装处理申明 <b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/boxSerialize.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.boxSerialize</b>，用于只有一个输出参数的类型忽略外壳类型的处理以减少序列化开销。</p>
+            <p>bool <b>IsInputParameterClass</b> : 默认为 false 表示对输入参数生成 struct 以减少 new 开销，但是会增加参数赋值的开销，否则使用 class 包装输入参数。</p>
+            <p>bool <b>IsOutputParameterClass</b> : 默认为 false 表示对输出参数生成 struct 以减少 new 开销，但是会增加参数赋值的开销，否则使用 class 包装输出参数。</p>
+            <p>
+                bool <b>IsExpired</b> : 对于申明为过期的远程函数调用将返回 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/returnValue.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.returnValue.type.VersionExpired</b>。/p>
+            </p>
+            <p>bool <b>IsHttpPostOnly</b> : HTTP 调用是否仅支持 POST，否则同时支持 GET。</p>
+            <p>string <b>HttpName</b> : HTTP 调用的唯一名称，默认为函数名称，同一个服务不能存在两个相同的调用名称。</p>
+            <p>int <b>GroupId</b> : 分组标识用于选择性关闭服务处理，默认为 0 表示无分组。</p>
+            <p>int <b>CommandIentity</b> : 自定义命令序号，不能重复，服务申明中 IsIdentityCommand = true 时有效，默认为 int.MaxValue 表示不指定。存在自定义需求时不要使用巨大的数据，建议从 0 开始，因为它会是某个数组的大小。</p>
+        </div>
+        <!--If:!#IsHideTCP_tcpMethod-->
+        <p><b>10.</b> <!--include:include\hideButton[TCP_tcpRegister,NoCookie]--><b id="TCP.tcpRegister" mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/tcpRegister.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.tcpRegister</b> : TCP 注册服务</p>
+        <!--If:!#IsHideTCP_tcpRegister-->
+        <div>
+            <p>
+                TCP 注册服务就是一个服务信息管理中心，由 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/tcpRegisterReader.cs'},OnStart:CodeMenu.Show}">注册信息读取服务</b> 与 注册信息更新服务 组合而成，两个服务操作同一个对象，但是对于客户端分别验证权限。
+                <br />项目 fastCSharp.tcpRegister<!--If:VS2010-->.vs2010<!--If:VS2010--> 就是一个 TCP 注册服务的简单封装，支持控制台与 windows 服务两种运行模式。
+                <br />对于无法使用固定端口号的服务（比如需要支持快速基本无缝切换的预备服务），注册服务提供端口号的分配与管理。
+                <br />所有指定了 TcpRegister 的服务端都需要同时通过读取与更新这两个服务的验证，并与管理中心建立长链接将自己的服务信息注册到管理中心，并在释放服务的时候注销。
+                <br />所有指定了 TcpRegister 的客户端需要通过读取服务的验证，并与管理中心建立长链接实时接收注册管理中心的服务信息推送。
+            </p>
+        </div>
+        <!--If:!#IsHideTCP_tcpRegister-->
+        <p><b>11.</b> <!--include:include\hideButton[TCP_timeVerifyServer,NoCookie]--><b id="TCP.timeVerifyServer" mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/timeVerifyServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.timeVerifyServer</b></p>
+        <!--If:!#IsHideTCP_timeVerifyServer-->
+        <div>
+            <p>
+                这是一个基于时间戳验证的 TCP 服务基类，保证每一次的合法验证信息都是唯一的，可以防止网络嗅探工具的模拟验证攻击。因为时间戳不是服务端主动分配的，不适合做高并发的客户端连接验证，适合作为内部服务的基类使用。
+                <br />fastCSharp 项目中现在所有服务的基类都是它，包括以下服务：
+            </p>
+            <p>TCP 注册信息读取服务 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/tcpRegisterReader.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.tcpRegisterReader</b> 与 TCP 注册信息更新服务 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/tcpRegister.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.tcpRegister</b>（参考项目 fastCSharp.tcpRegister<!--If:VS2010-->.vs2010<!--If:VS2010-->）</p>
+            <p>所有的<a href="javascript:Mark.To('TCP.Call');">跨类型单例服务</a> <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/timeVerifyServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.timeVerifyServer.tcpCall&lt;verifyType&gt;</b></p>
+            <p>HTTP 服务器 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/http/servers.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.http.servers</b>（参考项目 fastCSharp.httpServer<!--If:VS2010-->.vs2010<!--If:VS2010-->） 与 HTTP Session 会话服务 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/http/session.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.http.session&lt;valueType&gt;</b></p>
+            <p>进程监视奔溃重启服务 <b mousemenu="{SkinView:{File:'../../../fastCSharp/diagnostics/processCopyServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.diagnostics.processCopyServer</b>（参考项目 fastCSharp.processCopy<!--If:VS2010-->.vs2010<!--If:VS2010-->）</p>
+            <p>部署服务 <b mousemenu="{SkinView:{File:'../../../tool/expand/net/tcp/deployServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.deployServer</b>（参考项目 fastCSharp.deployServer<!--If:VS2010-->.vs2010<!--If:VS2010--> 与 fastCSharp.deployClient<!--If:VS2010-->.vs2010<!--If:VS2010-->）</p>
+            <p>内存数据库物理层服务 <b mousemenu="{SkinView:{File:'../../../fastCSharp/memoryDatabase/physicalServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.memoryDatabase.physicalServer</b>（参考项目 demo.memoryDatabase<!--If:VS2010-->.vs2010<!--If:VS2010-->）</p>
+            <p>TCP 负载均衡服务 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/commandLoadBalancingServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.commandLoadBalancingServer.timeVerify</b></p>
+        </div>
+        <!--If:!#IsHideTCP_timeVerifyServer-->
+        <!--include:include\question-->
+    </div>
+    <!--If:!#IsHideTCP-->
+
+    <div><h1><!--include:include\hideButton[WEBView,]--> <span id="WEBView">WEB 视图</span> <a href="javascript:Mark.To('TCP');">↑</a><a href="javascript:Mark.To('ORM');">↓</a></h1></div>
+    <!--If:!#IsHideWEBView-->
+    <div>
+        <p>
+            对于 WEB 框架主要考虑的问题可能是如何根据数据与模板生成目标 HTML，由服务端生成 HTML 的被称为后端框架，由客户端（主要是 JavaScript 脚本）生成 HTML 的被称为前端框架。
+            <br />个人认为，后端框架有以下优点：
+            <br />1. 天然的 SEO 友好性。
+            <br />2. 服务端组件的可维护性与健壮性，本质上是服务器端语言与客户端脚本的区别，比如 C# 与 JavaScript 的对比，即使是 TypeScript 也是有很大差距的。
+            <br />3. 客户端一次性请求的完整性，不存在脚本耦合问题。
+            <br />4. 客户端渲染效率高。
+            <br />5. 客户端环境的适应性，就算客户端禁用脚本也能正常渲染，当然这种例外一般都应该是可忽略的。
+            <br />
+            <br />前端框架有以下优点（都是我个人很看重的）：
+            <br />1. 操作数据驱动 UI，与脚本程序交互简捷、灵活。
+            <br />2. 客户端与服务端分工明确。
+            <br />3. 由于模板是可缓存的，一般来说数据（比如 JSON）相对于 HTML 可以减少带宽消耗，并且少量减少服务端 CPU 开销。
+            <br />
+            <br />前端框架相对于有后端框架一般就有以下缺点：
+            <br />1. SEO 不友好。
+            <br />2. 客户端组件不容易维护，所谓重构火葬场（fastCSharp 的前端渲染引擎在使用 TypeScript 之前一直处于打补丁的模式就是这个原因）。
+            <br />3. 客户端至少需要请求两次服务器（有些前端引擎甚至要发起一堆的请求），而且不能保证模板与数据的匹配。
+            <br />4. 客户端占用内存大，渲染不如后端框架效率高（特别是第一次加载页面时可能会让用户产生明显的等待感），渲染性能依赖于浏览器的脚本引擎（比如 IE6 这种古老的浏览器会非常卡）。
+            <br />5. 给服务端程序制造麻烦，比如数据的循环引用问题，与数据的筛选与重组的问题。
+        </p>
+        <p>
+            fastCSharp 的 WEB 视图框架，是前后端一体的自动化处理框架，它包含一个后端模板引擎与一个前端模板引擎，两个模板引擎采用基本一致的模板规则，它在拥有前端框架的优点的同时解决了前端框架的部分缺陷问题：
+            <br />1. 后端引擎针对搜索引擎输出 HTML 用于解决 SEO 问题，但是对于搜索引擎的识别依赖于已知的 User-Agent 的模糊匹配，可能不能识别新的或者小众的搜索引擎；虽然框架中存在简单的发现机制，但是暂时还没有找到过新的搜索引擎。
+            <br />2. 后端引擎不仅可以输出 HTML，而且可以将使用到的数据输出为 JSON（不是单纯的 JSON，存在框架依赖需要 eval），所以不论页面数据关系多复杂，客户端都只需要自动的一次性请求数据（包括所有被模板引用到的数据）。
+            <br />不用担心数据的循环引用问题，告别垃圾数据的筛选与重组问题，而且会在编译期报告模板与数据的匹配问题，还支持通过类型标识 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webView.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webView.clientType</b> 的方法使客户端识别与合并同一个数据对象。
+            <br />另外，推荐使用 TypeScript 取代 JavaScript，虽然它生成的代码不够简洁，在使用上某些时候不如 JavaScript 来的直接，但是对于需要长期维护的项目，我觉得这些代价是值得的<!--If:VS2010-->（当然你能需要升级你的 VS）<!--If:VS2010-->。
+        </p>
+        <p><b>1.</b> <!--include:include\hideButton[WEBViewServer,NoCookie]--><b id="WEBView.Server">服务端支持 4 种应用模式</b></p>
+        <!--If:!#IsHideWEBViewServer-->
+        <div>
+            <p>
+                1. <b>视图页</b>，一个页面由 3 个部分组成，比如当前页面包含 index.cs、index.page.html、index.page.js。
+                <br /> xxx.cs 用于定义页面中使用到的 partial 修饰的服务端数据 class，必须继承自 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webView.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webView.view&lt;pageType&gt;</b>（这里的 pageType 用于标识当前类型，否则将造成运行时类型错误），并且申明为视图页 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webView.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webView</b>，比如当前页面
+                <div name="ace" mode="csharp">
+                    <pre>    [fastCSharp.code.cSharp.webView(IsPool = true, IsReferer = false, IsPage = false)]
+    internal partial class index: fastCSharp.code.cSharp.webView.view&lt;index&gt;</pre>
+                </div>
+                <br /> 如果视图页存在参数，需要定义一个名为 loadView 的受保护方法，比如项目 demo.loadBalancingTcpCommandWeb<!--If:VS2010-->.vs2010<!--If:VS2010--> 中的 <b mousemenu="{SkinView:{File:'../../../fastCSharp/demo/loadBalancingTcpCommandWeb/webView.cs'},OnStart:CodeMenu.Show}">webView.cs</b>
+                <div name="ace" mode="csharp">
+                    <pre>        private bool loadView(int left, int right, bool isAsynchronous)</pre>
+                </div>
+                <br /> xxx.page.html 用于定义<a href="javascript:Mark.To('WEBView.HTML');">页面模板</a>，在运行时使用的是展开后生成的页面模板文件 xxx.html。
+                <br /> xxx.page.js 是可选的，用于定义当前页面使用的 JavaScript，就算没有需求也会生成一个空壳文件，在运行时使用的是展开后生成的脚本文件 xxx.js（其中包含 xxx.page.html 中 include 控件匹配的相关 js 文件）。
+            </p>
+            <p>
+                2. <b>AJAX</b>，class 必须继承自 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/ajax.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.ajax.call&lt;ajaxType&gt;</b>（这里的 ajaxType 用于标识当前类型，否则将造成运行时类型错误），并且申明为 AJAX 调用 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/ajax.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.ajax</b>，其中定义的 public 实例方法将默认生成 AJAX 调用代理。
+                <br />如果定义该 class 的命名空间的前缀为 项目名称.ajax（建议这样使用，也就是在项目中建立一个 ajax 目录），那么该函数的客户端调用名称为 类型名称.函数名称，注意需要自行保证这个调用名称不重复，也就是说不要存在同名函数。
+                <br />比如项目 demo.loadBalancingTcpCommandWeb<!--If:VS2010-->.vs2010<!--If:VS2010--> 中的 <b mousemenu="{SkinView:{File:'../../../fastCSharp/demo/loadBalancingTcpCommandWeb/ajax/loadBalancing.cs'},OnStart:CodeMenu.Show}">ajax\loadBalancing.cs</b>
+                <div name="ace" mode="csharp">
+                    <pre>    [fastCSharp.code.cSharp.ajax(IsOnlyPost = false, IsPool = true)]
+    internal sealed class loadBalancing : fastCSharp.code.cSharp.ajax.call&lt;loadBalancing&gt;
+    {
+        [fastCSharp.code.cSharp.ajax(IsReferer = false, IsOnlyPost = false, IsExportTypeScript = true)]
+        public int Add(int left, int right)
+        {
+            return left + right;
+        }
+    }</pre>
+                </div>
+                这个 AJAX 方法的调用名称为 loadBalancing.Add，在 fastCSharp 客户端这样调用（当 IsOnlyPost = false 时，也可以使用 fastCSharp.HttpRequest.AjaxGet 函数）
+                <div name="ace" mode="javascript">
+                    <pre>fastCSharp.HttpRequest.Ajax(new fastCSharp.HttpRequestQuery('loadBalancing.Add', { left: 1, right: 2 }, function(Value) { console.log(Value.Return); }));</pre>
+                </div>
+                如果<!--If:VS2010-->升级你的 VS 使用 TypeScript，并且<!--If:VS2010-->设置 IsExportTypeScript = true，也可以调用使用生成的 API（就是对上面代码的包装）
+                <div name="ace" mode="javascript">
+                    <pre>fastCSharpAPI.ajax.loadBalancing.Add(1, 2, function(Value) { console.log(Value.Return); });</pre>
+                </div>
+            </p>
+            <p>
+                3. <b>HTTP 调用</b>，用于自行解决以上两种方案不能覆盖的问题（比如 单纯的重定向、文件上传 等），连响应输出对象都需要手动创建（因为有些操作不需要创建这个对象），简单的说就是完全手动处理 HTTP 响应。
+                <br />class 必须继承自 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webCall.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webCall.call&lt;callType&gt;</b>（这里的 callType 用于标识当前类型，否则将造成运行时类型错误），并且申明为 HTTP 调用 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webCall.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webCall</b>。
+                <br />给 class 中定义的 public 实例方法添加 HTTP 调用申明 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webCall.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webCall</b> 将生成 HTTP 调用代理。
+                <br />比如项目 demo.loadBalancingTcpCommandWeb<!--If:VS2010-->.vs2010<!--If:VS2010--> 中的 <b mousemenu="{SkinView:{File:'../../../fastCSharp/demo/loadBalancingTcpCommandWeb/webCall.cs'},OnStart:CodeMenu.Show}">webCall.cs</b>
+                <div name="ace" mode="csharp">
+                    <pre>    [fastCSharp.code.cSharp.webCall(IsOnlyPost = false, IsPool = true)]
+    internal sealed class webCall : fastCSharp.code.cSharp.webCall.call&lt;webCall&gt;
+    {
+        [fastCSharp.code.cSharp.webCall]
+        public void Add(int left, int right)
+        {
+            createResponse();
+            try
+            {
+                response((left + right).toString());
+            }
+            finally { responseEnd(); }
+        }
+    }</pre>
+                </div>
+            </p>
+            <p>
+                4. <b>webSocket</b>，class 必须继承自 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webSocket.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webSocket.socket&lt;socketType&gt;</b>（这里的 socketType 用于标识当前类型，否则将造成运行时类型错误），并且申明为 webSocket 调用 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webSocket.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webSocket</b>。
+                <br />接收数据需要重载方法 onMessage(string message) 或者 onMessage(subArray&lt;byte&gt; data)，发送数据调用 send(string message) 或者 send(byte[] data) 。
+            </p>
+        </div>
+        <!--If:!#IsHideWEBViewServer-->
+        <p><b>2.</b> <!--include:include\hideButton[WEBViewHTML,NoCookie]--><b id="WEBView.HTML">HTML 模板</b></p>
+        <!--If:!#IsHideWEBViewHTML-->
+        <div>
+            <p>HTML 模板分为页面模板与控件模板，它们都绑定匹配一个同名的 js 文件，区别在于页面模板扩展名为 page.html 并且最终将生成模板展开后的结果 .html 文件。</p>
+            <p>
+                1. 模板标签，为了保持 HTML 的“干净”，模板标签采用 HTML 注释格式，以冒号（:）分割标签名称与标签参数，没有标签参数的情况下也不需要冒号（:）。
+                <br />某些模板标签需要成对出现用于标识作用域的开始与结束，开始与结束标签不允许跨 HTML tag 层级，否则可能造成模板渲染错乱。
+                <br />为了简化模板规则，fastCSharp 的 WEB 视图只支持几个必要的模板标签，比如 <a href="javascript:Mark.To('WEBView.include');">include</a> / <a href="javascript:Mark.To('WEBView.Value');">Value</a> / <a href="javascript:Mark.To('WEBView.Loop');">Loop</a> / <a href="javascript:Mark.To('WEBView.If');">If</a> / <a href="javascript:Mark.To('WEBView.Client');">Client</a> / <a href="javascript:Mark.To('WEBView.NoMark');">NoMark</a>。
+            </p>
+            <div name="ace" mode="html">
+                <pre>    &lt;!--标签名称:标签参数--&gt;</pre>
+            </div>
+            <p>
+                2. <b id="WEBView.include">include 标签</b>，表示引用某个控件模板，标签参数是这个控件模板文件相对于项目路径的绝对路径文件名（需要忽略扩展名 .html）。
+                <br />比如当前项目路径为 =@@WorkPath，下面的标签嵌套引用 <a href="=@@WorkPath$include\question.html" target="_blank">=@@WorkPath$include\question.html</a> 文件。
+            </p>
+            <div name="ace" mode="html">
+                <pre>    &lt;!--include:include\question--&gt;</pre>
+            </div>
+            <p>include 标签支持静态字符串数组传参，在模板中使用 =@At[索引编号] 替换为数组数据，比如控件模板 <a href="=@@WorkPath$include\hideButton.html" target="_blank">=@@WorkPath$include\hideButton.html</a></p>
+            <div name="ace" mode="html">
+                <pre>&lt;a href="javascript:HideButton.Change=@At[1]('=@At[0]');"&gt;[&lt;!--If:#IsHide=@At[0]--&gt;+&lt;!--If:#IsHide=@At[0]--&gt;&lt;!--If:!#IsHide=@At[0]--&gt;-&lt;!--If:!#IsHide=@At[0]--&gt;]&lt;/a&gt;</pre>
+            </div>
+            <p>使用下面的代码嵌套引用该模板控件</p>
+            <div name="ace" mode="html">
+                <pre>    &lt;!--include:include\hideButton[WEBViewHTML,NoCookie]--&gt;</pre>
+            </div>
+            <p>下面是展开后的 HTML 模板代码</p>
+            <div name="ace" mode="html">
+                <pre>    &lt;a href="javascript:HideButton.ChangeNoCookie('WEBViewHTML');"&gt;[&lt;!--If:#IsHideWEBViewHTML--&gt;+&lt;!--If:#IsHideWEBViewHTML--&gt;&lt;!--If:!#IsHideWEBViewHTML--&gt;-&lt;!--If:!#IsHideWEBViewHTML--&gt;]&lt;/a&gt;</pre>
+            </div>
+            <p>3. <b id="WEBView.Value">Value 标签</b>（必须成对），表示使用某个数据建立一个数据作用域，在作用域范围内的数据优先搜索当前数据，标签参数是一个<a href="javascript:Mark.To('WEBView.expression');">数据值表达式</a>。比如下面的 HTML 模板</p>
+            <div name="ace" mode="html">
+                <pre>&lt;!--Value:Question--&gt;
+&lt;div&gt;
+    &lt;!--Value:Answer--&gt;
+    =@At@User.Name 回答了问题 =@At@Title
+    &lt;!--Value:Answer--&gt;
+&lt;/div&gt;
+&lt;!--Value:Question--&gt;</pre>
+            </div>
+            <p>匹配下面的 JSON 数据对象</p>
+            <div name="ace" mode="javascript">
+                <pre>{
+    Question: { Title: "这是问题的标题是什么？" },
+    Answer:
+    {
+        User: { Name: "张三" }
+    }
+}</pre>
+            </div>
+            <p>将生成最终的 HTML 如下</p>
+            <div name="ace" mode="html">
+                <pre>
+&lt;div&gt;
+
+    张三 回答了问题 这是问题的标题是什么？
+
+&lt;/div&gt;
+</pre>
+            </div>
+            <p>
+                模板引擎首先会对根对象建立一个最外层的数据作用域。
+                <br />根据数据作用域就近原则，当模板引擎在 Question 对象中没有找到 Answer 时，将一层一层向外回溯数据作用域，直到根对象建立最外层的数据作用域。
+                <br />当模板引擎在 Answer 对象中没有找到 Title 时，向外回溯数据作用域，在 Question 对象中找到了 Title。
+            </p>
+            <p>4. <b id="WEBView.Loop">Loop 标签</b>（必须成对），表示循环使用某个数组对象的子元素数据建立数据作用域（用于列表操作），标签参数是一个<a href="javascript:Mark.To('WEBView.expression');">数据值表达式</a>。比如下面的 HTML 模板</p>
+            <div name="ace" mode="html">
+                <pre>&lt;!--Value:Question--&gt;
+&lt;div&gt;
+    &lt;!--Loop:Answers--&gt;
+    =@At@User.Name 回答了问题 =@At@Title
+    &lt;!--Loop:Answers--&gt;
+&lt;/div&gt;
+&lt;!--Value:Question--&gt;</pre>
+            </div>
+            <p>匹配下面的 JSON 数据对象</p>
+            <div name="ace" mode="javascript">
+                <pre>{
+    Question: { Title: "这是问题的标题是什么？" },
+    Answers: [
+        { User: { Name: "张三" } },
+        { User: { Name: "李四" } }
+    ]
+}</pre>
+            </div>
+            <p>将生成最终的 HTML 如下</p>
+            <div name="ace" mode="html">
+                <pre>
+&lt;div&gt;
+
+    张三 回答了问题 这是问题的标题是什么？
+    李四 回答了问题 这是问题的标题是什么？
+
+&lt;/div&gt;
+</pre>
+            </div>
+            <p>5. <b id="WEBView.If">If 标签</b>（必须成对），表示如果某个数据对象符合 JavaScript 的 if 判定则继续输出 HTML，标签参数是一个<a href="javascript:Mark.To('WEBView.logicExpression');">逻辑值表达式</a>。比如下面的 HTML 模板</p>
+            <div name="ace" mode="html">
+                <pre>&lt;!--Loop:Questions--&gt;&lt;!--If:AnswerCount--&gt;
+&lt;div&gt;
+    =@At@Title 有 =@At$AnswerCount 个回答。
+&lt;/div&gt;
+&lt;!--If:AnswerCount--&gt;&lt;!--Loop:Questions--&gt;</pre>
+            </div>
+            <p>匹配下面的 JSON 数据对象</p>
+            <div name="ace" mode="javascript">
+                <pre>{
+    Questions: [
+        { Title: "第 1 个问题", AnswerCount: 0 },
+        { Title: "第 2 个问题", AnswerCount: 3 }
+    ]
+}</pre>
+            </div>
+            <p>将生成最终的 HTML 如下</p>
+            <div name="ace" mode="html">
+                <pre>
+&lt;div&gt;
+    第 2 个问题 有 3 个回答。
+&lt;/div&gt;
+</pre>
+            </div>
+            <p>对于 JavaScript 的 if 判定，数据对象为 null 返回 false，数字为 0 返回 false，对于长度为 0 的字符串返回 false。</p>
+            <p>6. <b id="WEBView.Client">Client 标签</b>（必须成对），没有标签参数，表示该段 HTML 模板仅对客户端有效（客户端模板引擎忽略这个标签），服务端模板引擎则跳过这个标签不输出任何 HTML 或者 JSON。</p>
+            <p>
+                7. <b id="WEBView.NoMark">NoMark 标签</b>（必须成对），没有标签参数，表示客户端模板引擎在解析该段 HTML 模板时禁止输出范围标识，服务端模板引擎则忽略这个标签。
+                <br />正常情况下，fastCSharp 的客户端模板引擎在输出 HTML 的时候会附加输出一些成对的隐藏的 span 用来标识某个子模版在 document 中的开始与结束位置，用于在数据更新时快速定位需要更新的 document 节点。
+                <br />但是某些情况可能需要生成“干净”的 HTML（比如 textarea），又或者可能想减少生成的 HTML 的 document 节点数量以减轻浏览器的压力，这时候就可以使用 NoMark 标签将这段 HTML 模板包起来。
+                <br />需要知道的是，使用了 NoMark 以后，里面包含的任何数据的更新都需要处理整个被 NoMark 包起来的 HTML 模板重新生成 HTML 代码。
+            </p>
+            <p>
+                8. <b id="WEBView.At">=@At</b>，作为<a href="javascript:Mark.To('WEBView.expression');">数据值表达式</a>的前缀使用，用于将数据转换成字符串输出。
+                <br />=@At* 作为<a href="javascript:Mark.To('WEBView.expression');">数据值表达式</a>的前缀使用，先将数据转换成字符串，然后调用 .ToTextArea() 输出。
+                <div name="ace" mode="javascript">
+                    <pre>String.prototype.ToTextArea = function () {
+    return this.replace(/&amp;/g, '&amp;amp;').replace(/&lt;/g, '&amp;lt;').replace(/&gt;/g, '&amp;gt;');
+};</pre>
+                </div>
+                <br />=@At@ 作为<a href="javascript:Mark.To('WEBView.expression');">数据值表达式</a>的前缀使用，先将数据转换成字符串，然后调用 .ToHTML() 输出。
+                <div name="ace" mode="javascript">
+                    <pre>String.prototype.ToHTML = function () {
+    return this.ToTextArea().replace(/ /g, '&amp;nbsp;').replace(/"/g, '&amp;#34;').replace(/'/g, '&amp;#39;');
+};</pre>
+                </div>
+            </p>
+            <p>
+                9. <b id="WEBView.expression">数据值表达式</b>由服务端表达式与客户端表达式组合而成，当两个表达式不相同时，中间用（#）连接起来。
+                <br />服务端表达式用于引用服务端数据的相关字段与属性，除了连接符（.），只支持 数字 / 字母 / 下划线（_）。
+                <br />客户端表达式用于引用客户端数据的相关属性与无参函数，除了连接符（.），只支持 数字 / 字母 / 下划线（_）。
+                <br />如果表达式为空字符串（字符串长度为 0），则表示当前数据作用域上的数据对象。
+                <br />第一个名称前面的小数点（.）表示跳过当前数据作用域向外回溯，几个点就表示回溯几层，最后回溯到最外层的数据作用域的根对象。
+                <br />当多个数据作用域中的数据对象存在相同的属性名称，而当前需要引用的数据作用域不符合最近原则，则可以使用小数点（.）跳过这些数据作用域对象。
+            </p>
+            <p>
+                10. <b id="WEBView.logicExpression">逻辑值表达式</b>有两种，一种是将一堆子逻辑值表达式用与连接符（&）拼接在一起，一种是将一堆子逻辑值表达式用或连接符（|）拼接在一起，不允许在同一个表达式中混合使用 & 与 |。
+                <br />子逻辑值表达式由 3 部分组成：可选的感叹号（!）前缀用于取反操作；中间是<a href="javascript:Mark.To('WEBView.expression');">数据值表达式</a>；可选后缀 =xxx 用于判断<a href="javascript:Mark.To('WEBView.expression');">数据值表达式</a>转换成字符串以后是否等于指定的字符串。
+            </p>
+        </div>
+        <!--If:!#IsHideWEBViewHTML-->
+        <p><b>3.</b> <!--include:include\hideButton[WEBViewCreate,NoCookie]--><b id="WEBView.Create">创建 WEB 视图项目</b></p>
+        <!--If:!#IsHideWEBViewCreate-->
+        <div>
+            <p><b>该功能需要在工程项目中配置<a href="javascript:Mark.To('Start.CodeCommand');">静态代码生成</a>。</b></p>
+            <p>1. 需要在项目中添加一个名称为 webConfig 并继承自 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/webConfig.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.webConfig</b> 的 WEB 视图项目申明配置类型。</p>
+            <p>2. 根据需求添加 <a href="javascript:Mark.To('WEBView.Server');">WEB 应用</a>。</p>
+            <p>3. <a href="javascript:Mark.To('Start.CodeCommand');">编译目标项目</a>，将生成的 <b>{项目名称}.fastCSharp.cs</b> 文件包含到项目文件中，其中包含了各种 WEB 应用的代理代码 与 继承自 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/http/domainServer.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.http.domainServer.viewServer&lt;sessionType&gt;</b> 的 webServer 类型。</p>
+            <p>4. 创建一个本地宿主模式的 HTTP 服务器并加载 WEB 项目，调用 <b mousemenu="{SkinView:{File:'../../../fastCSharp/net/tcp/http/servers.cs'},OnStart:CodeMenu.Show}">fastCSharp.net.tcp.http.servers.Create&lt;domainServerType&gt;</b>（domainServerType 需要的参数就是上面生成的 webServer 类型），比如</p>
+            <div name="ace" mode="csharp">
+                <pre>           fastCSharp.net.tcp.http.servers.Create&lt;webServer&gt;("127.0.0.1");</pre>
+            </div>
+        </div>
+        <!--If:!#IsHideWEBViewCreate-->
+        <p><b>4.</b> <!--include:include\hideButton[WEBViewHttpServer,NoCookie]--><b id="WEBView.HttpServer">HTTP 服务器组件</b></p>
+        <!--If:!#IsHideWEBViewHttpServer-->
+        <div>
+            <p>fastCSharp 的 HTTP 服务器组件，负责管理与加载 WEB 项目。除了上面提到的本地宿主模式，它还可以作为 TCP 服务运行（比如项目 fastCSharp.httpServer<!--If:VS2010-->.vs2010<!--If:VS2010-->），这时候需要配置服务信息（不应该使用 80 端口，它不是 HTTP 服务），比如</p>
+            <div name="ace" mode="javascript">
+                <pre>code.cSharp.tcpServer.httpServer=
+	{
+	IsServer:true,
+	Host:"127.0.0.1",
+	Port:12345,
+	VerifyString:"1"
+	}</pre>
+            </div>
+            <p>它是一个<a href="javascript:Mark.To('TCP.Server');">单类型实例服务</a>，下面启动 HTTP 服务器服务</p>
+            <div name="ace" mode="csharp">
+                <pre>           (new fastCSharp.net.tcp.http.servers.tcpServer()).Start();</pre>
+            </div>
+            <p>由于现在还没有开发 UI 的需求，将 WEB 项目加载到某个 HTTP 服务器需要使用 TCP 客户端，同样需要配置服务信息，比如</p>
+            <div name="ace" mode="javascript">
+                <pre>code.cSharp.tcpServer.httpServer=
+	{
+	Host:"127.0.0.1",
+	Port:12345,
+	VerifyString:"1"
+	}
+net.tcp.http.domain.www=
+	{
+	Domain:"www.51nod.com",
+	Host:{Host:"127.0.0.1",Port:80}
+	}</pre>
+            </div>
+            <p>然后在 TCP 客户端调用 start 方法，比如</p>
+            <div name="ace" mode="csharp">
+                <pre>           (new fastCSharp.net.tcp.http.servers.tcpClient()).start(System.Reflection.Assembly.GetExecutingAssembly().Location, typeof(webServer).FullName, fastCSharp.config.pub.LoadConfig(new fastCSharp.net.tcp.http.domain(), "www"), true);</pre>
+            </div>
+            <p>注意：它不是 IIS 所以不能跑 ASP.NET。它使用 System.Reflection.Assembly.LoadFrom 加载程序集（没有使用动态加载 AppDomain 的方案），所以只适合用来加载自主 WEB 项目，不要用它来整合第三方 WEB 项目。</p>
+        </div>
+        <!--If:!#IsHideWEBViewHttpServer-->
+        <p><b>5.</b> <!--include:include\hideButton[WEBView_webPage,NoCookie]--><b id="WEBView.webPage" mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webPage.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webPage</b></p>
+        <!--If:!#IsHideWEBView_webPage-->
+        <div>
+            <p><a href="javascript:Mark.To('WEBView.webView');">视图页申明配置</a>、<a href="javascript:Mark.To('WEBView.ajax');">AJAX 申明配置</a>、<a href="javascript:Mark.To('WEBView.webCall');">HTTP 调用</a> 的基础类型。</p>
+            <p>
+                bool <b>IsPool</b> : 默认为 false 表示每次请求都需要 new 一个页面对象。
+                <br />否则在页面对象使用完以后会添加到 WEB 页面对象池中以便重复使用，记得重载 void clear() 处理需要清除的字段数据，或者给需要处理的字段数据添加申明<b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/webView.cs'},OnStart:CodeMenu.Show}">[fastCSharp.emit.webView.clearMember]</b>。
+            </p>
+            <p>int <b>MaxPostDataSize</b> : HTTP Body 接收数据的最大字节数（单位:MB），默认为 4MB，超出限定则关闭连接。</p>
+            <p>int <b>MaxMemoryStreamSize</b> : 接收 HTTP Body 数据内存缓冲区的最大字节数(单位:KB)，默认为 64KB，超出限定则使用文件储存方式。</p>
+            <p>string <b>MethodName</b> : WEB 调用函数名称，用于替换默认的函数名称。</p>
+        </div>
+        <!--If:!#IsHideWEBView_webPage-->
+        <p><b>6.</b> <!--include:include\hideButton[WEBView_webView,NoCookie]--><b id="WEBView.webView" mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webView.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webView</b></p>
+        <!--If:!#IsHideWEBView_webView-->
+        <div>
+            <p>视图页应用的申明配置类型，继承自 <a href="javascript:Mark.To('WEBView.webPage');">fastCSharp.code.cSharp.webPage</a>。</p>
+            <p>bool <b>IsPage</b> : 默认为 true 表示支持服务端 HTML 输出，也就是说支持搜索引擎访问，否则对于搜索引擎返回 404。</p>
+            <p>bool <b>IsAjax</b> : 默认为 true 表示支持服务端输出 WEB 视图 JSON 数据，也就是说支持浏览器的正常访问。</p>
+            <p>bool <b>IsExportTypeScript</b> : 默认为 false 表示不生成 TypeScript 调用代理，一般只有在嵌入式页面中才需要设置为 true，只有 IsAjax = true 时有效。</p>
+            <p>bool <b>IsReferer</b> : 默认为 true 表示需要验证 Referer 的来源页主域名是否匹配当前主域名，用于防止跨域攻击。</p>
+            <p>string <b>QueryName</b> : 如果存在查询参数，则会生成一个 struct 用于整合这些参数，同时生成一个这个类型的字段，这个字段名称默认为 query。</p>
+            <p>string <b>TypeCallName</b> : WEB 视图调用类型名称，用于替换默认的类型名称。</p>
+        </div>
+        <!--If:!#IsHideWEBView_webView-->
+        <p><b>7.</b> <!--include:include\hideButton[WEBView_ajax,NoCookie]--><b id="WEBView.ajax" mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/ajax.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.ajax</b></p>
+        <!--If:!#IsHideWEBView_ajax-->
+        <div>
+            <p>AJAX 应用的申明配置类型，继承自 <a href="javascript:Mark.To('WEBView.webPage');">fastCSharp.code.cSharp.webPage</a>。</p>
+            <p>bool <b>IsOnlyPost</b> : 默认为 true 表示仅支持 POST 请求（与 IsReferer = true 用于防止跨域攻击），否则支持 GET 请求。</p>
+            <p>bool <b>IsExportTypeScript</b> : 默认为 false 表示不生成 TypeScript 调用代理。</p>
+            <p>bool <b>IsReferer</b> : 默认为 true 表示需要验证 Referer 的来源页主域名是否匹配当前主域名，用于防止跨域攻击。</p>
+            <p>string <b>FullName</b> : AJAX 调用全名称，用于替换默认的调用全名称。</p>
+            <p>bool <b>IsAttribute</b> : 默认为 false 表示代码生成选择所有函数，否则仅选择申明了 <a href="javascript:Mark.To('WEBView.ajax');">fastCSharp.code.cSharp.ajax</a> 的函数，有效域为当前 class。</p>
+            <p>bool <b>IsBaseTypeAttribute</b> : 指定是否搜索该成员的继承链以查找这些特性，参考 System.Reflection.MemberInfo.GetCustomAttributes(bool inherit)，有效域为当前 class。</p>
+            <p>bool <b>IsInheritAttribute</b> : 成员匹配自定义属性是否可继承，设置为 true 表示允许申明 <a href="javascript:Mark.To('WEBView.ajax');">fastCSharp.code.cSharp.ajax</a> 的派生类型并且选择继承深度最小的申明配置，有效域为当前 class。</p>
+        </div>
+        <!--If:!#IsHideWEBView_ajax-->
+        <p><b>8.</b> <!--include:include\hideButton[WEBView_webCall,NoCookie]--><b id="WEBView.webCall" mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/webCall.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.webCall</b></p>
+        <!--If:!#IsHideWEBView_webCall-->
+        <div>
+            <p>HTTP 调用的申明配置类型，继承自 <a href="javascript:Mark.To('WEBView.webPage');">fastCSharp.code.cSharp.webPage</a>。</p>
+            <p>bool <b>IsOnlyPost</b> : 默认为 false 表示支持 GET 请求，否则仅支持 POST 请求，有效域为当前 class。</p>
+            <p>bool <b>IsSerializeBox</b> : 正常情况下输入参数会包装成一个 struct，设置为 true 表示只有一个输入参数时序列化操作忽略外壳类型的处理。</p>
+            <p>string <b>FullName</b> : HTTP 调用全名称，用于替换默认的调用全名称。</p>
+            <p>bool <b>IsAttribute</b> : 默认为 true 表示代码生成仅选择申明了 <a href="javascript:Mark.To('WEBView.webCall');">fastCSharp.code.cSharp.webCall</a> 的函数，否则选择所有函数，有效域为当前 class。</p>
+            <p>bool <b>IsBaseTypeAttribute</b> : 指定是否搜索该成员的继承链以查找这些特性，参考 System.Reflection.MemberInfo.GetCustomAttributes(bool inherit)，有效域为当前 class。</p>
+            <p>bool <b>IsInheritAttribute</b> : 成员匹配自定义属性是否可继承，设置为 true 表示允许申明 <a href="javascript:Mark.To('WEBView.webCall');">fastCSharp.code.cSharp.webCall</a> 的派生类型并且选择继承深度最小的申明配置，有效域为当前 class。</p>
+        </div>
+        <!--If:!#IsHideWEBView_webCall-->
+        <p><b>9.</b> <!--include:include\hideButton[WEBViewJavascript,NoCookie]--><b id="WEBView.Javascript">申明式 UI 组件</b></p>
+        <!--If:!#IsHideWEBViewJavascript-->
+        <div>
+            <p>申明式 UI 组件，就是把组件构造函数需要的参数写在 HTML 中，利用 HTML 支持的事件（比如 onmouseover、onfocus、onload ...）触发初始化操作，好处是不用为每一个组件实例写初始化代码。</p>
+            <p>比如 demo.chatWeb<!--If:VS2010-->.vs2010<!--If:VS2010--> 项目 <a href="=@@Environment.FastCSharpPath$demo\chatWeb\chat.page.html" target="_blank">=@@Environment.FastCSharpPath$demo\chatWeb\chat.page.html</a> 文件中的 HTML 编辑器组件使用 onclick 事件触发。</p>
+            <div name="ace" mode="html">
+                <pre>&lt;div id="MessageEditor" HtmlEditor="{PasteLinkAjaxCallName:'pub.CrawlTitle',PasteImageAjaxCallName:'pub.PasteImage'}" onclick="void(0);" style="width:500px;height:200px;"&gt;&lt;/div&gt;</pre>
+            </div>
+        </div>
+        <!--If:!#IsHideWEBViewJavascript-->
+    </div>
+    <!--If:!#IsHideWEBView-->
+
+    <div><h1><!--include:include\hideButton[ORM,]--> <span id="ORM">ORM 缓存</span> <a href="javascript:Mark.To('WEBView');">↑</a><a href="javascript:Mark.To('Android');">↓</a></h1></div>
+    <!--If:!#IsHideORM-->
+    <div>
+        <p>
+            最原始的 ORM 需求就是将关系数据库查询出来的结果数据转换成强类型对象使用，解决查询结果数据在面向对象语言中使用不够方便的问题。
+            <br />接下来的需求就是使用面向对象的方式查询数据库（也就是抛弃 SQL 语句这种不方便维护的字符串），这个阶段的 ORM 框架可谓五花八门， 为了能够在面向对象语言中模拟 SQL 语句费尽心思。
+            <br />我曾经也在这些方面折腾过一段时间，可是慢慢的发现这种做法不仅带来了各种限制，而且相比于直接写 SQL 语句并不能提高多少开发效率，该写的都少不了，唯一的优势就是有 IDE 的智能提示不那么容易出错。
+            <br />面向对象的本质是抽象，而不是折腾各种写法；而关系模型并不具备面向对象特性，强行将两者融合为一体并不能得到超体，而是各种别扭。我觉得单纯从写法的角度考虑，像 LINQ 这种直接被 IDE 与编译器内置支持的才是正道。
+            <br />有时候放弃也是一种不错的选择，比如在这个问题里面我就放弃了关系模型，选择了面向对象。这个决定让我从 ORM 问题中解脱出来（当时感觉就像是挣脱了枷锁，前方满是自由与希望），我确定这是一条适合我的道路。
+            <br />放弃了关系模型，也就放弃了关系数据库特有的功能特性，数据库也就退化成了支持索引查询的储存设备，数据处理的重心由数据库转到了程序逻辑中。
+        </p>
+        <p>
+            接下来先说说缓存，一般来说缓存是为了提高数据查询效率而保存的查询结果，避免重复的计算操作（是不是有点<a href="http://www.51nod.com/topic/#!=动态规划" target="_blank">动态规划</a>的思维逻辑）。
+            <br />很多人的脑海里，一提到缓存就是 Key-Value。可能是由于主流的缓存框架用的都是这种模型，因为对于分布式缓存结构而言，K-V 模式是简单高效率而且容易实现的。
+            <br />但是我要说的缓存，既不是保存查询结果，也不是分布式 K-V 模型。
+            <br />我要说的缓存是针对查询需求，在本地内存中使用合适的数据结构组织数据源，尽可能的降低使查询需求以及相关操作的时间复杂度，当然要做到这一点需要一定的数据结构与算法知识。
+            <br />缓存数据源对于内存的使用量与性能效果基本都是可控的，而查询结果的体量则是不可控的，实时性也是难以保障的，当然对于某些计算量大而且体量不可控的查询结果还是需要 K-V 分布式缓存处理的。
+            <br />缓存数据源相当于内存索引，查询都在内存中处理，可以减少数据库物理层的索引需求，数据库物理层基本只需要主键索引。
+            <br />缓存数据源可以方便的实时更新计算数据，对于计算列不存在事务问题，减少数据库表格中的计算列这种冗余需求，同时减少数据更新操作。
+            <br />缓存数据源可以很方便的在程序逻辑中访问数据，带来类似于 LINQ to Object 的编码体验，可以快速应对数据查询需求的变化，不再为复杂的查询需求而烦恼。
+            <br />当然缓存数据源可能需要使用大量内存（我认为大内存比人工优化代价更低），但并不需要缓存所有数据，但至少需要缓存与查询条件有关的所有数据。
+        </p>
+        <p>抛弃了关系模型的 ORM 只存在单表格操作，可以真正的抛弃 SQL 及其相关理念，你只需要操作数据对象。因为应用层没有 SQL 语句，所以不存在不可控的数据更新，从而做到简单可控的数据同步，可以与数据源缓存自然的融合到一起。</p>
+        <p><b>该功能需要在工程项目中配置<a href="javascript:Mark.To('Start.CodeCommand');">静态代码生成</a>。</b></p>
+        <p><b>1.</b> <!--include:include\hideButton[ORMModel,NoCookie]--><b id="ORM.Model">数据模型</b></p>
+        <!--If:!#IsHideORMModel-->
+        <div>
+            <p>为了方便数据在网络中传输，fastCSharp 需要合理规划字段与属性的作用，在默认规则中，需要序列化的原始数据使用字段表示，而属性则用于在应用层表示原始数据经过某种计算以后的结果，所以<b>定义数据成员应该使用字段</b>而非属性。</p>
+            <p>数据模型的字段将映射为表格数据列（也许你把它叫做实体类，但是有的人认为与业务逻辑相关的才能叫做实体类），需要给这个类型添加 SQL 表格模型申明配置 <b mousemenu="{SkinView:{File:'../../../fastCSharp/code/cSharp/sqlModel.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.cSharp.sqlModel</b>。</p>
+            <p>如果这个数据类型需要被 TCP服务使用，建议同时添加二进制序列化申明配置 <b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/dataSerialize.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.dataSerialize</b> 与 JSON 序列化申明配置 <b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/jsonSerialize.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.jsonSerialize</b>、<b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/jsonParse.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.jsonParse</b>，比如</p>
+            <div name="ace" mode="csharp">
+                <pre>    [fastCSharp.emit.jsonSerialize(IsAllMember = true)]
+    [fastCSharp.emit.jsonParse(IsAllMember = true)]
+    [fastCSharp.emit.dataSerialize(IsReferenceMember = false, IsMemberMap = false)]
+    [fastCSharp.code.cSharp.sqlModel]
+    public partial class MyModel
+    {
+        /// &lt;summary&gt;
+        /// 关键字1
+        /// &lt;/summary&gt;
+        [fastCSharp.emit.dataMember(PrimaryKeyIndex = 1)]
+        public int Key1;
+        /// &lt;summary&gt;
+        /// 关键字2
+        /// &lt;/summary&gt;
+        [fastCSharp.emit.dataMember(PrimaryKeyIndex = 2)]
+        public int Key2;
+    }</pre>
+            </div>
+            <p>项目编译完以后，将在这个 MyModel 类型中生成一个继承自 MyModel 的嵌套<b id="ORM.GenericModel">泛型数据模型类</b>，其中包括一个定义 SQL 操作工具的静态字段 sqlTable，如果在 MyModel 定义了关键字还将生成一个整合关键字的 struct primaryKey，比如</p>
+            <div name="ace" mode="csharp">
+                <pre>        public partial class MyModel
+        {
+            /// &lt;summary&gt;
+            /// 关键字
+            /// &lt;/summary&gt;
+            [fastCSharp.code.ignore]
+            public struct primaryKey : IEquatable&lt;primaryKey&gt;
+            {
+                /// &lt;summary&gt;
+                /// 关键字1
+                /// &lt;/summary&gt;
+                public int Key1;
+                /// &lt;summary&gt;
+                /// 关键字2
+                /// &lt;/summary&gt;
+                public int Key2;
+                /// &lt;summary&gt;
+                /// 关键字比较
+                /// &lt;/summary&gt;
+                /// &lt;param name="other" /&gt;关键字&lt;/param&gt;
+                /// &lt;returns&gt;是否相等&lt;/returns&gt;
+                public bool Equals(primaryKey other)
+                {
+                    return Key1/**/.Equals(other.Key1) && Key2/**/.Equals(other.Key2);
+                }
+                /// &lt;summary&gt;
+                /// 哈希编码
+                /// &lt;/summary&gt;
+                /// &lt;returns&gt;&lt;/returns&gt;
+                public override int GetHashCode()
+                {
+                    return Key1.GetHashCode() ^ Key2/**/.GetHashCode();
+                }
+                /// &lt;summary&gt;
+                /// 关键字比较
+                /// &lt;/summary&gt;
+                /// &lt;param name="obj" /&gt;&lt;/param&gt;
+                /// &lt;returns&gt;&lt;/returns&gt;
+                public override bool Equals(object obj)
+                {
+                    return Equals((primaryKey)obj);
+                }
+            }
+            /// &lt;summary&gt;
+            /// 数据库表格模型
+            /// &lt;/summary&gt;
+            /// &lt;typeparam name="tableType"&gt;表格映射类型&lt;/typeparam&gt;
+            public abstract class sqlModel&lt;tableType&gt; : MyModel
+                where tableType : sqlModel&lt;tableType&gt;
+            {
+                /// &lt;summary&gt;
+                /// SQL表格操作工具
+                /// &lt;/summary&gt;
+                protected static readonly fastCSharp.emit.sqlTable&lt;tableType, MyModel, primaryKey&gt; sqlTable = fastCSharp.emit.sqlTable&lt;tableType, MyModel, primaryKey&gt;.Get();
+            }
+        }</pre>
+            </div>
+            <p>建议使用一个单独的项目存放数据模型类，就叫它数据模型层。</p>
+        </div>
+        <!--If:!#IsHideORMModel-->
+        <p><b>2.</b> <!--include:include\hideButton[ORMColumn,NoCookie]--><b id="ORM.Column">数据列</b></p>
+        <!--If:!#IsHideORMColumn-->
+        <div>
+            <p><a href="javascript:Mark.To('ORM.Model');">数据模型</a>中的字段，将映射为表格数据列，可以使用数据成员申明配置 <b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/dataMember.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.dataMember</b> 对该字段添加描述。</p>
+            <p>比如申明为关键字，并且指定关键字的索引顺序，不指定表示随机顺序。</p>
+            <div name="ace" mode="csharp">
+                <pre>        [fastCSharp.emit.dataMember(PrimaryKeyIndex = 1)]
+        public int Key;</pre>
+            </div>
+            <p>比如指定字符串长度与编码，IsAscii = true 则采用单字节字符，否则使用双字节字符。</p>
+            <div name="ace" mode="csharp">
+                <pre>        [fastCSharp.emit.dataMember(IsAscii = true, MaxStringLength = 256)]
+        public string Email;</pre>
+            </div>
+            <p>比如指定缓存分组，用于配合缓存组件使用，因为有的字段可能需要整表缓存（比如查询相关的字段），有的字段可能因为内存容量问题需要使用具有淘汰策略的缓存机制。</p>
+            <div name="ace" mode="csharp">
+                <pre>        [fastCSharp.emit.dataMember(Group = 1)]
+        public string Content;</pre>
+            </div>
+            <p>比如有的字段作为实时计算字段存在，不需要映射为表格数据列，可以设置 IsIgnoreCurrent = true，如果这个计算字段需要为 TCP 客户端同步缓存处理，那么需要设置 IsSqlStream = true 生成处理函数。</p>
+            <div name="ace" mode="csharp">
+                <pre>            [fastCSharp.emit.dataMember(IsIgnoreCurrent = true, IsSqlStream = true)]
+            public int XXXCount;</pre>
+            </div>
+            <p>为了让数据列能够自然的表达需求，数据列的类型定义不限于数据库支持的数据类型，比如可以直接使用枚举类型</p>
+            <div name="ace" mode="csharp">
+                <pre>        public enum type : byte
+        {
+            X,
+            Y
+        }
+        public type Type = type.X;</pre>
+            </div>
+            <p>比如可以自定义数据类型，需要使用 <b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/dataMember.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.dataMember</b> 申明数据库数据类型，并且需要实现类型之间的强制类型转换，比如</p>
+            <div name="ace" mode="csharp">
+                <pre>    [fastCSharp.emit.dataMember(DataType = typeof(string))]
+    public struct MyString
+    {
+        public string Value;
+        public static implicit operator MyString(string value) { return new MyString { Value = value }; }
+        public static implicit operator string(MyString value) { return value.Value; }
+    }</pre>
+            </div>
+            <div name="ace" mode="csharp">
+                <pre>        public MyString MyString;</pre>
+            </div>
+            <p>比如可以使用 SQL 组合数据申明配置 <b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/sqlColumn.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.sqlColumn</b>，为了防止循环嵌套问题只支持 struct，比如</p>
+            <div name="ace" mode="csharp">
+                <pre>    [fastCSharp.emit.sqlColumn]
+    public struct Range
+    {
+        public int Start;
+        public int End;
+    }
+        public Range MyRange;</pre>
+            </div>
+            <p>对于 SQL 组合数据最终将映射成多个表格数据列，比如这个 MyRange 字段将映射为 MyRange_Start 与 MyRange_End 两个数据列，每个层级名称之间使用下划线（_）连接，对于 SQL 组合数据的更新只能进行整体操作。</p>
+            <p><b>注意：其它未知类型将自动进行 JSON 序列化处理。</b></p>
+        </div>
+        <!--If:!#IsHideORMColumn-->
+        <p><b>3.</b> <!--include:include\hideButton[ORMTable,NoCookie]--><b id="ORM.Table">数据表格</b></p>
+        <!--If:!#IsHideORMTable-->
+        <div>
+            <p>它继承自<a href="javascript:Mark.To('ORM.GenericModel');">泛型数据模型类</a>，与数据库表格一一对应，需要给这个类型添加 SQL 表格申明配置 <b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/sqlTable.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.sqlTable</b>。</p>
+            <div name="ace" mode="csharp">
+                <pre>    [fastCSharp.emit.sqlTable(ConnectionName = "MyConnection")]
+    public class MyTable : MyModel.sqlModel&lt;MyTable&gt;</pre>
+            </div>
+            <p>当多个表格存在相同结构的需求时，应该使用同一个<a href="javascript:Mark.To('ORM.Model');">数据模型</a>，注意<a href="javascript:Mark.To('ORM.GenericModel');">泛型数据模型类</a>的参数 tableType 就是当前类型，否则会造成运行时类型错误。</p>
+            <p>ConnectionName 用于匹配配置文件中的 SQL 连接信息，比如</p>
+            <div name="ace" mode="javascript">
+                <pre>sql=	{
+	checkConnection:["MyConnection"]
+	}
+sql.connection.MyConnection=
+	{
+	Type:"Sql2012",
+	Connection:"server=127.0.0.1;database=MyDatabase;uid=User;pwd=Password"
+	}</pre>
+            </div>
+            <p>第 1 个配置项 sql 映射到 <b mousemenu="{SkinView:{File:'../../../fastCSharp/config/sql.cs'},OnStart:CodeMenu.Show}">fastCSharp.config.sql</b>，checkConnection 表示当前进程可用的连接匹配名称，否则忽略相关 SQL 操作。</p>
+            <p>第 2 个配置项 sql.connection.MyConnection 映射到连接名称为 MyConnection 的 SQL 连接信息 <b mousemenu="{SkinView:{File:'../../../fastCSharp/sql/connection.cs'},OnStart:CodeMenu.Show}">fastCSharp.sql.connection</b>。</p>
+            <p>在程序运行加载相关程序集时，会自动根据数据表格信息创建数据库表格，对于已经存在的表格缺少数据列的情况也会自动补全；由于数据安全问题，程序不会自动进行数据列修改与删除操作，请在程序运行前自行维护数据库表格。</p>
+        </div>
+        <!--If:!#IsHideORMTable-->
+        <p><b>4.</b> <!--include:include\hideButton[ORMTool,NoCookie]--><b id="ORM.Tool">数据库表格操作工具</b></p>
+        <!--If:!#IsHideORMTool-->
+        <div>
+            <p>在<a href="javascript:Mark.To('ORM.Model');">数据模型</a>中生成的<a href="javascript:Mark.To('ORM.GenericModel');">泛型数据模型类</a>中有一个静态字段 sqlTable 就是用来操作这个表格的工具实例，它继承自 <b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/sqlTable.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.sqlTable.sqlTool&lt;tableType, modelType&gt;</b>。</p>
+            <p>它提供<a href="javascript:Mark.To('ORM.Table');">数据表格</a>的操作 API，比如添加数据</p>
+            <div name="ace" mode="csharp">
+                <pre>            /// &lt;summary&gt;
+            /// 将数据添加到数据库
+            /// &lt;/summary&gt;
+            /// &lt;param name="value"&gt;待添加数据&lt;/param&gt;
+            /// &lt;param name="isIgnoreTransaction"&gt;是否忽略应用程序事务（不是数据库事务）&lt;/param&gt;
+            /// &lt;param name="memberMap"&gt;需要生成 SQL 语句的字段成员位图&lt;/param&gt;
+            /// &lt;returns&gt;添加是否成功&lt;/returns&gt;
+            public bool Insert(valueType value, bool isIgnoreTransaction = false, fastCSharp.code.memberMap&lt;modelType&gt; memberMap = null)</pre>
+            </div>
+            <p>比如批量导入数据，对于不支持批量导入的数据库将循环调用添加数据</p>
+            <div name="ace" mode="csharp">
+                <pre>            /// &lt;summary&gt;
+            /// 批量导入数据到数据库，对于不支持批量导入的数据库将循环调用添加数据
+            /// &lt;/summary&gt;
+            /// &lt;param name="values"&gt;待添加数据集合&lt;/param&gt;
+            /// &lt;param name="isIgnoreTransaction"&gt;是否忽略应用程序事务（不是数据库事务）&lt;/param&gt;
+            /// &lt;returns&gt;成功导入数据数量&lt;/returns&gt;
+            public int Insert(valueType[] values, bool isIgnoreTransaction = false)</pre>
+            </div>
+            <p>比如根据 Id 字段修改数据库记录</p>
+            <div name="ace" mode="csharp">
+                <pre>            /// &lt;summary&gt;
+            /// 修改数据库记录
+            /// &lt;/summary&gt;
+            /// &lt;param name="value"&gt;待修改数据&lt;/param&gt;
+            /// &lt;param name="memberMap"&gt;需要修改的字段成员位图&lt;/param&gt;
+            /// &lt;param name="isIgnoreTransaction"&gt;是否忽略应用程序事务（不是数据库事务）&lt;/param&gt;
+            /// &lt;returns&gt;是否修改成功&lt;/returns&gt;
+            public bool UpdateByIdentity(valueType value, fastCSharp.code.memberMap&lt;modelType&gt; memberMap, bool isIgnoreTransaction = false)</pre>
+            </div>
+            <p>比如根据关键字修改数据库记录</p>
+            <div name="ace" mode="csharp">
+                <pre>            /// &lt;summary&gt;
+            /// 修改数据库记录
+            /// &lt;/summary&gt;
+            /// &lt;param name="value"&gt;待修改数据&lt;/param&gt;
+            /// &lt;param name="memberMap"&gt;需要修改的字段成员位图&lt;/param&gt;
+            /// &lt;param name="isIgnoreTransaction"&gt;是否忽略应用程序事务（不是数据库事务）&lt;/param&gt;
+            /// &lt;returns&gt;是否修改成功&lt;/returns&gt;
+            public bool UpdateByPrimaryKey(valueType value, fastCSharp.code.memberMap&lt;modelType&gt; memberMap, bool isIgnoreTransaction = false)</pre>
+            </div>
+            <p><b mousemenu="{SkinView:{File:'../../../fastCSharp/code/memberMap.cs'},OnStart:CodeMenu.Show}">fastCSharp.code.memberMap&lt;valueType&gt;</b> 可以定义到每一个字段，比如</p>
+            <div name="ace" mode="csharp">
+                <pre>        private static readonly fastCSharp.code.memberMap&lt;MyModel&gt; updateMember = sqlTable.CreateMemberMap().Append(value => value.Email).Append(value => value.MyRange);</pre>
+            </div>
+            <p>对于修改数据库记录还支持 Lambda 表达式（System.Linq.Expressions.Expression&lt;System.Func&lt;modelType, returnType&gt;&gt;），<b mousemenu="{SkinView:{File:'../../../fastCSharp/emit/sqlTable.cs'},OnStart:CodeMenu.Show}">fastCSharp.emit.sqlTable.updateExpression</b> 也是一种 Lambda 表达式支持方式。</p>
+            <p>对于其它 API 我就不一一罗列出来了。</p>
+        </div>
+        <!--If:!#IsHideORMTool-->
+        <p><b>5.</b> <!--include:include\hideButton[ORMCache,NoCookie]--><b id="ORM.Cache">数据缓存</b></p>
+        <!--If:!#IsHideORMCache-->
+        <div>
+            <p>重点重复一遍：<b>数据缓存需要根据查询需求设计内存数据结构，目标是尽可能在 O(log(n)) 甚至 O(1) 的时间复杂度内定位查询需求数据。</b></p>
+            <p>因为这一块属于个性化需求，没有通用的类库可以解决所有问题，我只能告诉你我平时常用的缓存数据结构在 =@@Environment.FastCSharpPath$tool\expand\sql\cache 这个目录中，whole 目录是与整表缓存相关的，part 目录是具有淘汰策略的。</p>
+            <p>从性能的角度考虑，在 Id 与 GUID 的选择上，我认为应该抛弃 GUID，因为 Id 可以当成索引访问基于数组的缓存，不需要任何锁操作，而 GUID 基本只能用字典不可能避开锁的问题。</p>
+            <p>由于该功能存在环境依赖问题（比如需要 SqlServer / MySql），可能需要一定的数据结构与算法知识，还涉及到项目组合的问题，不方便提供展示全面功能 DEMO，简单的参考 demo.sqlModel<!--If:VS2010-->.vs2010<!--If:VS2010--> / demo.sqlTableCacheServer<!--If:VS2010-->.vs2010<!--If:VS2010--> / demo.sqlTableWeb<!--If:VS2010-->.vs2010<!--If:VS2010-->。</p>
+        </div>
+        <!--If:!#IsHideORMCache-->
+    </div>
+    <!--If:!#IsHideORM-->
+
+    <div><h1><!--include:include\hideButton[Android,]--> <span id="Android">Android 支持</span> <a href="javascript:Mark.To('ORM');">↑</a></h1></div>
+    <!--If:!#IsHideAndroid-->
+    <div>
+        <p>=@@Environment.FastCSharpPath$platform\fastCSharp.android.sln 用于 VS2015，包括 fastCSharp 基础类库的两个 Xamarin.Forms Android 版本项目，和一个简单的测试项目。</p>
+        <p>从安装 Android 环境到成功调试第一个 Android 项目的过程中可能存在一些坑，下面一步一步来：</p>
+        <p><b>1.</b> 安装 JDK 8</p>
+        <p>打开<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank">官网</a>找到 Java SE Development Kit 8u101，选择 Accept License Agreement，然后找到 Windows x86 对应大小为 188.32 MB 的 <a href="http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-windows-i586.exe" target="_blank">jdk-8u101-windows-i586.exe</a> 点击下载。</p>
+        <p>另外你也可以把 64 位版本的 <a href="http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-windows-x64.exe" target="_blank">jdk-8u101-windows-x64.exe</a> 下载下来以备后用，考虑到兼容性问题所以选择安装 32 位版本的 JDK。</p>
+        <p>安装 JDK 的时候记住安装目录，打开 VS 菜单 -> 工具 -> 选项 -> Xamarin，设置 Java Development Kit Location 到 JDK 8 的安装目录。</p>
+        <p><b>2.</b> 安装 Android SDK</p>
+        <p>由于 developer.android.com 已被墙，打开百度搜索 android sdk，打开百度快照，找到 Windows <a href="http://dl.google.com/android/android-sdk_r24.4.1-windows.zip">android-sdk_r24.4.1-windows.zip</a> No installer（<b>SHA-1 66b6a6433053c152b22bf8cab19c0f3fef4eba49</b>）然后点击下载，为了防止百度快照失效找不到其它工具的下载地址，可以同时把其它包都下载一份以备后用。</p>
+        <p>Windows <a href="http://dl.google.com/android/installer_r24.4.1-windows.exe">installer_r24.4.1-windows.exe</a> <b>SHA-1 f9b59d72413649d31e633207e31f456443e7ea0b</b></p>
+        <p>Mac OS X <a href="http://dl.google.com/android/android-sdk_r24.4.1-macosx.zip">android-sdk_r24.4.1-macosx.zip</a> <b>SHA-1 85a9cccb0b1f9e6f1f616335c5f07107553840cd</b></p>
+        <p>Linux <a href="http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz">android-sdk_r24.4.1-linux.tgz</a> <b>SHA-1 725bb360f0f7d04eaccff5a2d57abdd49061326d</b></p>
+        <p>另外可以把 Android Studio 也下载一份</p>
+        <p>Windows <a href="https://dl.google.com/dl/android/studio/install/2.1.1.0/android-studio-bundle-143.2821654-windows.exe">android-studio-bundle-143.2821654-windows.exe</a>  Includes Android SDK (recommended) <b>SHA-1 6f7fcdc30800bd8b3fbd5a14c2b9857243144650</b></p>
+        <p>Windows <a href="https://dl.google.com/dl/android/studio/install/2.1.1.0/android-studio-ide-143.2821654-windows.exe">android-studio-ide-143.2821654-windows.exe</a> No Android SDK <b>SHA-1 d8cb3968814b6155f4effe727baf23b18b9f8360</b></p>
+        <p>Windows <a href="https://dl.google.com/dl/android/studio/ide-zips/2.1.1.0/android-studio-ide-143.2821654-windows.zip">android-studio-ide-143.2821654-windows.zip</a> No Android SDK, no installer <b>SHA-1 9bec4905e40f0ac16ac7fde63a50f3fbc1eec4d9</b></p>
+        <p>Mac OS X <a href="https://dl.google.com/dl/android/studio/install/2.1.1.0/android-studio-ide-143.2821654-mac.dmg">android-studio-ide-143.2821654-mac.dmg</a> <b>SHA-1 4a7ca7532a95c65ee59ed50193c0e976f0272472</b></p>
+        <p>Linux <a href="https://dl.google.com/dl/android/studio/ide-zips/2.1.1.0/android-studio-ide-143.2821654-linux.zip">android-studio-ide-143.2821654-linux.zip</a> <b>SHA-1 55d69ad2da0068d818718b26ba43550fbcbeb7e9</b></p>
+        <p>至少准备 42G 硬盘空间（小容量的 SSD 系统盘就另外找盘吧），将刚才下载的 android-sdk_r24.4.1-windows.zip 复制到这里解压缩，然后执行 android-sdk-windows\SDK Manager.exe，默认会安装 7.0（API 24），注意需要勾选安装 6.0（API 23）。</p>
+        <p>安装完后打开 VS 菜单 -> 工具 -> 选项 -> Xamarin，设置 Android SDK Location 到刚才解压缩的文件夹 android-sdk-windows。</p>
+        <p><b>3.</b> 安装 Hyper-V</p>
+        <p>打开 控制面板 -> 卸载程序 -> 启动或关闭 Windows 功能，勾选 Hyper-V 然后确定安装。可能需要您的 CPU 支持虚拟化功能，现在的机器一般来说应该问题不大。</p>
+        <p>Hyper-V 与 VMWare 不能共存，如果安装了 VMWare 就要做好不再使用它的准备，因为反复安装 Hyper-V 会安装一堆多余的虚拟网络设备造成虚拟网络故障，每次都要在设备管理器中清除掉才能重新安装好，比较麻烦。</p>
+        <p>当然你也可以不卸载 VMWare，使用管理员模式的命令行 禁用或者启用 Hyper-V，不过每次都需要重新启动操作系统才能生效。</p>
+        <p>比如 =@@WorkPath$hyper-v\hyper-v.off.bat 与 =@@WorkPath$hyper-v\hyper-v.auto.bat</p>
+        <div name="ace" mode="sh">
+            <pre>bcdedit /set hypervisorlaunchtype off</pre>
+        </div>
+        <div name="ace" mode="sh">
+            <pre>bcdedit /set hypervisorlaunchtype auto</pre>
+        </div>
+        <p><b>4.</b> VS 安装 Android 模拟器</p>
+        <p>如果有更新通知，在 VS 界面右上角有个小旗帜带个小数字，点开安装所有移动应用相关的更新，其中包括 Emulator Android 模拟器。</p>
+        <p>如果没有更新通知，可能需要在第一次创建移动应用项目的时候弹出更新通知，那么 VS 菜单 -> 文件 -> 新建 -> 项目 -> Visual C# -> Cross-Platform，任选一种 Xamarin.Forms APP（个人推荐 Shared），然后一路确定。</p>
+        <p>现在假定你已经安装好了 Android 模拟器，如果没有安装好就要自己想办法解决了。</p>
+        <p><b>5.</b> 编译 Android 项目</p>
+        <p>编译刚才创建的 Android（.Droid）项目，在编译的时候 VS 可能会被卡死（具体症状表现为 IDE 没有使用 CPU 也没有使用网络却无法完成编译），因为编译需要下载一个 zip 压缩包，然而这个压缩包可能被墙了。</p>
+        <p>如果你的 VS 被卡死了，可能需要在任务管理器中手动结束 IDE 进程 devenv.exe，然后重启 VS 重新编译 Android 项目，然后打开输出窗口，可能看到类似以下错误信息：</p>
+        <div name="ace" mode="text">
+            <pre>Reason: C:\Users\用户名\AppData\Local\Xamarin\zips\96659D653BDE0FAEDB818170891F2BB0.zip is not a valid zip file
+Unzipping failed. Please download https://dl-ssl.google.com/android/repository/android_m2repository_r22.zip ...</pre>
+        </div>
+        <p>根据提示打开文件夹 C:\Users\用户名\AppData\Local\Xamarin\zips\ 你会看到一个 0 字节的文件 96659D653BDE0FAEDB818170891F2BB0.zip，然后你需要下载 <a href="https://dl-ssl.google.com/android/repository/android_m2repository_r22.zip">android_m2repository_r22.zip</a> 并且重命名用来替换这个 0 字节文件。</p>
+        <p>下载这个文件需要翻墙，你也可以到 <a href="http://jq.qq.com/?_wv=1027&k=2HbDxVX" target="_blank"> QQ群275679001</a> 里面下载，或者在 <a href="http://wpa.qq.com/msgrd?v=3&uin=472179624&site=qq&menu=yes" target="_blank">QQ</a> 上传给你。</p>
+        <p>关闭 VS 再次重启并编译 Android 项目，由于需要处理刚才下载的压缩包可能需要等上一段时间，有点像刚才卡死的症状，区别在于 IDE 会占用一些 CPU 表明正在工作，然后正常情况下就完成了编译。</p>
+        <p><b>6.</b> 调试 Android 项目</p>
+        <p>需要将 Android 项目设置为启动项目，然后可以看到 VS 的绿色启动按钮变成了可选的模拟 Android 设备，选择启动一个模拟 Android 设备，第一次运行可能会弹出一个确认权限的对话框，第一次启动模拟 Android 设备可能会比较慢。</p>
+        <p>正常情况下模拟器中的 Android 操作系统启动完以后就会接着安装你调试的 Android 项目并运行。如果没能成功运行说明模拟器环境还有些问题，这时候需要查看 VS 的输出窗口，看看最后的输出是不是下面这种：</p>
+        <div name="ace" mode="text">
+            <pre>Launching emulator...
+Emulator launched successfully.</pre>
+        </div>
+        <p>如果不是就需要你自己找原因，我可能帮不到你了。如果是，你需要在模拟器的 Android 系统中找到 Setting（如果锁界面可能需要鼠标按住界面向上拖动解锁），一般点击 Android 界面下方中间的按钮就能找到 Setting 了。</p>
+        <p>在 Setting 中点击 Wi-Fi，然后点开连接信息，记下 IP 地址，比如 192.168.115.132，然后返回到主界面。</p>
+        <p>在 Windows 中建立一个批处理文件然后运行它，正常情况下会在 VS 的输出窗口逐步看到编译与部署成功的信息就说明没问题了。下面的目录需要修改为你安装 Android SDK 的目录，比如</p>
+        <div name="ace" mode="text">
+            <pre>C:\Xamarin\android-sdk_r24.4.1-windows\android-sdk-windows\platform-tools\adb connect 192.168.115.132</pre>
+        </div>
+        <p>以后每次启动模拟 Android 设备后都需要使用这个批处理才能调试项目，确实有点麻烦。不过我不知道是什么环境因素引起这个问题，如果你找到了解决方案麻烦你告诉我一下。</p>
+        <p><b>7.</b> Hello</p>
+        <p>跟着教程 <a href="https://developer.xamarin.com/guides/xamarin-forms/creating-mobile-apps-xamarin-forms/" target="_blank">https://developer.xamarin.com/guides/xamarin-forms/creating-mobile-apps-xamarin-forms/</a> 一步一步来，应该不难吧；另外还可以<a href="https://github.com/xamarin/xamarin-forms-samples" target="_blank">下载示例</a>作为参考。</p>
+        <p><b>8.</b> =@@Environment.FastCSharpPath$platform\fastCSharp.android.sln</p>
+        <p>如果 fastCSharp.android 项目编译错误，比如找不到 FileSystemEventArgs，可能需要升级你的 Xamarin。</p>
+    </div>
+    <!--If:!#IsHideAndroid-->
+</body>
+</html>

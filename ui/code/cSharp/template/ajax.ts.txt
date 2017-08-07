@@ -1,0 +1,9 @@
+﻿module @Namespace {
+	export class @type.Type.Name {
+		/*LOOP:Methods*/
+		static @Method.Method.Name(/*LOOP:MethodParameters*/@ParameterName,/*LOOP:MethodParameters*/Callback = null) {
+			fastCSharp.Pub.GetAjaxPost()('@CallName',/*IF:MethodParameters.Length*/{/*LOOP:MethodParameters*/@ParameterName: @ParameterJoinName/*LOOP:MethodParameters*/ }/*IF:MethodParameters.Length*//*NOT:MethodParameters.Length*/null/*NOT:MethodParameters.Length*/, Callback);	
+		}
+		/*LOOP:Methods*/
+	}
+}

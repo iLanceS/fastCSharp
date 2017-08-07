@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AF293410-5FAE-4A21-BCBA-A3EC2E570D18}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>demo.chatWeb</RootNamespace>
+    <AssemblyName>fastCSharp.demo.chatWeb</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>MONO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\demo\chatWeb\{fastCSharp.demo.chatWeb}.fastCSharp.cs">
+      <Link>{fastCSharp.demo.chatWeb}.fastCSharp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\chatWeb\chat.cs">
+      <Link>chat.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\chatWeb\index.cs">
+      <Link>index.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\chatWeb\poll.cs">
+      <Link>poll.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\chatWeb\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\chatWeb\webConfig.cs">
+      <Link>webConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\chatWeb\webServer.cs">
+      <Link>webServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\chatWeb\data\message.cs">
+      <Link>data\message.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\chatWeb\ajax\pub.cs">
+      <Link>ajax\pub.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\chatWeb\ajax\user.cs">
+      <Link>ajax\user.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="data\" />
+    <Folder Include="ajax\" />
+    <Folder Include="js\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="chat.html" />
+    <None Include="chat.js" />
+    <None Include="poll.html" />
+    <None Include="js\base.js" />
+    <None Include="js\color512_64.bmp" />
+    <None Include="js\htmlEditor.js" />
+    <None Include="js\load.js" />
+    <None Include="js\loadPage.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\demo.httpSessionServer\demo.httpSessionServer.csproj">
+      <Project>{F74F0FD4-4662-42C2-93BF-11E9B574B412}</Project>
+      <Name>demo.httpSessionServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fastCSharp\fastCSharp.csproj">
+      <Project>{03B96069-8E77-4EAB-9BC2-405B7B7A14F6}</Project>
+      <Name>fastCSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

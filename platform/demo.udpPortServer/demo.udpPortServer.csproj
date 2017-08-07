@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D69F0399-F922-4EF5-BCB7-76ACFA975CD7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>demo.udpPortServer</RootNamespace>
+    <AssemblyName>fastCSharp.demo.udpPortServer</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <DebugSymbols>true</DebugSymbols>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>MONO</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\demo\udpPortServer\{fastCSharp.demo.udpPortServer}.fastCSharp.cs">
+      <Link>{fastCSharp.demo.udpPortServer}.fastCSharp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\udpPortServer\ipPort.cs">
+      <Link>ipPort.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\udpPortServer\portServer.cs">
+      <Link>portServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\udpPortServer\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
+    <Compile Include="..\..\demo\udpPortServer\udpServer.cs">
+      <Link>udpServer.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\fastCSharp\fastCSharp.csproj">
+      <Project>{03B96069-8E77-4EAB-9BC2-405B7B7A14F6}</Project>
+      <Name>fastCSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

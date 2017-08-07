@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2FED7D2B-DBB6-4D80-B316-7C99DC6CA3CD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>fastCSharp.testCase</RootNamespace>
+    <AssemblyName>fastCSharp.testCase</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Release\fastCSharp.testCase.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="data.cs" />
+    <Compile Include="indexSerialize.cs" />
+    <Compile Include="json.cs" />
+    <Compile Include="memoryDatabase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="dataSerialize.cs" />
+    <Compile Include="tcpCall.cs" />
+    <Compile Include="tcpGeneric.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tcpHttp.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tcpJson.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tcpMember.cs" />
+    <Compile Include="tcpSession.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tcpStream.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="xml.cs" />
+    <Compile Include="{fastCSharp.testCase}.fastCSharp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\fastCSharp\fastCSharp.vs2010.csproj">
+      <Project>{8CD9C769-7E9E-49CE-9E85-D2919A3C1752}</Project>
+      <Name>fastCSharp.vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\tool\expand\fastCSharp.expand.vs2010.csproj">
+      <Project>{03568A9A-4EEE-4D47-B2BB-538DE72BBE95}</Project>
+      <Name>fastCSharp.expand.vs2010</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if exist "$(ProjectDir)..\..\ui\bin\Release\fastCSharp.ui.exe" "$(ProjectDir)..\..\ui\bin\Release\fastCSharp.ui.exe" "$(ProjectName) " "$(ProjectDir) " "$(TargetPath) " "$(TargetName) " "1"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

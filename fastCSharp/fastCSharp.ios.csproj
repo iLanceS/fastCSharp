@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{75B5F669-4924-4642-B2A4-AE9739D22221}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>fastCSharp.ios</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>fastCSharp.ios</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;__UNIFIED__;__MOBILE__;__IOS__;NOJIT;MONO;XAMARIN;NOMYSQL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>__UNIFIED__;__MOBILE__;__IOS__;NOJIT;MONO;XAMARIN;NOMYSQL</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="algorithm\hashCode.cs" />
+    <Compile Include="algorithm\quickSort.cs" />
+    <Compile Include="array.cs" />
+    <Compile Include="arrayHeap.cs" />
+    <Compile Include="arrayPool.cs" />
+    <Compile Include="charStream.cs" />
+    <Compile Include="checkMemory.cs" />
+    <Compile Include="code\attributeMethod.cs" />
+    <Compile Include="code\cSharp\ajax.cs" />
+    <Compile Include="code\cSharp\dataModel.cs" />
+    <Compile Include="code\cSharp\dataSerialize.cs" />
+    <Compile Include="code\cSharp\memoryDatabaseModel.cs" />
+    <Compile Include="code\cSharp\sqlModel.cs" />
+    <Compile Include="code\cSharp\tcpBase.cs" />
+    <Compile Include="code\cSharp\tcpCall.cs" />
+    <Compile Include="code\cSharp\tcpMethod.cs" />
+    <Compile Include="code\cSharp\tcpServer.cs" />
+    <Compile Include="code\cSharp\webCall.cs" />
+    <Compile Include="code\cSharp\webPage.cs" />
+    <Compile Include="code\cSharp\webPath.cs" />
+    <Compile Include="code\cSharp\webSocket.cs" />
+    <Compile Include="code\cSharp\webView.cs" />
+    <Compile Include="code\fieldIndex.cs" />
+    <Compile Include="code\ignore.cs" />
+    <Compile Include="code\ignoreMember.cs" />
+    <Compile Include="code\memberFilter.cs" />
+    <Compile Include="code\memberFilters.cs" />
+    <Compile Include="code\memberIndex.cs" />
+    <Compile Include="code\memberIndexGroup.cs" />
+    <Compile Include="code\memberInfo.cs" />
+    <Compile Include="code\memberMap.cs" />
+    <Compile Include="code\memberType.cs" />
+    <Compile Include="code\methodInfo.cs" />
+    <Compile Include="code\parameterInfo.cs" />
+    <Compile Include="code\propertyIndex.cs" />
+    <Compile Include="code\remoteType.cs" />
+    <Compile Include="code\template.cs" />
+    <Compile Include="code\testCase.cs" />
+    <Compile Include="code\treeBuilder.cs" />
+    <Compile Include="code\typeAttribute.cs" />
+    <Compile Include="code\webConfig.cs" />
+    <Compile Include="code\xmlDocument.cs" />
+    <Compile Include="collection.cs" />
+    <Compile Include="config\appSetting.cs" />
+    <Compile Include="config\database.cs" />
+    <Compile Include="config\fileBlock.cs" />
+    <Compile Include="config\http.cs" />
+    <Compile Include="config\memoryDatabase.cs" />
+    <Compile Include="config\processCopy.cs" />
+    <Compile Include="config\pub.cs" />
+    <Compile Include="config\sql.cs" />
+    <Compile Include="config\tcpCommand.cs" />
+    <Compile Include="config\tcpRegister.cs" />
+    <Compile Include="config\web.cs" />
+    <Compile Include="cSharp.cs" />
+    <Compile Include="date.cs" />
+    <Compile Include="delegate.cs" />
+    <Compile Include="diagnostics\processCopyServer.cs" />
+    <Compile Include="dictionary.cs" />
+    <Compile Include="directory.cs" />
+    <Compile Include="domainUnload.cs" />
+    <Compile Include="dynamicArray.cs" />
+    <Compile Include="emit\binaryDeSerializer.cs" />
+    <Compile Include="emit\binarySerialize.cs" />
+    <Compile Include="emit\binarySerializer.cs" />
+    <Compile Include="emit\boxSerialize.cs" />
+    <Compile Include="emit\constructor.cs" />
+    <Compile Include="emit\databaseModel.cs" />
+    <Compile Include="emit\dataDeSerializer.cs" />
+    <Compile Include="emit\dataMember.cs" />
+    <Compile Include="emit\dataSerialize.cs" />
+    <Compile Include="emit\dataSerializer.cs" />
+    <Compile Include="emit\enumBase.cs" />
+    <Compile Include="emit\indexDeSerializer.cs" />
+    <Compile Include="emit\indexSerialize.cs" />
+    <Compile Include="emit\indexSerializer.cs" />
+    <Compile Include="emit\jsonNode.cs" />
+    <Compile Include="emit\jsonParse.cs" />
+    <Compile Include="emit\jsonParser.cs" />
+    <Compile Include="emit\jsonSerialize.cs" />
+    <Compile Include="emit\jsonSerializer.cs" />
+    <Compile Include="emit\memberCopy.cs" />
+    <Compile Include="emit\memberCopyer.cs" />
+    <Compile Include="emit\memberMapValue.cs" />
+    <Compile Include="emit\memoryDatabaseModel.cs" />
+    <Compile Include="emit\memoryDatabaseTable.cs" />
+    <Compile Include="emit\namePool.cs" />
+    <Compile Include="emit\numberToCharStream.cs" />
+    <Compile Include="emit\pub.cs" />
+    <Compile Include="emit\sqlColumn.cs" />
+    <Compile Include="emit\sqlModel.cs" />
+    <Compile Include="emit\sqlTable.cs" />
+    <Compile Include="emit\stringSerializer.cs" />
+    <Compile Include="emit\webView.cs" />
+    <Compile Include="emit\xmlNode.cs" />
+    <Compile Include="emit\xmlParser.cs" />
+    <Compile Include="emit\xmlSerialize.cs" />
+    <Compile Include="emit\xmlSerializer.cs" />
+    <Compile Include="encoding.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="equalityComparer.cs" />
+    <Compile Include="fifoPriorityQueue.cs" />
+    <Compile Include="fixedMap.cs" />
+    <Compile Include="guid.cs" />
+    <Compile Include="hashBytes.cs" />
+    <Compile Include="hashSet.cs" />
+    <Compile Include="hashString.cs" />
+    <Compile Include="iCollection.cs" />
+    <Compile Include="iComparable.cs" />
+    <Compile Include="iEnumerable.cs" />
+    <Compile Include="iEnumerator.cs" />
+    <Compile Include="indexPool.cs" />
+    <Compile Include="io\compression\compressionStream.cs" />
+    <Compile Include="io\createFlieTimeoutWatcher.cs" />
+    <Compile Include="io\file.cs" />
+    <Compile Include="io\fileBlockServer.cs" />
+    <Compile Include="io\fileBlockStream.cs" />
+    <Compile Include="io\fileStreamWriter.cs" />
+    <Compile Include="keyValue.cs" />
+    <Compile Include="list.cs" />
+    <Compile Include="log.cs" />
+    <Compile Include="memory.cs" />
+    <Compile Include="memoryDatabase\cache\loadCache.cs" />
+    <Compile Include="memoryDatabase\physical.cs" />
+    <Compile Include="memoryDatabase\physicalServer.cs" />
+    <Compile Include="memoryDatabase\physicalSet.cs" />
+    <Compile Include="memoryPool.cs" />
+    <Compile Include="memoryStream.cs" />
+    <Compile Include="net\asynchronousMethod.cs" />
+    <Compile Include="net\callback.cs" />
+    <Compile Include="net\indexIdentity.cs" />
+    <Compile Include="net\ipv6Hash.cs" />
+    <Compile Include="net\logStream.cs" />
+    <Compile Include="net\returnValue.cs" />
+    <Compile Include="net\socket.cs" />
+    <Compile Include="net\socketAsyncEventArgs.cs" />
+    <Compile Include="net\tcp\client.cs" />
+    <Compile Include="net\tcp\commandClient.cs" />
+    <Compile Include="net\tcp\commandLoadBalancingServer.cs" />
+    <Compile Include="net\tcp\commandServer.cs" />
+    <Compile Include="net\tcp\commandSocket.cs" />
+    <Compile Include="net\tcp\host.cs" />
+    <Compile Include="net\tcp\http\bufferIndex.cs" />
+    <Compile Include="net\tcp\http\cookie.cs" />
+    <Compile Include="net\tcp\http\domain.cs" />
+    <Compile Include="net\tcp\http\domainServer.cs" />
+    <Compile Include="net\tcp\http\forwardProxy.cs" />
+    <Compile Include="net\tcp\http\requestForm.cs" />
+    <Compile Include="net\tcp\http\requestHeader.cs" />
+    <Compile Include="net\tcp\http\response.cs" />
+    <Compile Include="net\tcp\http\server.cs" />
+    <Compile Include="net\tcp\http\servers.cs" />
+    <Compile Include="net\tcp\http\session.cs" />
+    <Compile Include="net\tcp\http\socket.cs" />
+    <Compile Include="net\tcp\http\sslServer.cs" />
+    <Compile Include="net\tcp\http\sslStream.cs" />
+    <Compile Include="net\tcp\server.cs" />
+    <Compile Include="net\tcp\tcpRegister.cs" />
+    <Compile Include="net\tcp\tcpRegisterReader.cs" />
+    <Compile Include="net\tcp\timeVerifyServer.cs" />
+    <Compile Include="net\timeoutQueue.cs" />
+    <Compile Include="net\waitCall.cs" />
+    <Compile Include="nullValue.cs" />
+    <Compile Include="number.cs" />
+    <Compile Include="objectPool.cs" />
+    <Compile Include="objectReference.cs" />
+    <Compile Include="pointer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="pub.cs" />
+    <Compile Include="random.cs" />
+    <Compile Include="reflection\assembly.cs" />
+    <Compile Include="reflection\memberInfo.cs" />
+    <Compile Include="reflection\methodInfo.cs" />
+    <Compile Include="reflection\type.cs" />
+    <Compile Include="run.cs" />
+    <Compile Include="sessionId.cs" />
+    <Compile Include="sql\client.cs" />
+    <Compile Include="sql\column.cs" />
+    <Compile Include="sql\columnCollection.cs" />
+    <Compile Include="sql\connection.cs" />
+    <Compile Include="sql\connectionPool.cs" />
+    <Compile Include="sql\expressionCall.cs" />
+    <Compile Include="sql\expression\BinaryExpression.cs" />
+    <Compile Include="sql\expression\ConditionalExpression.cs" />
+    <Compile Include="sql\expression\constantConverter.cs" />
+    <Compile Include="sql\expression\ConstantExpression.cs" />
+    <Compile Include="sql\expression\converter.cs" />
+    <Compile Include="sql\expression\convertExpression.cs" />
+    <Compile Include="sql\expression\Expression.cs" />
+    <Compile Include="sql\expression\expressionConverter.cs" />
+    <Compile Include="sql\expression\expressionType.cs" />
+    <Compile Include="sql\expression\fieldExpression.cs" />
+    <Compile Include="sql\expression\lambdaExpression.cs" />
+    <Compile Include="sql\expression\logicConstantExpression.cs" />
+    <Compile Include="sql\expression\MemberExpression.cs" />
+    <Compile Include="sql\expression\MethodCallExpression.cs" />
+    <Compile Include="sql\expression\ParameterExpression.cs" />
+    <Compile Include="sql\expression\pool.cs" />
+    <Compile Include="sql\expression\propertyExpression.cs" />
+    <Compile Include="sql\expression\UnaryExpression.cs" />
+    <Compile Include="sql\fileBlockMember.cs" />
+    <Compile Include="sql\msSql\converter.cs" />
+    <Compile Include="sql\msSql\expressionConverter.cs" />
+    <Compile Include="sql\msSql\sql2000.cs" />
+    <Compile Include="sql\msSql\sql2005.cs" />
+    <Compile Include="sql\msSql\sqlDbType.cs" />
+    <Compile Include="sql\selectQuery.cs" />
+    <Compile Include="sql\sqlDbType.cs" />
+    <Compile Include="sql\table.cs" />
+    <Compile Include="sql\typeInfo.cs" />
+    <Compile Include="stateSearcher.cs" />
+    <Compile Include="staticDictionary.cs" />
+    <Compile Include="staticHash.cs" />
+    <Compile Include="staticHashIndex.cs" />
+    <Compile Include="string.cs" />
+    <Compile Include="stringBuilder.cs" />
+    <Compile Include="structReference.cs" />
+    <Compile Include="subArray.cs" />
+    <Compile Include="subString.cs" />
+    <Compile Include="threading\autoWaitHandle.cs" />
+    <Compile Include="threading\disposeTimer.cs" />
+    <Compile Include="threading\interlocked.cs" />
+    <Compile Include="threading\queue.cs" />
+    <Compile Include="threading\secondCount.cs" />
+    <Compile Include="threading\task.cs" />
+    <Compile Include="threading\taskInfo.cs" />
+    <Compile Include="threading\taskQueue.cs" />
+    <Compile Include="threading\thread.cs" />
+    <Compile Include="threading\threadPool.cs" />
+    <Compile Include="threading\timeoutQueue.cs" />
+    <Compile Include="threading\timerQueue.cs" />
+    <Compile Include="threading\timerTask.cs" />
+    <Compile Include="threading\waitHandle.cs" />
+    <Compile Include="typePool.cs" />
+    <Compile Include="unionType.cs" />
+    <Compile Include="uniqueDictionary.cs" />
+    <Compile Include="uniqueHashSet.cs" />
+    <Compile Include="unmanaged.cs" />
+    <Compile Include="unmanagedPool.cs" />
+    <Compile Include="unmanagedStream.cs" />
+    <Compile Include="unsafer\array.cs" />
+    <Compile Include="unsafer\memory.cs" />
+    <Compile Include="unsafer\String.cs" />
+    <Compile Include="web\ajax.cs" />
+    <Compile Include="web\contentType.cs" />
+    <Compile Include="web\domain.cs" />
+    <Compile Include="web\formQuery.cs" />
+    <Compile Include="web\header.cs" />
+    <Compile Include="web\html.cs" />
+    <Compile Include="web\http.cs" />
+    <Compile Include="{fastCSharp}.fastCSharp.cs" />
+    <Compile Include="{fastCSharp}.remember.fastCSharp.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>

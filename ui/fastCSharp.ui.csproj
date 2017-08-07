@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54D05970-5778-493E-862E-1BD8DB7668A3}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>fastCSharp.ui</RootNamespace>
+    <AssemblyName>fastCSharp.ui</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;TESTCASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;TESTCASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="code\auto.cs" />
+    <Compile Include="code\console.cs" />
+    <Compile Include="code\cSharp\ajax.cs" />
+    <Compile Include="code\cSharp\asynchronousMethod.cs" />
+    <Compile Include="code\cSharp\coder.cs" />
+    <Compile Include="code\cSharp\cSharper.cs" />
+    <Compile Include="code\cSharp\dataModel.cs" />
+    <Compile Include="code\cSharp\dataSerialize.cs" />
+    <Compile Include="code\cSharp\member.cs" />
+    <Compile Include="code\cSharp\memberInfo.cs" />
+    <Compile Include="code\cSharp\memoryDatabaseModel.cs" />
+    <Compile Include="code\cSharp\simpleTemplate.cs" />
+    <Compile Include="code\cSharp\sqlModel.cs" />
+    <Compile Include="code\cSharp\tcpBase.cs" />
+    <Compile Include="code\cSharp\tcpCall.cs" />
+    <Compile Include="code\cSharp\tcpServer.cs" />
+    <Compile Include="code\cSharp\template\ajax.cs" />
+    <Compile Include="code\cSharp\template\dataSerialize.cs" />
+    <Compile Include="code\cSharp\template\memoryDatabaseModel.cs" />
+    <Compile Include="code\cSharp\template\pub.cs" />
+    <Compile Include="code\cSharp\template\sqlModel.cs" />
+    <Compile Include="code\cSharp\template\tcpCall.cs" />
+    <Compile Include="code\cSharp\template\tcpServer.cs" />
+    <Compile Include="code\cSharp\template\webCall.cs" />
+    <Compile Include="code\cSharp\template\webSocket.cs" />
+    <Compile Include="code\cSharp\template\webView.cs" />
+    <Compile Include="code\cSharp\treeBuilder.cs" />
+    <Compile Include="code\cSharp\webCall.cs" />
+    <Compile Include="code\cSharp\webPath.cs" />
+    <Compile Include="code\cSharp\webSocket.cs" />
+    <Compile Include="code\cSharp\webView.cs" />
+    <Compile Include="code\error.cs" />
+    <Compile Include="code\html.cs" />
+    <Compile Include="code\test.cs" />
+    <Compile Include="code\ui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="code\ui.designer.cs">
+      <DependentUpon>ui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="config\code.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reflection\memberInfo.cs" />
+    <Compile Include="reflection\type.cs" />
+    <Compile Include="{fastCSharp}.cSharper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="fastCSharp.ui.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="code\ui.resx">
+      <DependentUpon>ui.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="code\cSharp\template\webPath.js" />
+    <Content Include="code\cSharp\template\webPath.ts.txt" />
+    <Content Include="code\cSharp\template\webView.ts.txt" />
+    <Content Include="js\ace\ace.js" />
+    <Content Include="js\color512_64.bmp" />
+    <Content Include="js\highcharts\highcharts.js" />
+    <Content Include="code\cSharp\template\ajax.ts.txt" />
+    <Content Include="js\mathJax\MathJax.js" />
+    <TypeScriptCompile Include="js\ace\load.ts" />
+    <TypeScriptCompile Include="js\autoHeight.ts" />
+    <TypeScriptCompile Include="js\base.page.ts" />
+    <TypeScriptCompile Include="js\form.ts" />
+    <TypeScriptCompile Include="js\htmlEditor.page.ts" />
+    <TypeScriptCompile Include="js\inputKeyCode.ts" />
+    <TypeScriptCompile Include="js\inputLength.ts" />
+    <TypeScriptCompile Include="js\mathJax\load.ts" />
+    <TypeScriptCompile Include="js\mouseImage.ts" />
+    <TypeScriptCompile Include="js\mouseMenu.ts" />
+    <TypeScriptCompile Include="js\mouseMove.ts" />
+    <TypeScriptCompile Include="js\mouseOver.ts" />
+    <TypeScriptCompile Include="js\openApi.ts" />
+    <TypeScriptCompile Include="js\overDiv.ts" />
+    <TypeScriptCompile Include="js\overIframe.ts" />
+    <TypeScriptCompile Include="js\poll.ts" />
+    <TypeScriptCompile Include="js\socket.ts" />
+    <TypeScriptCompile Include="js\textHeight.ts" />
+    <TypeScriptCompile Include="js\timerShow.ts" />
+    <TypeScriptCompile Include="js\verifyImage.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fastCSharp\fastCSharp.csproj">
+      <Project>{5d70c042-47b6-44dc-8012-1607d4d7879f}</Project>
+      <Name>fastCSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tool\expand\fastCSharp.expand.csproj">
+      <Project>{296b9989-d054-4da8-ae4b-84b694da2a74}</Project>
+      <Name>fastCSharp.expand</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="js\color.ts" />
+    <TypeScriptCompile Include="js\crawlTitle.ts" />
+    <TypeScriptCompile Include="js\defaultInput.ts" />
+    <TypeScriptCompile Include="js\defaultPassword.ts" />
+    <TypeScriptCompile Include="js\emailDomain.ts" />
+    <TypeScriptCompile Include="js\fileClicker.ts" />
+    <TypeScriptCompile Include="js\floatCenter.ts" />
+    <TypeScriptCompile Include="js\load.page.ts" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if exist "$(PROGRAMFILES)\Microsoft SDKs\TypeScript\1.8\tsc.exe" "$(PROGRAMFILES)\Microsoft SDKs\TypeScript\1.8\tsc.exe" @(TypeScriptCompile ->'"%(fullpath)"', ' ')</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

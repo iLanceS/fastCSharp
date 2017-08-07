@@ -1,0 +1,1770 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03B96069-8E77-4EAB-9BC2-405B7B7A14F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>fastCSharp</RootNamespace>
+    <AssemblyName>fastCSharp</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;NOEXPAND;MONO;NOMYSQL;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <DefineConstants>NOEXPAND;MONO;NOMYSQL;</DefineConstants>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="..\..\fastCSharp\array.cs">
+      <Link>array.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\delegate.cs">
+      <Link>delegate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\collection.cs">
+      <Link>collection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\fixedMap.cs">
+      <Link>fixedMap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\keyValue.cs">
+      <Link>keyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\list.cs">
+      <Link>list.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\dynamicArray.cs">
+      <Link>dynamicArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\pointer.cs">
+      <Link>pointer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\reflection\type.cs">
+      <Link>reflection\type.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\charStream.cs">
+      <Link>charStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\staticDictionary.cs">
+      <Link>staticDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\staticHash.cs">
+      <Link>staticHash.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\unmanagedStream.cs">
+      <Link>unmanagedStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\staticHashIndex.cs">
+      <Link>staticHashIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\subArray.cs">
+      <Link>subArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\subString.cs">
+      <Link>subString.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\log.cs">
+      <Link>log.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\nullValue.cs">
+      <Link>nullValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\io\fileStreamWriter.cs">
+      <Link>io\fileStreamWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\pub.cs">
+      <Link>pub.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\pub.cs">
+      <Link>config\pub.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\typePool.cs">
+      <Link>typePool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\algorithm\hashCode.cs">
+      <Link>algorithm\hashCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\algorithm\quickSort.cs">
+      <Link>algorithm\quickSort.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\unsafer\array.cs">
+      <Link>unsafer\array.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\unsafer\memory.cs">
+      <Link>unsafer\memory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\unsafer\String.cs">
+      <Link>unsafer\String.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\string.cs">
+      <Link>string.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\stringBuilder.cs">
+      <Link>stringBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\number.cs">
+      <Link>number.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\iCollection.cs">
+      <Link>iCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\iEnumerable.cs">
+      <Link>iEnumerable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\memory.cs">
+      <Link>memory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\reflection\memberInfo.cs">
+      <Link>reflection\memberInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\unmanaged.cs">
+      <Link>unmanaged.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\{fastCSharp}.fastCSharp.cs">
+      <Link>{fastCSharp}.fastCSharp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\servers.cs">
+      <Link>net\tcp\http\servers.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\io\compression\compressionStream.cs">
+      <Link>io\compression\compressionStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\domainServer.cs">
+      <Link>net\tcp\http\domainServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\memoryDatabase\physical.cs">
+      <Link>memoryDatabase\physical.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\memoryDatabase\physicalServer.cs">
+      <Link>memoryDatabase\physicalServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\memoryDatabase\physicalSet.cs">
+      <Link>memoryDatabase\physicalSet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\requestForm.cs">
+      <Link>net\tcp\http\requestForm.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\requestHeader.cs">
+      <Link>net\tcp\http\requestHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\cookie.cs">
+      <Link>net\tcp\http\cookie.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\session.cs">
+      <Link>net\tcp\http\session.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\socket.cs">
+      <Link>net\tcp\http\socket.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\memoryStream.cs">
+      <Link>memoryStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\hashBytes.cs">
+      <Link>hashBytes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\response.cs">
+      <Link>net\tcp\http\response.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\uniqueHashSet.cs">
+      <Link>uniqueHashSet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\fifoPriorityQueue.cs">
+      <Link>fifoPriorityQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\uniqueDictionary.cs">
+      <Link>uniqueDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\domainUnload.cs">
+      <Link>domainUnload.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\io\file.cs">
+      <Link>io\file.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\date.cs">
+      <Link>date.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\directory.cs">
+      <Link>directory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\memoryDatabase.cs">
+      <Link>config\memoryDatabase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\tcpCommand.cs">
+      <Link>config\tcpCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\tcpRegister.cs">
+      <Link>config\tcpRegister.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\web.cs">
+      <Link>config\web.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\Enum.cs">
+      <Link>Enum.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\reflection\assembly.cs">
+      <Link>reflection\assembly.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\http.cs">
+      <Link>config\http.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\domain.cs">
+      <Link>net\tcp\http\domain.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\arrayHeap.cs">
+      <Link>arrayHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\server.cs">
+      <Link>net\tcp\http\server.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\forwardProxy.cs">
+      <Link>net\tcp\http\forwardProxy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\reflection\methodInfo.cs">
+      <Link>reflection\methodInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\run.cs">
+      <Link>run.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\sql.cs">
+      <Link>config\sql.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\memoryDatabase\cache\loadCache.cs">
+      <Link>memoryDatabase\cache\loadCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\BinaryExpression.cs">
+      <Link>sql\expression\BinaryExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\ConditionalExpression.cs">
+      <Link>sql\expression\ConditionalExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\constantConverter.cs">
+      <Link>sql\expression\constantConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\ConstantExpression.cs">
+      <Link>sql\expression\ConstantExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\converter.cs">
+      <Link>sql\expression\converter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\convertExpression.cs">
+      <Link>sql\expression\convertExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\Expression.cs">
+      <Link>sql\expression\Expression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\expressionConverter.cs">
+      <Link>sql\expression\expressionConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\expressionType.cs">
+      <Link>sql\expression\expressionType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\fieldExpression.cs">
+      <Link>sql\expression\fieldExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\lambdaExpression.cs">
+      <Link>sql\expression\lambdaExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\logicConstantExpression.cs">
+      <Link>sql\expression\logicConstantExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\MemberExpression.cs">
+      <Link>sql\expression\MemberExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\MethodCallExpression.cs">
+      <Link>sql\expression\MethodCallExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\ParameterExpression.cs">
+      <Link>sql\expression\ParameterExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\pool.cs">
+      <Link>sql\expression\pool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\propertyExpression.cs">
+      <Link>sql\expression\propertyExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expression\UnaryExpression.cs">
+      <Link>sql\expression\UnaryExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\msSql\converter.cs">
+      <Link>sql\msSql\converter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\msSql\expressionConverter.cs">
+      <Link>sql\msSql\expressionConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\msSql\sql2000.cs">
+      <Link>sql\msSql\sql2000.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\msSql\sql2005.cs">
+      <Link>sql\msSql\sql2005.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\msSql\sqlDbType.cs">
+      <Link>sql\msSql\sqlDbType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\cSharp.cs">
+      <Link>cSharp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\excel\client.cs">
+      <Link>sql\excel\client.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\excel\connection.cs">
+      <Link>sql\excel\connection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\excel\sqlDbType.cs">
+      <Link>sql\excel\sqlDbType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\algorithm\group.cs">
+      <Link>algorithm\group.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\diagnostics\process.cs">
+      <Link>diagnostics\process.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\drawing\thumbnail.cs">
+      <Link>drawing\thumbnail.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\arp.cs">
+      <Link>net\packet\arp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\ethernet.cs">
+      <Link>net\packet\ethernet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\ethernetSessionP2P.cs">
+      <Link>net\packet\ethernetSessionP2P.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\frame.cs">
+      <Link>net\packet\frame.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\icmp.cs">
+      <Link>net\packet\icmp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\icmp6.cs">
+      <Link>net\packet\icmp6.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\igmp.cs">
+      <Link>net\packet\igmp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\ip.cs">
+      <Link>net\packet\ip.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\ip6.cs">
+      <Link>net\packet\ip6.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\linuxSLL.cs">
+      <Link>net\packet\linuxSLL.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\tcp.cs">
+      <Link>net\packet\tcp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\packet\udp.cs">
+      <Link>net\packet\udp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\copy.cs">
+      <Link>sql\cache\copy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\ICustom.cs">
+      <Link>sql\cache\ICustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\sqlTool.cs">
+      <Link>sql\cache\sqlTool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\uri.cs">
+      <Link>uri.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\algorithm\topologySort.cs">
+      <Link>algorithm\topologySort.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\drawing\gif\copyScreen.cs">
+      <Link>drawing\gif\copyScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\drawing\gif\file.cs">
+      <Link>drawing\gif\file.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\io\createFlieTimeoutWatcher.cs">
+      <Link>io\createFlieTimeoutWatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\diagnostics\processCopyServer.cs">
+      <Link>diagnostics\processCopyServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\processCopy.cs">
+      <Link>config\processCopy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\encodingRequest.cs">
+      <Link>openApi\encodingRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\IValue.cs">
+      <Link>openApi\IValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\microblog.cs">
+      <Link>openApi\microblog.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\request.cs">
+      <Link>openApi\request.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\api.cs">
+      <Link>openApi\qq\api.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\apiForm.cs">
+      <Link>openApi\qq\apiForm.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\apiFormat.cs">
+      <Link>openApi\qq\apiFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\appId.cs">
+      <Link>openApi\qq\appId.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\blog.cs">
+      <Link>openApi\qq\blog.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\blogReturn.cs">
+      <Link>openApi\qq\blogReturn.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\comment.cs">
+      <Link>openApi\qq\comment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\commentQuery.cs">
+      <Link>openApi\qq\commentQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\config.cs">
+      <Link>openApi\qq\config.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\errorCode.cs">
+      <Link>openApi\qq\errorCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\feeds.cs">
+      <Link>openApi\qq\feeds.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\isValue.cs">
+      <Link>openApi\qq\isValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\microblog.cs">
+      <Link>openApi\qq\microblog.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\microblogReturn.cs">
+      <Link>openApi\qq\microblogReturn.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\openId.cs">
+      <Link>openApi\qq\openId.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\simpleUserInfo.cs">
+      <Link>openApi\qq\simpleUserInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\token.cs">
+      <Link>openApi\qq\token.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\tokenOpenId.cs">
+      <Link>openApi\qq\tokenOpenId.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\userInfo.cs">
+      <Link>openApi\qq\userInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\qq\userInfoBase.cs">
+      <Link>openApi\qq\userInfoBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\renren\api.cs">
+      <Link>openApi\renren\api.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\renren\apiForm.cs">
+      <Link>openApi\renren\apiForm.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\renren\avatar.cs">
+      <Link>openApi\renren\avatar.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\renren\config.cs">
+      <Link>openApi\renren\config.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\renren\refreshToken.cs">
+      <Link>openApi\renren\refreshToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\renren\share.cs">
+      <Link>openApi\renren\share.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\renren\shareQuery.cs">
+      <Link>openApi\renren\shareQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\renren\token.cs">
+      <Link>openApi\renren\token.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\renren\tokenUser.cs">
+      <Link>openApi\renren\tokenUser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\api.cs">
+      <Link>openApi\weibo\api.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\apiForm.cs">
+      <Link>openApi\weibo\apiForm.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\config.cs">
+      <Link>openApi\weibo\config.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\geo.cs">
+      <Link>openApi\weibo\geo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\microblog.cs">
+      <Link>openApi\weibo\microblog.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\status.cs">
+      <Link>openApi\weibo\status.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\token.cs">
+      <Link>openApi\weibo\token.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\tokenRequest.cs">
+      <Link>openApi\weibo\tokenRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\tokenUid.cs">
+      <Link>openApi\weibo\tokenUid.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\user.cs">
+      <Link>openApi\weibo\user.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weibo\visible.cs">
+      <Link>openApi\weibo\visible.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\data\dataReader.cs">
+      <Link>data\dataReader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\data\dataSet.cs">
+      <Link>data\dataSet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\data\dataSource.cs">
+      <Link>data\dataSource.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\data\dataTable.cs">
+      <Link>data\dataTable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\data\dataWriter.cs">
+      <Link>data\dataWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\diagnostics\consoleLog.cs">
+      <Link>diagnostics\consoleLog.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\search\searcher.cs">
+      <Link>search\searcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\search\simplified.cs">
+      <Link>search\simplified.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\search\trieGraph.cs">
+      <Link>search\trieGraph.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\{fastCSharp.expand}.fastCSharp.cs">
+      <Link>{fastCSharp.expand}.fastCSharp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\bitMap.cs">
+      <Link>bitMap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\dictionary.cs">
+      <Link>expand\dictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\memoryTrieGraph.cs">
+      <Link>memoryTrieGraph.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\trieGraph.cs">
+      <Link>trieGraph.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\memoryPool.cs">
+      <Link>memoryPool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\counterCache.cs">
+      <Link>sql\cache\part\counterCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\queue.cs">
+      <Link>sql\cache\part\queue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\queueDictionary.cs">
+      <Link>sql\cache\part\queueDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\queueExpression.cs">
+      <Link>sql\cache\part\queueExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\queueExpressionCustom.cs">
+      <Link>sql\cache\part\queueExpressionCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\queueList.cs">
+      <Link>sql\cache\part\queueList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\events\counter.cs">
+      <Link>sql\cache\part\events\counter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\events\identityCounter.cs">
+      <Link>sql\cache\part\events\identityCounter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\events\primaryKeyCounter.cs">
+      <Link>sql\cache\part\events\primaryKeyCounter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\appSetting.cs">
+      <Link>config\appSetting.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\chineseEncoder.cs">
+      <Link>chineseEncoder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\searchTree.cs">
+      <Link>searchTree.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\memoryDatabase\cache\searchTree.cs">
+      <Link>memoryDatabase\cache\searchTree.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\algorithm\radixSort.cs">
+      <Link>algorithm\radixSort.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\algorithm\sortIndex.cs">
+      <Link>algorithm\sortIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\array.cs">
+      <Link>expand\array.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\list.cs">
+      <Link>expand\list.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\number.cs">
+      <Link>expand\number.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\string.cs">
+      <Link>expand\string.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\timeoutDictionary.cs">
+      <Link>timeoutDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\sslServer.cs">
+      <Link>net\tcp\http\sslServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\sslStream.cs">
+      <Link>net\tcp\http\sslStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\{fastCSharp}.remember.fastCSharp.cs">
+      <Link>{fastCSharp}.remember.fastCSharp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\arrayPool.cs">
+      <Link>arrayPool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\checkMemory.cs">
+      <Link>checkMemory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\encoding.cs">
+      <Link>encoding.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\guid.cs">
+      <Link>guid.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\hashSet.cs">
+      <Link>hashSet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\hashString.cs">
+      <Link>hashString.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\iComparable.cs">
+      <Link>iComparable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\iEnumerator.cs">
+      <Link>iEnumerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\indexPool.cs">
+      <Link>indexPool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\objectPool.cs">
+      <Link>objectPool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\objectReference.cs">
+      <Link>objectReference.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sessionId.cs">
+      <Link>sessionId.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\stateSearcher.cs">
+      <Link>stateSearcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\structReference.cs">
+      <Link>structReference.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\unmanagedPool.cs">
+      <Link>unmanagedPool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\countQueueCache.cs">
+      <Link>countQueueCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\dynamicDomain.cs">
+      <Link>dynamicDomain.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\iEnumerable.cs">
+      <Link>expand\iEnumerable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\multicastDelegate.cs">
+      <Link>multicastDelegate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\simpleMapping32.cs">
+      <Link>simpleMapping32.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\staticHashSet.cs">
+      <Link>staticHashSet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\subArray.cs">
+      <Link>expand\subArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\unmanagedStreamProxy.cs">
+      <Link>unmanagedStreamProxy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\config\search.cs">
+      <Link>config\search.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\database.cs">
+      <Link>config\database.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\config\fileBlock.cs">
+      <Link>config\fileBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\data\primaryKey.cs">
+      <Link>data\primaryKey.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\drawing\color.cs">
+      <Link>drawing\color.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\emit\equals.cs">
+      <Link>emit\expand\equals.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\emit\form.cs">
+      <Link>emit\expand\form.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\emit\formGetter.cs">
+      <Link>emit\expand\formGetter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\emit\mock.cs">
+      <Link>emit\expand\mock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\emit\random.cs">
+      <Link>emit\expand\random.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\emit\urlQuery.cs">
+      <Link>emit\expand\urlQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\emit\urlQueryGetter.cs">
+      <Link>emit\expand\urlQueryGetter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\io\fileDistributionServer.cs">
+      <Link>io\fileDistributionServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\io\jsonFile.cs">
+      <Link>io\jsonFile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\io\fileBlockServer.cs">
+      <Link>io\fileBlockServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\io\fileBlockStream.cs">
+      <Link>io\fileBlockStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\memoryDatabase\cache\dictionary.cs">
+      <Link>memoryDatabase\cache\dictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\memoryDatabase\cache\identityArray.cs">
+      <Link>memoryDatabase\cache\identityArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\memoryDatabase\cache\index\member.cs">
+      <Link>memoryDatabase\cache\index\member.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\memoryDatabase\cache\index\memberDictionary.cs">
+      <Link>memoryDatabase\cache\index\memberDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\indexIdentity.cs">
+      <Link>net\indexIdentity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\ipv6Hash.cs">
+      <Link>net\ipv6Hash.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\logStream.cs">
+      <Link>net\logStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\socket.cs">
+      <Link>net\socket.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\socketAsyncEventArgs.cs">
+      <Link>net\socketAsyncEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\timeoutQueue.cs">
+      <Link>net\timeoutQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\email.cs">
+      <Link>net\email.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\htmlTitleClient.cs">
+      <Link>net\htmlTitleClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\httpClient.cs">
+      <Link>net\httpClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\ping.cs">
+      <Link>net\ping.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\rawSocketListener.cs">
+      <Link>net\rawSocketListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\socketAsyncEventArgsProxy.cs">
+      <Link>net\socketAsyncEventArgsProxy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\webClient.cs">
+      <Link>net\webClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\client.cs">
+      <Link>net\tcp\client.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\commandClient.cs">
+      <Link>net\tcp\commandClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\commandLoadBalancingServer.cs">
+      <Link>net\tcp\commandLoadBalancingServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\commandServer.cs">
+      <Link>net\tcp\commandServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\commandSocket.cs">
+      <Link>net\tcp\commandSocket.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\host.cs">
+      <Link>net\tcp\host.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\server.cs">
+      <Link>net\tcp\server.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\tcpRegister.cs">
+      <Link>net\tcp\tcpRegister.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\tcpRegisterReader.cs">
+      <Link>net\tcp\tcpRegisterReader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\timeVerifyServer.cs">
+      <Link>net\tcp\timeVerifyServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\tcp\http\bufferIndex.cs">
+      <Link>net\tcp\http\bufferIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\state.cs">
+      <Link>openApi\state.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\51nod\api.cs">
+      <Link>openApi\51nod\api.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\51nod\callback.cs">
+      <Link>openApi\51nod\callback.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\51nod\config.cs">
+      <Link>openApi\51nod\config.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\51nod\judge.cs">
+      <Link>openApi\51nod\judge.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\51nod\judgeResult.cs">
+      <Link>openApi\51nod\judgeResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\51nod\problem.cs">
+      <Link>openApi\51nod\problem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\51nod\returnCode.cs">
+      <Link>openApi\51nod\returnCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\51nod\returnValue.cs">
+      <Link>openApi\51nod\returnValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\account.cs">
+      <Link>openApi\weixin\account.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\accountList.cs">
+      <Link>openApi\weixin\accountList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\api.cs">
+      <Link>openApi\weixin\api.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\article.cs">
+      <Link>openApi\weixin\article.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\articleSummary.cs">
+      <Link>openApi\weixin\articleSummary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\articleTotal.cs">
+      <Link>openApi\weixin\articleTotal.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\articleUrl.cs">
+      <Link>openApi\weixin\articleUrl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\autoReply.cs">
+      <Link>openApi\weixin\autoReply.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\billTotal.cs">
+      <Link>openApi\weixin\billTotal.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\bulkMessage.cs">
+      <Link>openApi\weixin\bulkMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\config.cs">
+      <Link>openApi\weixin\config.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\counts.cs">
+      <Link>openApi\weixin\counts.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\customRecord.cs">
+      <Link>openApi\weixin\customRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\customSession.cs">
+      <Link>openApi\weixin\customSession.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\customSessionTime.cs">
+      <Link>openApi\weixin\customSessionTime.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\customTime.cs">
+      <Link>openApi\weixin\customTime.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\errorCode.cs">
+      <Link>openApi\weixin\errorCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\group.cs">
+      <Link>openApi\weixin\group.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\groupCount.cs">
+      <Link>openApi\weixin\groupCount.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\industry.cs">
+      <Link>openApi\weixin\industry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\interfaceSummary.cs">
+      <Link>openApi\weixin\interfaceSummary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\isValue.cs">
+      <Link>openApi\weixin\isValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\language.cs">
+      <Link>openApi\weixin\language.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\media.cs">
+      <Link>openApi\weixin\media.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\mediaCount.cs">
+      <Link>openApi\weixin\mediaCount.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\mediaList.cs">
+      <Link>openApi\weixin\mediaList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\mediaQuery.cs">
+      <Link>openApi\weixin\mediaQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\mediaUrl.cs">
+      <Link>openApi\weixin\mediaUrl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\menu.cs">
+      <Link>openApi\weixin\menu.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\message.cs">
+      <Link>openApi\weixin\message.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\messageCount.cs">
+      <Link>openApi\weixin\messageCount.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\messageDistributed.cs">
+      <Link>openApi\weixin\messageDistributed.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\messageId.cs">
+      <Link>openApi\weixin\messageId.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\news.cs">
+      <Link>openApi\weixin\news.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\newsList.cs">
+      <Link>openApi\weixin\newsList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\onlineAccount.cs">
+      <Link>openApi\weixin\onlineAccount.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\openIdList.cs">
+      <Link>openApi\weixin\openIdList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\openIdMessage.cs">
+      <Link>openApi\weixin\openIdMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\orderQuery.cs">
+      <Link>openApi\weixin\orderQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\orderResult.cs">
+      <Link>openApi\weixin\orderResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\payNotify.cs">
+      <Link>openApi\weixin\payNotify.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\prePayId.cs">
+      <Link>openApi\weixin\prePayId.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\prePayIdQuery.cs">
+      <Link>openApi\weixin\prePayIdQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\previewMessage.cs">
+      <Link>openApi\weixin\previewMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\qrCode.cs">
+      <Link>openApi\weixin\qrCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\qrCodePayQuery.cs">
+      <Link>openApi\weixin\qrCodePayQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\qrCodePayResult.cs">
+      <Link>openApi\weixin\qrCodePayResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\refundResult.cs">
+      <Link>openApi\weixin\refundResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\resultCode.cs">
+      <Link>openApi\weixin\resultCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\returnCode.cs">
+      <Link>openApi\weixin\returnCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\returnSign.cs">
+      <Link>openApi\weixin\returnSign.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\sendVideo.cs">
+      <Link>openApi\weixin\sendVideo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\shakeAroundAccount.cs">
+      <Link>openApi\weixin\shakeAroundAccount.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\shakeAroundAccountStatus.cs">
+      <Link>openApi\weixin\shakeAroundAccountStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\sign.cs">
+      <Link>openApi\weixin\sign.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\signQuery.cs">
+      <Link>openApi\weixin\signQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\template.cs">
+      <Link>openApi\weixin\template.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\token.cs">
+      <Link>openApi\weixin\token.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\tradeType.cs">
+      <Link>openApi\weixin\tradeType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\uploadVideo.cs">
+      <Link>openApi\weixin\uploadVideo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\user.cs">
+      <Link>openApi\weixin\user.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\userCumulate.cs">
+      <Link>openApi\weixin\userCumulate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\userLanguage.cs">
+      <Link>openApi\weixin\userLanguage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\userRead.cs">
+      <Link>openApi\weixin\userRead.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\userShare.cs">
+      <Link>openApi\weixin\userShare.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\userSummary.cs">
+      <Link>openApi\weixin\userSummary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\videoUrl.cs">
+      <Link>openApi\weixin\videoUrl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\waitCustomSession.cs">
+      <Link>openApi\weixin\waitCustomSession.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\search\word.cs">
+      <Link>search\word.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\attributeMethod.cs">
+      <Link>code\attributeMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\fieldIndex.cs">
+      <Link>code\fieldIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\ignore.cs">
+      <Link>code\ignore.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\ignoreMember.cs">
+      <Link>code\ignoreMember.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\memberFilter.cs">
+      <Link>code\memberFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\memberFilters.cs">
+      <Link>code\memberFilters.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\memberIndex.cs">
+      <Link>code\memberIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\memberIndexGroup.cs">
+      <Link>code\memberIndexGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\memberInfo.cs">
+      <Link>code\memberInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\memberMap.cs">
+      <Link>code\memberMap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\memberType.cs">
+      <Link>code\memberType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\methodInfo.cs">
+      <Link>code\methodInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\parameterInfo.cs">
+      <Link>code\parameterInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\propertyIndex.cs">
+      <Link>code\propertyIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\remoteType.cs">
+      <Link>code\remoteType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\template.cs">
+      <Link>code\template.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\testCase.cs">
+      <Link>code\testCase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\treeBuilder.cs">
+      <Link>code\treeBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\typeAttribute.cs">
+      <Link>code\typeAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\webConfig.cs">
+      <Link>code\webConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\xmlDocument.cs">
+      <Link>code\xmlDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\ajax.cs">
+      <Link>code\cSharp\ajax.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\dataModel.cs">
+      <Link>code\cSharp\dataModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\dataSerialize.cs">
+      <Link>code\cSharp\dataSerialize.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\memoryDatabaseModel.cs">
+      <Link>code\cSharp\memoryDatabaseModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\sqlModel.cs">
+      <Link>code\cSharp\sqlModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\tcpBase.cs">
+      <Link>code\cSharp\tcpBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\tcpCall.cs">
+      <Link>code\cSharp\tcpCall.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\tcpMethod.cs">
+      <Link>code\cSharp\tcpMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\tcpServer.cs">
+      <Link>code\cSharp\tcpServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\webCall.cs">
+      <Link>code\cSharp\webCall.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\webPage.cs">
+      <Link>code\cSharp\webPage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\webSocket.cs">
+      <Link>code\cSharp\webSocket.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\webView.cs">
+      <Link>code\cSharp\webView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\client.cs">
+      <Link>sql\client.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\column.cs">
+      <Link>sql\column.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\columnCollection.cs">
+      <Link>sql\columnCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\connection.cs">
+      <Link>sql\connection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\connectionPool.cs">
+      <Link>sql\connectionPool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\expressionCall.cs">
+      <Link>sql\expressionCall.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\fileBlockMember.cs">
+      <Link>sql\fileBlockMember.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\selectQuery.cs">
+      <Link>sql\selectQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\sqlDbType.cs">
+      <Link>sql\sqlDbType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\table.cs">
+      <Link>sql\table.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\typeInfo.cs">
+      <Link>sql\typeInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\batchImport.cs">
+      <Link>sql\batchImport.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\logCache.cs">
+      <Link>sql\logCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\logStream.cs">
+      <Link>sql\logStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\memberExpression.cs">
+      <Link>sql\memberExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\nowTime.cs">
+      <Link>sql\nowTime.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\randomKey.cs">
+      <Link>sql\randomKey.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\member\intDate.cs">
+      <Link>sql\member\intDate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\version.cs">
+      <Link>sql\cache\version.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\arrayList.cs">
+      <Link>sql\cache\whole\arrayList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\arraySearchTree.cs">
+      <Link>sql\cache\whole\arraySearchTree.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\arraySearchTreeWhere.cs">
+      <Link>sql\cache\whole\arraySearchTreeWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\dictionary.cs">
+      <Link>sql\cache\whole\dictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\dictionaryDictionary.cs">
+      <Link>sql\cache\whole\dictionaryDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\dictionaryDictionaryWhere.cs">
+      <Link>sql\cache\whole\dictionaryDictionaryWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\dictionaryList.cs">
+      <Link>sql\cache\whole\dictionaryList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\dictionaryListOrderLady.cs">
+      <Link>sql\cache\whole\dictionaryListOrderLady.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\dictionaryListOrderLadyWhere.cs">
+      <Link>sql\cache\whole\dictionaryListOrderLadyWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\dictionaryListWhere.cs">
+      <Link>sql\cache\whole\dictionaryListWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\dictionarySearchTree.cs">
+      <Link>sql\cache\whole\dictionarySearchTree.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\dictionarySearchTreeWhere.cs">
+      <Link>sql\cache\whole\dictionarySearchTreeWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\dictionaryWhere.cs">
+      <Link>sql\cache\whole\dictionaryWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\ladyOrderArray.cs">
+      <Link>sql\cache\whole\ladyOrderArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\member.cs">
+      <Link>sql\cache\whole\member.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberArrayLadyOrderArray.cs">
+      <Link>sql\cache\whole\memberArrayLadyOrderArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberArrayList.cs">
+      <Link>sql\cache\whole\memberArrayList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberCache.cs">
+      <Link>sql\cache\whole\memberCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberCacheCounter.cs">
+      <Link>sql\cache\whole\memberCacheCounter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberCacheCounterLock.cs">
+      <Link>sql\cache\whole\memberCacheCounterLock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberCacheLock.cs">
+      <Link>sql\cache\whole\memberCacheLock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberDictionary.cs">
+      <Link>sql\cache\whole\memberDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberDictionaryList.cs">
+      <Link>sql\cache\whole\memberDictionaryList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberDictionaryListWhere.cs">
+      <Link>sql\cache\whole\memberDictionaryListWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberDictionaryWhere.cs">
+      <Link>sql\cache\whole\memberDictionaryWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberLadyOrderArray.cs">
+      <Link>sql\cache\whole\memberLadyOrderArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberLadyOrderArrayWhere.cs">
+      <Link>sql\cache\whole\memberLadyOrderArrayWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberList.cs">
+      <Link>sql\cache\whole\memberList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberListWhere.cs">
+      <Link>sql\cache\whole\memberListWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\memberOrderList.cs">
+      <Link>sql\cache\whole\memberOrderList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\searchTree.cs">
+      <Link>sql\cache\whole\searchTree.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\searchTreeWhere.cs">
+      <Link>sql\cache\whole\searchTreeWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\timeOutOrderLady.cs">
+      <Link>sql\cache\whole\timeOutOrderLady.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\timeOutOrderLadyWhere.cs">
+      <Link>sql\cache\whole\timeOutOrderLadyWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\timer.cs">
+      <Link>sql\cache\whole\timer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\timerWhere.cs">
+      <Link>sql\cache\whole\timerWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\cache.cs">
+      <Link>sql\cache\whole\events\cache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\identityArray.cs">
+      <Link>sql\cache\whole\events\identityArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\identityArrayWhere.cs">
+      <Link>sql\cache\whole\events\identityArrayWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\identityCache.cs">
+      <Link>sql\cache\whole\events\identityCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\identityDictionaryWhere.cs">
+      <Link>sql\cache\whole\events\identityDictionaryWhere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\identityMemberMap.cs">
+      <Link>sql\cache\whole\events\identityMemberMap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\identityTree.cs">
+      <Link>sql\cache\whole\events\identityTree.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\key.cs">
+      <Link>sql\cache\whole\events\key.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\memberKey.cs">
+      <Link>sql\cache\whole\events\memberKey.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\primaryKey.cs">
+      <Link>sql\cache\whole\events\primaryKey.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\client\identityMemberCache.cs">
+      <Link>sql\cache\whole\client\identityMemberCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\memberQueue.cs">
+      <Link>sql\cache\part\memberQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\memberQueueCustom.cs">
+      <Link>sql\cache\part\memberQueueCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\memberQueueList.cs">
+      <Link>sql\cache\part\memberQueueList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\events\memberCounter.cs">
+      <Link>sql\cache\part\events\memberCounter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\events\memberIdentityCounter.cs">
+      <Link>sql\cache\part\events\memberIdentityCounter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\part\events\memberPrimaryKeyCounter.cs">
+      <Link>sql\cache\part\events\memberPrimaryKeyCounter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\template\array.cs">
+      <Link>template\array.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\template\group.cs">
+      <Link>template\group.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\template\iCollection.cs">
+      <Link>template\iCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\template\iEnumerable.cs">
+      <Link>template\iEnumerable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\template\quickSort.cs">
+      <Link>template\quickSort.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\template\quickSortExtension.cs">
+      <Link>template\quickSortExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\template\rangeSort.cs">
+      <Link>template\rangeSort.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\template\sortIndex.cs">
+      <Link>template\sortIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\template\topSort.cs">
+      <Link>template\topSort.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\threading\asynchronous.cs">
+      <Link>threading\asynchronous.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\threading\lockCheck.cs">
+      <Link>threading\lockCheck.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\threading\spinLock.cs">
+      <Link>threading\spinLock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\threading\waitCount.cs">
+      <Link>threading\waitCount.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\autoWaitHandle.cs">
+      <Link>threading\autoWaitHandle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\interlocked.cs">
+      <Link>threading\interlocked.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\queue.cs">
+      <Link>threading\queue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\secondCount.cs">
+      <Link>threading\secondCount.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\task.cs">
+      <Link>threading\task.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\taskInfo.cs">
+      <Link>threading\taskInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\taskQueue.cs">
+      <Link>threading\taskQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\thread.cs">
+      <Link>threading\thread.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\threadPool.cs">
+      <Link>threading\threadPool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\timerTask.cs">
+      <Link>threading\timerTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\web\ajax.cs">
+      <Link>web\ajax.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\web\contentType.cs">
+      <Link>web\contentType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\web\domain.cs">
+      <Link>web\domain.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\web\formQuery.cs">
+      <Link>web\formQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\web\header.cs">
+      <Link>web\header.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\web\html.cs">
+      <Link>web\html.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\web\http.cs">
+      <Link>web\http.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\web\cookie.cs">
+      <Link>web\cookie.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\web\formatHtml.cs">
+      <Link>web\formatHtml.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\web\htmlNode.cs">
+      <Link>web\htmlNode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\web\poll.cs">
+      <Link>web\poll.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\dictionary.cs">
+      <Link>dictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\random.cs">
+      <Link>random.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\emit\pub.cs">
+      <Link>emit\expand\pub.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\binaryDeSerializer.cs">
+      <Link>emit\binaryDeSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\binarySerialize.cs">
+      <Link>emit\binarySerialize.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\binarySerializer.cs">
+      <Link>emit\binarySerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\boxSerialize.cs">
+      <Link>emit\boxSerialize.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\constructor.cs">
+      <Link>emit\constructor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\databaseModel.cs">
+      <Link>emit\databaseModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\dataDeSerializer.cs">
+      <Link>emit\dataDeSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\dataMember.cs">
+      <Link>emit\dataMember.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\dataSerialize.cs">
+      <Link>emit\dataSerialize.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\dataSerializer.cs">
+      <Link>emit\dataSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\enumBase.cs">
+      <Link>emit\enumBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\generator.cs">
+      <Link>emit\generator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\indexDeSerializer.cs">
+      <Link>emit\indexDeSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\indexSerialize.cs">
+      <Link>emit\indexSerialize.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\indexSerializer.cs">
+      <Link>emit\indexSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\jsonNode.cs">
+      <Link>emit\jsonNode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\jsonParse.cs">
+      <Link>emit\jsonParse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\jsonParser.cs">
+      <Link>emit\jsonParser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\jsonSerialize.cs">
+      <Link>emit\jsonSerialize.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\jsonSerializer.cs">
+      <Link>emit\jsonSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\memberCopy.cs">
+      <Link>emit\memberCopy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\memberCopyer.cs">
+      <Link>emit\memberCopyer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\memberMapValue.cs">
+      <Link>emit\memberMapValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\memoryDatabaseModel.cs">
+      <Link>emit\memoryDatabaseModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\memoryDatabaseTable.cs">
+      <Link>emit\memoryDatabaseTable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\namePool.cs">
+      <Link>emit\namePool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\numberToCharStream.cs">
+      <Link>emit\numberToCharStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\pub.cs">
+      <Link>emit\pub.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\sqlColumn.cs">
+      <Link>emit\sqlColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\sqlModel.cs">
+      <Link>emit\sqlModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\sqlTable.cs">
+      <Link>emit\sqlTable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\stringSerializer.cs">
+      <Link>emit\stringSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\webView.cs">
+      <Link>emit\webView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\xmlNode.cs">
+      <Link>emit\xmlNode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\xmlParser.cs">
+      <Link>emit\xmlParser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\xmlSerialize.cs">
+      <Link>emit\xmlSerialize.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\emit\xmlSerializer.cs">
+      <Link>emit\xmlSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\memoryGraph.cs">
+      <Link>memoryGraph.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\asynchronousMethod.cs">
+      <Link>net\asynchronousMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\callback.cs">
+      <Link>net\callback.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\returnValue.cs">
+      <Link>net\returnValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\net\waitCall.cs">
+      <Link>net\waitCall.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\waitHandle.cs">
+      <Link>threading\waitHandle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\unionType.cs">
+      <Link>unionType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\threading\callbackPool.cs">
+      <Link>threading\callbackPool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\mySql\client.cs">
+      <Link>sql\mysql\client.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\mySql\converter.cs">
+      <Link>sql\mysql\converter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\mySql\expressionConverter.cs">
+      <Link>sql\mysql\expressionConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\sql\mySql\sqlDbType.cs">
+      <Link>sql\mysql\sqlDbType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\disposeTimer.cs">
+      <Link>threading\disposeTimer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\net\tcp\deployServer.cs">
+      <Link>net\tcp\deployServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\equalityComparer.cs">
+      <Link>equalityComparer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\web\httpUtility.cs">
+      <Link>web\httpUtility.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\timerQueue.cs">
+      <Link>threading\timerQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\identityArray.cs">
+      <Link>sql\identityArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\appPrePayId.cs">
+      <Link>openApi\weixin\appPrePayId.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\openApi\weixin\appPrePayIdQuery.cs">
+      <Link>openApi\weixin\appPrePayIdQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\prepaidTransaction.cs">
+      <Link>sql\prepaidTransaction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\threading\timeoutQueue.cs">
+      <Link>threading\timeoutQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fastCSharp\code\cSharp\webPath.cs">
+      <Link>code\cSharp\webPath.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\cache\whole\events\counterMember.cs">
+      <Link>sql\cache\whole\events\counterMember.cs</Link>
+    </Compile>
+    <Compile Include="..\..\tool\expand\sql\tableLoadChecker.cs">
+      <Link>sql\tableLoadChecker.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="reflection\" />
+    <Folder Include="threading\" />
+    <Folder Include="io\" />
+    <Folder Include="config\" />
+    <Folder Include="template\" />
+    <Folder Include="algorithm\" />
+    <Folder Include="unsafer\" />
+    <Folder Include="net\" />
+    <Folder Include="net\tcp\" />
+    <Folder Include="net\tcp\http\" />
+    <Folder Include="io\compression\" />
+    <Folder Include="memoryDatabase\" />
+    <Folder Include="web\" />
+    <Folder Include="diagnostics\" />
+    <Folder Include="data\" />
+    <Folder Include="drawing\" />
+    <Folder Include="drawing\gif\" />
+    <Folder Include="memoryDatabase\cache\" />
+    <Folder Include="memoryDatabase\cache\index\" />
+    <Folder Include="net\packet\" />
+    <Folder Include="sql\" />
+    <Folder Include="sql\expression\" />
+    <Folder Include="sql\msSql\" />
+    <Folder Include="sql\cache\" />
+    <Folder Include="sql\cache\whole\" />
+    <Folder Include="sql\excel\" />
+    <Folder Include="sql\mysql\" />
+    <Folder Include="openApi\" />
+    <Folder Include="openApi\qq\" />
+    <Folder Include="openApi\renren\" />
+    <Folder Include="openApi\weibo\" />
+    <Folder Include="search\" />
+    <Folder Include="sql\cache\whole\events\" />
+    <Folder Include="sql\cache\part\" />
+    <Folder Include="sql\cache\part\events\" />
+    <Folder Include="expand\" />
+    <Folder Include="emit\" />
+    <Folder Include="openApi\51nod\" />
+    <Folder Include="openApi\weixin\" />
+    <Folder Include="code\" />
+    <Folder Include="code\cSharp\" />
+    <Folder Include="sql\member\" />
+    <Folder Include="sql\cache\whole\client\" />
+    <Folder Include="emit\expand\" />
+  </ItemGroup>
+</Project>

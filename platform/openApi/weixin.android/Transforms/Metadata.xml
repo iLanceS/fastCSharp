@@ -1,0 +1,126 @@
+<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+
+
+-->
+<remove-node path="/api/package[@name='com.tencent.mm.sdk.modelmsg']/interface[@name='WXMediaMessage.IMediaObject']" />
+
+<attr path="/api/package[@name='com.tencent.mm.sdk.modelbase']/class[@name='BaseResp']/field[@name='errCode']" name="managedName">ErrorCode</attr>
+
+  <add-node path="/api/package[@name='com.tencent.mm.sdk.modelmsg']">
+    <class abstract="false" deprecated="not deprecated" final="true" name="WXMediaMessage" static="false" visibility="public" extends="java.lang.Object">
+      <constructor deprecated="not deprecated" final="true" name="WXMediaMessage" static="false" type="com.tencent.mm.sdk.modelmsg.WXMediaMessage" visibility="public">
+      </constructor>
+      <constructor deprecated="not deprecated" final="true" name="WXMediaMessage" static="false" type="com.tencent.mm.sdk.modelmsg.WXMediaMessage" visibility="public">
+        <parameter name="mediaObject" type="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject"></parameter>
+      </constructor>
+      <field deprecated="not deprecated" final="false" name="title" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="description" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="thumbData" static="false" transient="false" type="byte[]" visibility="public" volatile="false">
+      </field>
+    </class>
+    
+    <interface abstract="true" deprecated="not deprecated" final="false" name="WXMediaMessage.IMediaObject" static="true" visibility="public">
+    </interface>
+    
+    <class abstract="false" deprecated="not deprecated" final="false" name="WXTextObject" static="false" visibility="public" extends="java.lang.Object" extends-generic-aware="java.lang.Object">
+      <implements name="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject" name-generic-aware="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject">
+      </implements>
+      <constructor deprecated="not deprecated" final="true" name="WXTextObject" static="false" type="com.tencent.mm.sdk.modelmsg.WXTextObject" visibility="public">
+      </constructor>
+      <constructor deprecated="not deprecated" final="true" name="WXTextObject" static="false" type="com.tencent.mm.sdk.modelmsg.WXTextObject" visibility="public">
+        <parameter name="text" type="java.lang.String"></parameter>
+      </constructor>
+    </class>
+    
+    <class abstract="false" deprecated="not deprecated" final="false" name="WXImageObject" static="false" visibility="public" extends="java.lang.Object" extends-generic-aware="java.lang.Object">
+      <implements name="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject" name-generic-aware="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject">
+      </implements>
+      <constructor deprecated="not deprecated" final="true" name="WXImageObject" static="false" type="com.tencent.mm.sdk.modelmsg.WXImageObject" visibility="public">
+      </constructor>
+      <constructor deprecated="not deprecated" final="true" name="WXImageObject" static="false" type="com.tencent.mm.sdk.modelmsg.WXImageObject" visibility="public">
+        <parameter name="imageData" type="byte[]"></parameter>
+      </constructor>
+      <constructor deprecated="not deprecated" final="true" name="WXImageObject" static="false" type="com.tencent.mm.sdk.modelmsg.WXImageObject" visibility="public">
+        <parameter name="bitmap" type="android.graphics.Bitmap"></parameter>
+      </constructor>
+    </class>
+
+    <class abstract="false" deprecated="not deprecated" final="false" name="WXMusicObject" static="false" visibility="public" extends="java.lang.Object" extends-generic-aware="java.lang.Object">
+      <implements name="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject" name-generic-aware="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject">
+      </implements>
+      <constructor deprecated="not deprecated" final="true" name="WXMusicObject" static="false" type="com.tencent.mm.sdk.modelmsg.WXMusicObject" visibility="public">
+      </constructor>
+      <field deprecated="not deprecated" final="false" name="musicUrl" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+    </class>
+
+    <class abstract="false" deprecated="not deprecated" final="false" name="WXVideoObject" static="false" visibility="public" extends="java.lang.Object" extends-generic-aware="java.lang.Object">
+      <implements name="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject" name-generic-aware="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject">
+      </implements>
+      <constructor deprecated="not deprecated" final="true" name="WXVideoObject" static="false" type="com.tencent.mm.sdk.modelmsg.WXVideoObject" visibility="public">
+      </constructor>
+      <field deprecated="not deprecated" final="false" name="videoUrl" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+    </class>
+
+    <class abstract="false" deprecated="not deprecated" final="false" name="WXWebpageObject" static="false" visibility="public" extends="java.lang.Object" extends-generic-aware="java.lang.Object">
+      <implements name="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject" name-generic-aware="com.tencent.mm.sdk.modelmsg.WXMediaMessage.IMediaObject">
+      </implements>
+      <constructor deprecated="not deprecated" final="true" name="WXWebpageObject" static="false" type="com.tencent.mm.sdk.modelmsg.WXWebpageObject" visibility="public">
+      </constructor>
+      <constructor deprecated="not deprecated" final="true" name="WXWebpageObject" static="false" type="com.tencent.mm.sdk.modelmsg.WXWebpageObject" visibility="public">
+        <parameter name="webpageUrl" type="java.lang.String"></parameter>
+      </constructor>
+    </class>
+
+    <class abstract="false" deprecated="not deprecated" extends="com.tencent.mm.sdk.modelbase.BaseReq" extends-generic-aware="com.tencent.mm.sdk.modelbase.BaseReq" final="false" name="SendMessageToWX.Req" static="true" visibility="public">
+      <constructor deprecated="not deprecated" final="true" name="Req" static="false" type="com.tencent.mm.sdk.modelmsg.SendMessageToWX.Req" visibility="public">
+      </constructor>
+      <field deprecated="not deprecated" final="false" name="message" static="false" transient="false" type="com.tencent.mm.sdk.modelmsg.WXMediaMessage" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="scene" static="false" transient="false" type="int" visibility="public" volatile="false">
+      </field>
+      <method abstract="false" deprecated="not deprecated" final="false" name="getType" native="false" return="int" static="false" synchronized="false" visibility="public">
+      </method>
+      <method abstract="false" deprecated="not deprecated" final="false" name="checkArgs" native="false" return="bool" static="false" synchronized="false" visibility="public">
+      </method>
+    </class>
+  </add-node>
+
+  <add-node path="/api/package[@name='com.tencent.mm.sdk.modelpay']">
+    <class abstract="false" deprecated="not deprecated" extends="com.tencent.mm.sdk.modelbase.BaseReq" extends-generic-aware="com.tencent.mm.sdk.modelbase.BaseReq" final="false" name="PayReq" static="true" visibility="public">
+      <constructor deprecated="not deprecated" final="true" name="PayReq" static="false" type="com.tencent.mm.sdk.modelpay.PayReq" visibility="public">
+      </constructor>
+      <field deprecated="not deprecated" final="false" name="appId" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="partnerId" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="prepayId" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="nonceStr" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="timeStamp" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="packageValue" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="sign" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="extData" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <field deprecated="not deprecated" final="false" name="signType" static="false" transient="false" type="java.lang.String" visibility="public" volatile="false">
+      </field>
+      <method abstract="false" deprecated="not deprecated" final="false" name="getType" native="false" return="int" static="false" synchronized="false" visibility="public">
+      </method>
+      <method abstract="false" deprecated="not deprecated" final="false" name="checkArgs" native="false" return="bool" static="false" synchronized="false" visibility="public">
+      </method>
+    </class>
+  </add-node>
+</metadata>

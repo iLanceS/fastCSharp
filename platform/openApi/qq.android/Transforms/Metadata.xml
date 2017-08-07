@@ -1,0 +1,32 @@
+<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+  <remove-node path="/api/package[@name='com.tencent.tauth']/interface[@name='IRequestListener']" />
+
+  <attr path="/api/package[@name='com.tencent.connect.auth']/class[@name='AuthMap']/field[@name='authMap']" name="managedName">authMap</attr>
+  <attr path="/api/package[@name='com.tencent.tauth']/interface[@name='IUiListener']/method[@name='onComplete']" name="argsType">UiCompleteEventArgs</attr>
+
+  <add-node path="/api/package[@name='com.tencent.tauth']">
+    <class abstract="false" deprecated="not deprecated" final="false" name="Tencent" static="false" visibility="public" extends="java.lang.Object">
+      <method abstract="false" deprecated="not deprecated" final="true" name="createInstance" native="false" return="com.tencent.tauth.Tencent" static="true" synchronized="true" visibility="public">
+        <parameter name="appId" type="java.lang.String"></parameter>
+        <parameter name="context" type="android.content.Context"></parameter>
+      </method>
+      <method abstract="false" deprecated="not deprecated" final="true" name="shareToQQ" native="false" return="void" static="false" synchronized="false" visibility="public">
+        <parameter name="activity" type="android.app.Activity"></parameter>
+        <parameter name="bundle" type="android.os.Bundle"></parameter>
+        <parameter name="uiListener" type="com.tencent.tauth.IUiListener"></parameter>
+      </method>
+      <method abstract="false" deprecated="not deprecated" final="true" name="shareToQzone" native="false" return="void" static="false" synchronized="false" visibility="public">
+        <parameter name="activity" type="android.app.Activity"></parameter>
+        <parameter name="bundle" type="android.os.Bundle"></parameter>
+        <parameter name="uiListener" type="com.tencent.tauth.IUiListener"></parameter>
+      </method>
+    </class>
+  </add-node>
+</metadata>
